@@ -1,6 +1,6 @@
 # News-managment-system
 
-out system will be divided into 2 classes : 
+our system will be divided into 2 classes : 
  --------------------------------------------------
 
  1- UserRepository : 
@@ -42,6 +42,9 @@ out system will be divided into 2 classes :
                                  this numeric order is also can be used for index (except himself)
     
        ----------------------------------------------------------------------------------------------------------------------------
+
+   2- News : 
+
        User functions :
 
                1- search : display whatever matches which user types .
@@ -53,8 +56,16 @@ out system will be divided into 2 classes :
 
                4- rate news : display all news for user in their numeric order ( [1]  first, [2] second  , etc...) 
                               and ask him to enter a number and this is also its index or index -1 ,whatever ,
-                              and add this rate with his username to the map and  build function that sum all rates and divide on their size 
-                              this will be actual rate for the news
+                              and add this rate with his username to the map and ((( build function ))) that sum all rates and 
+                              divide on their size ,and reassign it in the news rate
+
+                              ((note : force him to enter rate between 1 and 5 inclusive))
+
+               5- bookmarking : let user select article to add it to his favourite articles (vector hold article title as a reference)
+                              user has 3 options [1] add [2] remove [3] back ( to back to main menu,whatever) .
+
+               6- trending news  : display all news in descending order based on thier rates to show the highest rates first 
+                                    you can create  
        
 
    
