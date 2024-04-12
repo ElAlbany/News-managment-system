@@ -53,7 +53,7 @@ our system will be divided into 2 classes :
                2- display latest news : you can display last  5 news has beed added  , or all news but in descending order
                                         (from last index to first index)
 
-               3- search by category : (very clear)
+               3- (filtering)search by category : (very clear)
 
                4- rate news : display all news for user in their numeric order ( [1]  first, [2] second  , etc...) 
                               and ask him to enter a number and this is also its index or index -1 ,whatever ,
@@ -68,5 +68,21 @@ our system will be divided into 2 classes :
                6- trending news  : display all news in descending order based on thier rates to show the highest rates first 
                                     you can create  
        
+   3- IO  :
 
+               1- read 
+             
+               2- write
+   ------------------------------------------------------------------------------------------------------------
+   important notes :
+
+                1- dont display news have rates less than 2 for users but for admin  show all of them .
+                
+                2- second step : implementing  (commenting , spam ,  email notifications) will be after finishing  main functions
+             
+                3- third step : GUI
+
+                ----------------------------------------------------------------------------------
+
+                Thanks for each one of you for listening me .
    
