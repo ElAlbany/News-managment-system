@@ -11,6 +11,7 @@ our system will be divided into 2 classes :
         
              1- log in : you will take username and password as arugments to check weather the account is user or admin
                          , then return his index to main to use it in other functions to get work easier for others
+                         (return index for user only)
         
              2- register : when you take username it should be unique for both admin and user , no 2 account  have the same username 
                            so maybe you need to create additional 2 functions to check username in admin list and user list 
