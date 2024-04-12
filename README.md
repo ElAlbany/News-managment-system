@@ -26,8 +26,8 @@ our system will be divided into 2 classes :
                                for category admin must select one of the existing categories and this can be done 
                                in update and not neccessery in this stage.
             
-               3- display all news : display all existing news and if there isnt , so display message (there isnt news right now)
-                                     if admins pressed on one of them then show its details.
+               3- display all news : display all existing news in numeric order ([1] article1 , [2]article2 .....etc)  and if there isnt , so display message (there isnt news right now)
+                                     if admins pressed on one of them then show its details. (number is also index  this will let work be easier)
             
                4- remove news : display all news then remove one of selecting news and add button back .
             
