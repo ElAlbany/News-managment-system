@@ -11,7 +11,7 @@ class News
 	string description;
 	string date;
 	string category;
-	float rate;
+	float rate; // this is the actual rate comes from summing rates and divied on their size
 	map<string, float > allRate; // username and his rate // rates can be edited so we need the username ,so map is convenient for that
 
 public:
