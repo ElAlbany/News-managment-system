@@ -11,7 +11,8 @@ class News
 	string description;
 	string date;
 	string category;
-	map<string, float > rate; // username and his rate // rates can be edited so we need the username ,so map is convenient for that
+	float rate;
+	map<string, float > allRate; // username and his rate // rates can be edited so we need the username ,so map is convenient for that
 
 public:
 
