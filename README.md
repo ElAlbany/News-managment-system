@@ -80,7 +80,7 @@ our system will be divided into 2 classes :
 
                 1- dont display news have rates less than 2 for users but for admin  show all of them .
                 
-                2- second step : implementing  (commenting , spam ,  email notifications) will be after finishing  main functions
+                2- second step : implementing  (commenting , spam ,  email notifications , forget password) will be after finishing  main functions
              
                 3- third step : GUI
 
