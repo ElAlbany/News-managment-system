@@ -24,7 +24,10 @@ int main()
 		}
 		else if (choice == 1)//log in
 		{
-			
+			//log in function should return index of the user or admin in a 
+			//variable called UserIndex to use it on user functions easily
+			//adminExist = adminExist() function; return bool
+			//UserIndex = userExist() function; return index
 			if (adminExist == false && UserIndex == -1)
 			{
 				system("CLS");
