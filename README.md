@@ -41,7 +41,8 @@ our system will be divided into 2 classes :
                7- add new admin : (very clear)
             
                8- remove admin : display all admins username like ([1]admin1 [2] admin2 ... etc) 
-                                 this numeric order is also can be used for index (except himself)
+                                 this numeric order is also can be used for index.
+                                 (((note : admin can't remove himself, so add a condition)))
     
        ----------------------------------------------------------------------------------------------------------------------------
 
