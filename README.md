@@ -14,7 +14,8 @@ our system will be divided into 2 classes :
                          (return index for user only)
         
              2- register : when you take username it should be unique for both admin and user , no 2 account  have the same username 
-                           so maybe you need to create additional 2 functions to check username in admin list and user list 
+                           so maybe you need to create additional 2 functions to check username in admin list and user list.
+                           last thing return username and passord to main again.
     
        ----------------------------------------------------------------------------------------------------
     
