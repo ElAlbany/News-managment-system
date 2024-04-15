@@ -11,7 +11,7 @@ int main()
 		int choice;
 		cout << "Enter one of the shown operations below\n\n";
 		cout << "[1] log in \n[2] sign up \n[3] exit \n\n";
-		cout << "yes";
+		cout << "no";
 
 		cin >> choice;
 		if (choice == 3) {
