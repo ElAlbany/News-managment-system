@@ -8,13 +8,15 @@ class User
 {
 private:
 	string Username, Password;
-	static vector <User> users;
 public:
+	static vector <User> users;
+	static string currentUsername, currentPassword;
 	User(string username, string password);
-	string getUsername();
 	string getPassword();
-	static void Register();
+	string getUsername();
+	static int Register();
 	static void displayAllUsers();
 	static User searchUserByUsername(string username);
+	static int LogIn();
 };
 
