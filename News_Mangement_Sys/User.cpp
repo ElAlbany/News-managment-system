@@ -1,9 +1,9 @@
 #include "User.h"
 vector <User> User::users;
+
 User::User(string username, string password) {
 	this->Username = username;
-	this->Password = password; 
-	users.push_back(*this);
+	this->Password = password;
 }
 
 string User::getUsername() {
@@ -14,14 +14,20 @@ string User::getPassword() {
 	return this->Password;
 }
 
-void User::Register(User user) {
+void User::Register() {
+	string username, password;
+	cout << "Enter your username" << endl;
+	cin >> username;
+	cout << "Enter your password" << endl;
+	cin >> password;
 	for (int i = 0; i < User::users.size(); i++) {
-		if (user.Username == User::users[i].Username) {
+		if (username == User::users[i].Username) {
 			cout << "username already exists" << endl;
 			return;
 		}
 	}
-	User::users.push_back(user);
+	User usr(username, password);
+	User::users.push_back(usr);
 }
 
 User User::searchUserByUsername(string username) {

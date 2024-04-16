@@ -8,14 +8,10 @@ using namespace std;
 
 int main()
 {
-	User usr1("hossam","ahmed");
-	User usr2("hossam t", "ahmed");
-	User::Register(usr1);
-	User::Register(usr2);
-	User::Register(usr1);
-	User::Register(usr2);
-	User::searchUserByUsername("hossam");
+	User::Register();
 	User::displayAllUsers();
+	cout << User::searchUserByUsername("hossam").getPassword();
+
 }
 
 

@@ -13,7 +13,7 @@ public:
 	User(string username, string password);
 	string getUsername();
 	string getPassword();
-	static void Register(User user);
+	static void Register();
 	static void displayAllUsers();
 	static User searchUserByUsername(string username);
 };
