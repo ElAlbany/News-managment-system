@@ -22,8 +22,10 @@ int User::Register() {
 	cin >> username;
 	cout << endl << "Enter your password" << endl;
 	cin >> password;
+	if(username == "admin")
+		return -1;
 	for (int i = 0; i < User::users.size(); i++) {
-		if (username == User::users[i].Username || username == "admin") {
+		if (username == User::users[i].Username) {
 			return -1;
 		}
 	}
