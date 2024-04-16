@@ -37,13 +37,6 @@ our system will be divided into 2 classes :
                                 in this stage you can add category for the news if it wasnt chosen yet.
             
                6- displayAvgRate : display all news  so admin can select one to see its rate .
-            
-               7- add new admin : (very clear)
-            
-               8- remove admin : display all admins username like ([1]admin1 [2] admin2 ... etc) 
-                                 this numeric order is also can be used for index.
-                                 (((note : admin can't remove himself, so add a condition)))
-    
        ----------------------------------------------------------------------------------------------------------------------------
 
    2- News : 
