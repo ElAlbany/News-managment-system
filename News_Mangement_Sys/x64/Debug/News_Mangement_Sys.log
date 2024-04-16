@@ -1,5 +1,3 @@
-﻿  News.cpp
-  source.cpp
-  UserRepository.cpp
-  Generating Code...
-  News_Mangement_Sys.vcxproj -> C:\Users\Legion\source\repos\News_Mangement_Sys\x64\Debug\News_Mangement_Sys.exe
+﻿  User.cpp
+C:\Users\Legion\source\repos\News-managment-system-hossam\News_Mangement_Sys\User.cpp(33): warning C4715: 'User::searchUserByUsername': not all control paths return a value
+  News_Mangement_Sys.vcxproj -> C:\Users\Legion\Source\Repos\News-managment-system-hossam\News_Mangement_Sys\x64\Debug\News_Mangement_Sys.exe
