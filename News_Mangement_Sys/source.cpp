@@ -1,15 +1,25 @@
 #include <iostream>
 #include "UserRepository.h"
 #include "News.h"
+#include"User.h"
 
 
 using namespace std;
-
 int main()
 {
+	int admin;
+	int registered = 5;
 	while (true)//main program
 	{
 		system("CLS");
+		if (registered == -1) {
+			cout << "username already exists" << endl << endl;
+			registered = 5;
+		}
+		else if(registered == 0) {
+			cout << "registered successfully" << endl << endl;
+			registered = 5;
+		}
 		string username, password;
 		bool adminExist = false; //to chech weather the account is admin
 		int UserIndex = -1; // to check weather the account is user and if is not -1 then we have the index to use it in other operations
@@ -23,19 +33,16 @@ int main()
 		}
 		else if (choice == 2)//sign up
 		{
-
+			registered = User::Register();
 			continue;
 		}
 		else if (choice == 1)//log in
 		{
-			//log in function should return index of the user or admin in a 
-			//variable called UserIndex to use it on user functions easily
-			//adminExist = adminExist() function; return bool
-			//UserIndex = userExist() function; return index
-			if (adminExist == false && UserIndex == -1)
+			admin = User::LogIn();
+			if (admin == -1)
 			{
 				system("CLS");
-				cout << "invalid username or password \n please try again\n\n";
+				cout << "Username or Password is incorrect";
 				continue;
 			}
 		}
@@ -46,8 +53,10 @@ int main()
 			continue;
 		}
 
-		while (adminExist)//admin
-		{ 
+		system("CLS");
+
+		while (admin == 1)//admin
+		{
 			UserRepository::adminMenu();
 			int choice2;
 			cin >> choice2;
@@ -93,12 +102,12 @@ int main()
 				cout << "invalid operation , please select only one of the operations below \n";
 				continue;
 			}
-			
-			
+
+
 		}
 
 
-		while (UserIndex != -1)//user
+		while (admin == 0)//user
 		{
 			UserRepository::userMenu();
 			int choice3;
@@ -127,7 +136,7 @@ int main()
 			{
 
 			}
-		
+
 			else if (choice3 == 7) // log out
 			{
 				break;
