@@ -15,6 +15,8 @@ public:
 
 	static vector<UserRepository> users; // main data structure to store all users
 	static vector<UserRepository> admins; // main data structure to store all admins
+        static void adminMenu();
+	static void userMenu();
 
 
 
