@@ -1,14 +1,22 @@
 #include <iostream>
+#include <algorithm>
+#include <ctime>
 #include "UserRepository.h"
-#include "News.h"
-#include "User.h"
 #include "UserRepository.cpp"
+#include "News.h"
 #include "News.cpp"
+#include "User.h"
 #include "User.cpp"
 
 using namespace std;
 int main()
 {
+
+	// Some News Objects Samples for testing ONLY!!!!
+	News new1("Derby Match", "zamalek won 2-1 today againest al ahly", "Sport", 3.4);
+	News new2("Covid19", "coronavirus aka covid19 is back!", "Health", 3.8);
+	News new3("USA", "usa gained 100 trillion dollars from oil!", "Industry", 2);
+
 	int admin;
 	int registered = 5;
 	while (true) // main program
@@ -57,7 +65,7 @@ int main()
 		{
 			system("CLS"); // clear screan
 			cout << "invalid operation , please select only one of the operations below \n";
-			continue;
+			// goto ;
 		}
 
 		system("CLS");
@@ -113,6 +121,7 @@ int main()
 			}
 			else if (choice3 == 2) // display latest news
 			{
+				News::displayLatestNews();
 			}
 			else if (choice3 == 3) // search by category
 			{
@@ -125,6 +134,7 @@ int main()
 			}
 			else if (choice3 == 6) // trending news
 			{
+				News::displayTrendingNews();
 			}
 
 			else if (choice3 == 7) // log out
