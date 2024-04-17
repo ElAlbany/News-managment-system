@@ -4,6 +4,10 @@
 #include "UserRepository.h"
 #include "UserRepository.cpp"
 #include "News.h"
+
+#include "Date.h"
+
+
 #include "News.cpp"
 #include "User.h"
 #include "User.cpp"
@@ -11,6 +15,11 @@
 using namespace std;
 int main()
 {
+
+	Date d("12-3-2022");
+	cout << d.getDay() << endl;
+	cout << d.getMonth() << endl;
+	
 
 	// Some News Objects Samples for testing ONLY!!!!
 	News new1("Derby Match", "zamalek won 2-1 today againest al ahly", "Sport", 3.4);
