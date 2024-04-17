@@ -20,11 +20,12 @@ int main()
 	cout << d.getDay() << endl;
 	cout << d.getMonth() << endl;
 	
+	return 0;
 
 	// Some News Objects Samples for testing ONLY!!!!
 	News new1("Derby Match", "zamalek won 2-1 today againest al ahly", "Sport", 3.4);
 	News new2("Covid19", "coronavirus aka covid19 is back!", "Health", 3.8);
-	News new3("USA", "usa gained 100 trillion dollars from oil!", "Industry", 2);
+	News new3("KSA", "KSA gained 100 trillion dollars from oil!", "Industry", 2);
 
 	int admin;
 	int registered = 5;

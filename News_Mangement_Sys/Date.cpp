@@ -91,8 +91,43 @@ int Date::getDay() {
 	return res;
 
 }
-//int Date::getYear() { return this->year; }
-//int Date::getMonth() { return this->month; }
+
+int Date::getMonth() {
+
+	int n = fullDate.size();
+	int l = 0, r = n - 1;
+
+	for (int i = 0; i < n; i++) {
+		if (Utility::isDigitChar(fullDate[i]) == false) { // if / or any separator .. 12/3/2023 -> l = 2, r = 4
+			l = i;
+			break;
+		}
+	}
+	for (int i = n - 1; i >= 0; i--) {
+		if (Utility::isDigitChar(fullDate[i]) == false) { // if / or any separator
+			r = i;
+			break;
+		}
+	}
+
+	string num_as_str = fullDate.substr(l + 1, r-l-1);
+	int res = Utility::toInt(num_as_str);
+	return res;
+
+}
+
+int Date::getYear() { 
+	int n = fullDate.size();
+	int l = 0;
+	for (int i = n - 1; i >= 0; i--) {
+		if (Utility::isDigitChar(fullDate[i])) {
+			l = i;
+			break;
+		}
+	}
+	string num_as_str = fullDate.substr(l + 1, n - l - 1);
+}
+
 
 
 

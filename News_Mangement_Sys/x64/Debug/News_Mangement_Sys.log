@@ -1,3 +1,17 @@
-﻿  source.cpp
-source.obj : error LNK2019: unresolved external symbol "public: int __cdecl Date::getMonth(void)" (?getMonth@Date@@QEAAHXZ) referenced in function main
-D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\x64\Debug\News_Mangement_Sys.exe : fatal error LNK1120: 1 unresolved externals
+﻿  Date.cpp
+D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\Date.cpp(26,8): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\Date.cpp(44,8): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\Date.cpp(70,8): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\Date.cpp(97,8): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\Date.cpp(120,8): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  source.cpp
+D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\News.cpp(10,18): error C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  (compiling source file 'source.cpp')
+  
+D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\News.cpp(21,18): error C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  (compiling source file 'source.cpp')
+  
+D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\source.cpp(26,78): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\source.cpp(27,69): warning C4305: 'argument': truncation from 'double' to 'float'
+  Generating Code...
+D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\Date.cpp(129): error C4716: 'Date::getYear': must return a value
