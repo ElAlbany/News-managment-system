@@ -20,8 +20,6 @@ int main()
 	cout << d.getDay() << endl;
 	cout << d.getMonth() << endl;
 	
-	return 0;
-
 	// Some News Objects Samples for testing ONLY!!!!
 	News new1("Derby Match", "zamalek won 2-1 today againest al ahly", "Sport", 3.4);
 	News new2("Covid19", "coronavirus aka covid19 is back!", "Health", 3.8);
@@ -138,6 +136,7 @@ int main()
 			}
 			else if (choice3 == 4) //  rate news
 			{
+				
 			}
 			else if (choice3 == 5) //   bookmarking
 			{

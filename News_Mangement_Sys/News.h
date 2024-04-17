@@ -15,15 +15,17 @@ class News
 	tm *date;
 	string category;
 	float rate;				  // this is the actual rate comes from summing rates and divied on their size
-	map<string, int> allRate; // username and his rate // rates can be edited so we need the username ,so map is convenient for that
-
+	multimap<string, int> allRate; // username and his rate // rates can be edited so we need the username ,so map is convenient for that
 public:
 	static vector<News> news; // main data structure to store all news
 
 	// Constructors
 	News(string title, string description, string category, float rate);
 	News(string title, string description, string category);
-
+	static void rateNews(vector<News>& newsRef, string userName);
+	void calculateAverageRate();
+	static void displayNewsByCategoryName(string);
+	static float getAverageRateByTitle(string);
 	// Getters
 	float getRate();
 	string getTitle();
