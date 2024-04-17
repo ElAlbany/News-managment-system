@@ -1,12 +1,11 @@
+
 #include <iostream>
 #include <algorithm>
 #include <ctime>
 #include "UserRepository.h"
 #include "UserRepository.cpp"
 #include "News.h"
-
 #include "Date.h"
-
 
 #include "News.cpp"
 #include "User.h"
@@ -15,6 +14,7 @@
 using namespace std;
 int main()
 {
+	
 
 	Date d("12-3-2022");
 	cout << d.getDay() << endl;

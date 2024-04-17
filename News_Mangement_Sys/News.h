@@ -3,7 +3,10 @@
 #include <string>
 #include <map>
 #include <vector>
+#include <algorithm>
 #include <ctime>
+
+
 using namespace std;
 class News
 {

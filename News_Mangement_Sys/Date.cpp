@@ -13,7 +13,7 @@ Date::Date(string date_str) {
 	try {
 		this->constructDate(date_str);
 	}
-	catch(exception ex){
+	catch (exception ex) {
 		cout << date_str << ' ' << ex.what() << endl;
 	}
 }
@@ -32,18 +32,18 @@ void Date::setDay(int _d) {
 	s.replace(0, r + 1, sub); // replace the day substring with the wanted day string.
 
 	this->fullDate = s; // update the whole date.
-	
+
 }
 
 void Date::setMonth(int _m) {
 	assert(_m >= 1 and _m <= 12);
 
 	string s = this->fullDate;
-	string sub = Utility::toString(_m); 
+	string sub = Utility::toString(_m);
 
 	int n = s.size();
 	int l = 0, r = n - 1;
-	
+
 	for (int i = 0; i < n; i++) {
 		if (Utility::isDigitChar(s[i]) == false) { // if / or any separator .. 12/3/2023 -> l = 2, r = 4
 			l = i;
@@ -66,11 +66,11 @@ void Date::setYear(int _y) {
 	string s = this->fullDate;
 
 	string sub = Utility::toString(_y);
-	
+
 	int n = s.size();
 	int l = 0;
 	for (int i = n - 1; i >= 0; i--) {
-		if (Utility::isDigitChar(s[i])) {
+		if (Utility::isDigitChar(s[i]) == false) {
 			l = i;
 			break;
 		}
@@ -110,24 +110,23 @@ int Date::getMonth() {
 		}
 	}
 
-	string num_as_str = fullDate.substr(l + 1, r-l-1);
+	string num_as_str = fullDate.substr(l + 1, r - l - 1);
 	int res = Utility::toInt(num_as_str);
 	return res;
 
 }
 
-int Date::getYear() { 
+int Date::getYear() {
 	int n = fullDate.size();
 	int l = 0;
 	for (int i = n - 1; i >= 0; i--) {
-		if (Utility::isDigitChar(fullDate[i])) {
+		if (Utility::isDigitChar(fullDate[i]) == false) {
 			l = i;
 			break;
 		}
 	}
 	string num_as_str = fullDate.substr(l + 1, n - l - 1);
+	cout << "year: " << num_as_str << endl;
+	int res = Utility::toInt(num_as_str);
+	return res;
 }
-
-
-
-

@@ -1,17 +1,28 @@
-﻿  Date.cpp
-D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\Date.cpp(26,8): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\Date.cpp(44,8): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\Date.cpp(70,8): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\Date.cpp(97,8): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\Date.cpp(120,8): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+﻿  News.cpp
   source.cpp
-D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\News.cpp(10,18): error C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  (compiling source file 'source.cpp')
-  
-D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\News.cpp(21,18): error C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  (compiling source file 'source.cpp')
-  
-D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\source.cpp(26,78): warning C4305: 'argument': truncation from 'double' to 'float'
-D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\source.cpp(27,69): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\source.cpp(30,78): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\source.cpp(31,69): warning C4305: 'argument': truncation from 'double' to 'float'
+  UserRepository.cpp
   Generating Code...
-D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\Date.cpp(129): error C4716: 'Date::getYear': must return a value
+D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\User.cpp(43): warning C4715: 'User::searchUserByUsername': not all control paths return a value
+source.obj : error LNK2005: "public: __cdecl News::News(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (??0News@@QEAA@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@00@Z) already defined in News.obj
+source.obj : error LNK2005: "public: __cdecl News::News(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,float)" (??0News@@QEAA@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@00M@Z) already defined in News.obj
+source.obj : error LNK2005: "public: class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __cdecl News::getCategory(void)" (?getCategory@News@@QEAA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ) already defined in News.obj
+source.obj : error LNK2005: "public: class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __cdecl News::getDate(void)" (?getDate@News@@QEAA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ) already defined in News.obj
+source.obj : error LNK2005: "public: class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __cdecl News::getDescription(void)" (?getDescription@News@@QEAA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ) already defined in News.obj
+source.obj : error LNK2005: "public: float __cdecl News::getRate(void)" (?getRate@News@@QEAAMXZ) already defined in News.obj
+source.obj : error LNK2005: "public: class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __cdecl News::getTitle(void)" (?getTitle@News@@QEAA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ) already defined in News.obj
+source.obj : error LNK2005: "public: static class std::vector<class News,class std::allocator<class News> > News::news" (?news@News@@2V?$vector@VNews@@V?$allocator@VNews@@@std@@@std@@A) already defined in News.obj
+UserRepository.obj : error LNK2005: "public: static void __cdecl UserRepository::adminMenu(void)" (?adminMenu@UserRepository@@SAXXZ) already defined in source.obj
+UserRepository.obj : error LNK2005: "public: static void __cdecl UserRepository::userMenu(void)" (?userMenu@UserRepository@@SAXXZ) already defined in source.obj
+User.obj : error LNK2005: "public: __cdecl User::User(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (??0User@@QEAA@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z) already defined in source.obj
+User.obj : error LNK2005: "public: static int __cdecl User::LogIn(void)" (?LogIn@User@@SAHXZ) already defined in source.obj
+User.obj : error LNK2005: "public: static int __cdecl User::Register(void)" (?Register@User@@SAHXZ) already defined in source.obj
+User.obj : error LNK2005: "public: static void __cdecl User::displayAllUsers(void)" (?displayAllUsers@User@@SAXXZ) already defined in source.obj
+User.obj : error LNK2005: "public: class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __cdecl User::getPassword(void)" (?getPassword@User@@QEAA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ) already defined in source.obj
+User.obj : error LNK2005: "public: class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __cdecl User::getUsername(void)" (?getUsername@User@@QEAA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ) already defined in source.obj
+User.obj : error LNK2005: "public: static class User __cdecl User::searchUserByUsername(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?searchUserByUsername@User@@SA?AV1@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) already defined in source.obj
+User.obj : error LNK2005: "public: static class std::vector<class User,class std::allocator<class User> > User::users" (?users@User@@2V?$vector@VUser@@V?$allocator@VUser@@@std@@@std@@A) already defined in source.obj
+User.obj : error LNK2005: "public: static class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > User::currentUsername" (?currentUsername@User@@2V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in source.obj
+User.obj : error LNK2005: "public: static class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > User::currentPassword" (?currentPassword@User@@2V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in source.obj
+D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\x64\Debug\News_Mangement_Sys.exe : fatal error LNK1169: one or more multiply defined symbols found
