@@ -2,11 +2,19 @@
 #include "UserRepository.h"
 #include "News.h"
 #include"User.h"
+#include "Date.h"
 
 
 using namespace std;
 int main()
 {
+	Date d("12-3-2022");
+	cout << d.getDay() << endl;
+	cout << d.getMonth() << endl;
+	
+
+	return 0;
+
 	int admin;
 	int registered = 5;
 	while (true)//main program
