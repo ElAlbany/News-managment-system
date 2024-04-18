@@ -1,27 +1,16 @@
 #include <iostream>
 #include <algorithm>
 #include <ctime>
-#include "UserRepository.h"
-//#include "UserRepository.cpp"
 #include "News.h"
 #include "Date.h"
-//#include "News.cpp"
+#include "News.cpp"
 #include "User.h"
-//#include "User.cpp"
+#include "User.cpp"
 
 using namespace std;
 
 int main() {
 
-    return 0;
-    Date d("12-3-2022");
-    cout << d.getDay() << endl;
-    cout << d.getMonth() << endl;
-
-    //Some News Objects Samples for testing ONLY!!!!
-    News new1("Derby Match", "zamalek won 2-1 today againest al ahly", "Sport", 3.4);
-    News new2("Covid19", "coronavirus aka covid19 is back!", "Health", 3.8);
-    News new3("KSA", "KSA gained 100 trillion dollars from oil!", "Industry", 2);
 
     int admin;
     int registered = 5;
@@ -41,6 +30,7 @@ int main() {
         bool adminExist = false; // to chech weather the account is admin
         int UserIndex = -1;         // to check weather the account is user and if is not -1 then we have the index to use it in other operations
         int choice;
+        l :
         cout << "Enter one of the shown operations below\n\n";
         cout << "[1] log in \n[2] sign up \n[3] exit \n\n";
 
@@ -57,29 +47,33 @@ int main() {
             if (admin == -1) {
                 system("CLS");
                 cout << "Username or Password is incorrect";
-                continue;
+
             }
         } else {
             system("CLS"); // clear screan
             cout << "invalid operation , please select only one of the operations below \n";
-            // goto ;
+            goto l;
         }
 
-        system("CLS");
+
 
         while (admin == 1) // admin
         {
-            UserRepository::adminMenu();
+            User::adminMenu();
             int choice2;
             cin >> choice2;
             if (choice2 == 1) //  add new category
             {
+
                 User::addCategory();
             } else if (choice2 == 2) // post news
             {
+
                 User::postNews();
             } else if (choice2 == 3) // remove news
             {
+
+                News::displayAllNews();
                 User::removeNews();
 
             } else if (choice2 == 4) //  update news
@@ -87,9 +81,16 @@ int main() {
 
             } else if (choice2 == 5) //   display an article rate
             {
+
+                News::displayAllNews();
                 User::getAverageRateByTitle();
 
-            } else if (choice2 == 6) // log out
+            }
+            else if (choice2 == 6) //display all news
+            {
+                News::displayAllNews();
+
+            }else if (choice2 == 7) // log out
             {
                 break;
             } else {
@@ -101,19 +102,25 @@ int main() {
 
         while (admin == 0) // user
         {
-            UserRepository::userMenu();
+            User::userMenu();
             int choice3;
             cin >> choice3;
             if (choice3 == 1) // search
             {
+
             } else if (choice3 == 2) // display latest news
             {
                 News::displayLatestNews();
             } else if (choice3 == 3) // search by category
             {
+
+                cout<<"enter category you want to see its articles \n";
+                string cat;
+                cin>>cat;
+                News::displayNewsByCategoryName(cat);
             } else if (choice3 == 4) //  rate news
             {
-
+                News::rateNews(News::news, User::currentUsername);
             } else if (choice3 == 5) //   bookmarking
             {
             } else if (choice3 == 6) // trending news
@@ -123,7 +130,6 @@ int main() {
             {
                 break;
             } else {
-                system("CLS"); // clear screan
                 cout << "invalid operation , please select only one of the operations below \n";
                 continue;
             }
