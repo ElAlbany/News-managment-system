@@ -23,9 +23,6 @@ public:
     static vector<string> categories;
 
     // Constructors
-    News(string title, string description, string category, float rate);
-
-    News(string title, string description, string category);
 
     News(string title, string description);
 
