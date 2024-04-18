@@ -1,7 +1,10 @@
 #include "User.h"
 
-vector<User> User::users;
-string User::currentUsername, User::currentPassword;
+// difining static member variables
+vector<User> User::users = vector<User>(); 
+string User::currentUsername;
+string User::currentPassword;
+
 
 User::User(string username, string password) {
     this->Username = username;

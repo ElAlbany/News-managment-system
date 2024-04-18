@@ -1,8 +1,14 @@
+#ifndef _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
+#endif
 #include "News.h"
 #include <ctime>
 #include <vector>
 
-vector<News> News::news; // main data structure to store all news
+// main data structure to store all news (static definition)
+vector<News> News::news; 
+vector<string> News::categories;
+
 
 News::News(string title, string description, string category, float rate) {
     time_t now = time(0);
@@ -11,7 +17,7 @@ News::News(string title, string description, string category, float rate) {
     this->description = description;
     this->category = category;
     this->rate = rate;
-    news.push_back(*this);
+    //news.push_back(*this);
 }
 
 News::News(string title, string description, string category) {
@@ -21,7 +27,7 @@ News::News(string title, string description, string category) {
     this->description = description;
     this->category = category;
     this->rate = 0.0f;
-    news.push_back(*this);
+    //news.push_back(*this);
 }
 
 News::News(string title, string description) {
@@ -31,7 +37,7 @@ News::News(string title, string description) {
     this->description = description;
     this->rate = 0.0f;
     this->category = "";
-    news.push_back(*this);
+    //news.push_back(*this);
 }//*********************************************
 void News::calculateAverageRate() {
     int totalRatings = 0;

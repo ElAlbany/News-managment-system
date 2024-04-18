@@ -1,28 +1,27 @@
-
 #include <iostream>
 #include <algorithm>
 #include <ctime>
 #include "UserRepository.h"
-#include "UserRepository.cpp"
+//#include "UserRepository.cpp"
 #include "News.h"
 #include "Date.h"
-#include "News.cpp"
+//#include "News.cpp"
 #include "User.h"
-#include "User.cpp"
+//#include "User.cpp"
 
 using namespace std;
 
 int main() {
 
+    return 0;
+    Date d("12-3-2022");
+    cout << d.getDay() << endl;
+    cout << d.getMonth() << endl;
 
-    //Date d("12-3-2022");
-    //cout << d.getDay() << endl;
-    //cout << d.getMonth() << endl;
-
-    // Some News Objects Samples for testing ONLY!!!!
-    //News new1("Derby Match", "zamalek won 2-1 today againest al ahly", "Sport", 3.4);
-    //News new2("Covid19", "coronavirus aka covid19 is back!", "Health", 3.8);
-    //News new3("KSA", "KSA gained 100 trillion dollars from oil!", "Industry", 2);
+    //Some News Objects Samples for testing ONLY!!!!
+    News new1("Derby Match", "zamalek won 2-1 today againest al ahly", "Sport", 3.4);
+    News new2("Covid19", "coronavirus aka covid19 is back!", "Health", 3.8);
+    News new3("KSA", "KSA gained 100 trillion dollars from oil!", "Industry", 2);
 
     int admin;
     int registered = 5;
