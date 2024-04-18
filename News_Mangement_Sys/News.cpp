@@ -17,7 +17,7 @@ News::News(string title, string description, string category, float rate) {
     this->description = description;
     this->category = category;
     this->rate = rate;
-    //news.push_back(*this);
+    news.push_back(*this);
 }
 
 News::News(string title, string description, string category) {
@@ -27,7 +27,7 @@ News::News(string title, string description, string category) {
     this->description = description;
     this->category = category;
     this->rate = 0.0f;
-    //news.push_back(*this);
+    news.push_back(*this);
 }
 
 News::News(string title, string description) {
@@ -37,7 +37,7 @@ News::News(string title, string description) {
     this->description = description;
     this->rate = 0.0f;
     this->category = "";
-    //news.push_back(*this);
+    news.push_back(*this);
 }//*********************************************
 void News::calculateAverageRate() {
     int totalRatings = 0;
