@@ -1,34 +1,13 @@
-#ifndef _CRT_SECURE_NO_WARNINGS
-#define _CRT_SECURE_NO_WARNINGS
-#endif
 #include "News.h"
 #include <ctime>
 #include <vector>
+#include <iostream>
+#include "User.h"
+using namespace  std;
 
-// main data structure to store all news (static definition)
-vector<News> News::news; 
+vector<News> News::news;
 vector<string> News::categories;
 
-
-News::News(string title, string description, string category, float rate) {
-    time_t now = time(0);
-    this->date = localtime(&now);
-    this->title = title;
-    this->description = description;
-    this->category = category;
-    this->rate = rate;
-    news.push_back(*this);
-}
-
-News::News(string title, string description, string category) {
-    time_t now = time(0);
-    this->date = localtime(&now);
-    this->title = title;
-    this->description = description;
-    this->category = category;
-    this->rate = 0.0f;
-    news.push_back(*this);
-}
 
 News::News(string title, string description) {
     time_t now = time(0);
