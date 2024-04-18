@@ -1,8 +1,11 @@
 #pragma once
+
 #include <iostream>
 #include <string>
 #include <vector>
-#include "News.h"
+
+
+
 using namespace std;
 
 class User {
@@ -15,6 +18,10 @@ public:
     User(string username, string password);
 
     User();
+
+    static void adminMenu();
+
+    static void userMenu();
 
     string getPassword();
 
@@ -50,10 +57,8 @@ public:
         cin >> title;
         cout << "enter description : ";
         cin >> description;
-        News newNews = News(title, description);
-        News::news.push_back(newNews);
+        News(title, description);
     }
-
 
     static void removeNews() {
         if (News::news.size() == 0) {
