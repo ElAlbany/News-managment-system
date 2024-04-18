@@ -58,7 +58,7 @@ public:
     static void displayLatestNews() {
         sort(News::news.begin(), News::news.end(), News::sortNewsByDate);
         for (int i = 0; i < (int) News::news.size(); i++) {
-            cout << "[" << i << "] " << News::news[i].getTitle() << " : " << News::news[i].getDescription()
+            cout << "[" << i+1 << "] " << News::news[i].getTitle() << " : " << News::news[i].getDescription()
                  << " \n\tDate : " << News::news[i].getDate() << " \n\tRating : " << News::news[i].getRate()
                  << " \n\tCategory : " << News::news[i].getCategory() << endl;
         }
@@ -67,7 +67,7 @@ public:
     static void displayTrendingNews() {
         sort(News::news.begin(), News::news.end(), News::sortNewsByRating);
         for (int i = 0; i < (int) News::news.size(); i++) {
-            cout << "[" << i << "] " << News::news[i].getTitle() << " : " << News::news[i].getDescription()
+            cout << "[" << i +1<< "] " << News::news[i].getTitle() << " : " << News::news[i].getDescription()
                  << " \n\tDate : " << News::news[i].getDate() << " \n\tRating : " << News::news[i].getRate()
                  << " \n\tCategory : " << News::news[i].getCategory() << endl;
         }
