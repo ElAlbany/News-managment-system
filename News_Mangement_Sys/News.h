@@ -81,9 +81,8 @@ public:
             cout << "here is all the news\n";
             cout << "\n";
         }
-        int i = 1;
-        for (auto n: news) {
-            cout << "[" << i++ << "]" << " " << n.getTitle() << "\n";
+        for(int i = 0; i < news.size(); i++) {
+            cout<<"["<<i+1<< "] " << news[i].getTitle() <<"\n";
         }
     }
 

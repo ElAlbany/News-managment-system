@@ -83,16 +83,18 @@ public:
     }
 
     static void getAverageRateByTitle() {
+        if(News::news.empty()) {
+            cout << "There are no articles in the\n";
+            return;
+        }
         News::displayAllNews();
-        cout << "enter  number of article you want to see its rate or -1 to skip\n";
+        do {
+        cout << "Enter The number of article you want to see its rate or -1 to skip\n";
         int num;
         cin >> num;
         if (num == -1)
             return;
-        if (num > 1 || num > News::news.size()) {
-            cout << "enter only numbers shown above ,please try again \n";
-            getAverageRateByTitle();
-        }
+        }while(num<1||num>News::news.size());
         cout << "rate : " << News::news[num - 1].getRate() << "\n";
     }
 
