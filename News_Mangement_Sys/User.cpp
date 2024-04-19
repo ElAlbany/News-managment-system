@@ -1,7 +1,11 @@
 #include "User.h"
 #include "News.h"
+#include<unordered_set>
+#include<unordered_map>
+
 vector<User> User::users;
 string User::currentUsername, User::currentPassword;
+unordered_map<string, unordered_set<string>> User::bookmarks;
 
 User::User(string username, string password) {
     this->Username = username;
@@ -86,8 +90,7 @@ int User::LogIn() {
 
 }
 
-void User::adminMenu()
-{
+void User::adminMenu() {
     cout << "\twelcome to admin menu\n";
     cout << "Here is all admin operations \n";
     cout << "please select one of the operations below\n\n\n";
@@ -100,8 +103,7 @@ void User::adminMenu()
     cout << "[7] log out\n";
 }
 
-void User::userMenu()
-{
+void User::userMenu() {
     cout << "\twelcome to user menu\n";
     cout << "Here is all user operations \n";
     cout << "please select one of the operations below\n\n\n";
@@ -113,3 +115,4 @@ void User::userMenu()
     cout << "[6] trending news\n";
     cout << "[7] log out\n";
 }
+
