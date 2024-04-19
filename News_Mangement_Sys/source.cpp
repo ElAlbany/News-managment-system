@@ -1,90 +1,142 @@
-#pragma once
-
 #include <iostream>
-#include <string>
-#include <map>
-#include <vector>
 #include <algorithm>
 #include <ctime>
-
+#include "News.h"
+#include "Date.h"
+#include "News.cpp"
+#include "User.h"
+#include "User.cpp"
 
 using namespace std;
 
-class News {
-
-    string title;
-    string description;
-    tm *date;
-    string category;
-    float rate;                  // this is the actual rate comes from summing rates and divied on their size
-    multimap<string, int> allRate; // username and his rate // rates can be edited so we need the username ,so map is convenient for that
-public:
-    static vector<News> news; // main data structure to store all news
-    static vector<string> categories;
-
-    // Constructors
-
-    News(string title, string description);
-
-    //functions
-    static void rateNews(vector<News> &newsRef, string userName);
-
-    void calculateAverageRate();
-
-    static void displayNewsByCategoryName(string);
+int main() {
 
 
+    int admin;
+    int registered = 5;
+    while (true) // main program
+    {
 
-    // Getters
-    float getRate();
-
-    string getTitle();
-
-    string getDescription();
-
-    string getCategory();
-
-    string getDate();
-
-    // Display News sorted by [rating, date]
-    static bool sortNewsByRating(News &news1, News &news2) {
-        return news1.getRate() > news2.getRate();
-    }
-
-    static bool sortNewsByDate(News &news1, News &news2) {
-        return news1.getDate() > news2.getDate();
-    }
-
-    static void displayLatestNews() {
-        sort(News::news.begin(), News::news.end(), News::sortNewsByDate);
-        for (int i = 0; i < (int) News::news.size(); i++) {
-            cout << "[" << i+1 << "] " << News::news[i].getTitle() << " : " << News::news[i].getDescription()
-                 << " \n\tDate : " << News::news[i].getDate() << " \n\tRating : " << News::news[i].getRate()
-                 << " \n\tCategory : " << News::news[i].getCategory() << endl;
+        if (registered == -1) {
+            cout << "username already exists" << endl
+                 << endl;
+            registered = 5;
+        } else if (registered == 0) {
+            cout << "registered successfully" << endl
+                 << endl;
+            registered = 5;
         }
-    }
+        string username, password;
+        bool adminExist = false; // to chech weather the account is admin
+        int UserIndex = -1;         // to check weather the account is user and if is not -1 then we have the index to use it in other operations
+        int choice;
+        l :
+        cout << "Enter one of the shown operations below\n\n";
+        cout << "[1] log in \n[2] sign up \n[3] exit \n\n";
 
-    static void displayTrendingNews() {
-        sort(News::news.begin(), News::news.end(), News::sortNewsByRating);
-        for (int i = 0; i < (int) News::news.size(); i++) {
-            cout << "[" << i+1 << "] " << News::news[i].getTitle() << " : " << News::news[i].getDescription()
-                 << " \n\tDate : " << News::news[i].getDate() << " \n\tRating : " << News::news[i].getRate()
-                 << " \n\tCategory : " << News::news[i].getCategory() << endl;
-        }
-    }
+        cin >> choice;
+        if (choice == 3) {
+            exit(1);
+        } else if (choice == 2) // sign up
+        {
+            registered = User::Register();
+            continue;
+        } else if (choice == 1) // log in
+        {
+            admin = User::LogIn();
+            if (admin == -1) {
 
-    static void displayAllNews() {
-        if (news.size() == 0) {
-            cout << "there is no news right now \n";
-            return;
+                cout << "Username or Password is incorrect";
+                continue;
+
+            }
         } else {
-            cout << "here is all the news\n";
-            cout << "\n";
+            system("CLS"); // clear screan
+            cout << "invalid operation , please select only one of the operations below \n";
+            goto l;
         }
-        int i = 1;
-        for (auto n: news) {
-            cout << "[" << i++ << "]" << " " << n.getTitle() << "\n";
+
+
+
+        while (admin == 1) // admin
+        {
+            User::adminMenu();
+            int choice2;
+            cin >> choice2;
+            if (choice2 == 1) //  add new category
+            {
+
+                User::addCategory();
+            } else if (choice2 == 2) // post news
+            {
+
+                User::postNews();
+            } else if (choice2 == 3) // remove news
+            {
+
+                News::displayAllNews();
+                User::removeNews();
+
+            } else if (choice2 == 4) //  update news
+            {
+
+            } else if (choice2 == 5) //   display an article rate
+            {
+
+                News::displayAllNews();
+                User::getAverageRateByTitle();
+
+            }
+            else if (choice2 == 6) //display all news
+            {
+                News::displayAllNews();
+
+            }else if (choice2 == 7) // log out
+            {
+                admin=-1;
+                break;
+            } else {
+                system("CLS"); // clear screan
+                cout << "invalid operation , please select only one of the operations below \n";
+                continue;
+            }
+        }
+
+        while (admin == 0) // user
+        {
+            User::userMenu();
+            int choice3;
+            cin >> choice3;
+            if (choice3 == 1) // search
+            {
+
+            } else if (choice3 == 2) // display latest news
+            {
+                News::displayLatestNews();
+            } else if (choice3 == 3) // search by category
+            {
+
+                cout<<"enter category you want to see its articles \n";
+                string cat;
+                cin>>cat;
+                News::displayNewsByCategoryName(cat);
+            } else if (choice3 == 4) //  rate news
+            {
+                News::rateNews(News::news, User::currentUsername);
+            } else if (choice3 == 5) //   bookmarking
+            {
+                   User::bookmarkingMenu();
+            } else if (choice3 == 6) // trending news
+            {
+                News::displayTrendingNews();
+            } else if (choice3 == 7) // log out
+            {
+                admin=-1;
+                break;
+            } else {
+                cout << "invalid operation , please select only one of the operations below \n";
+                continue;
+            }
         }
     }
-
-};
+}
