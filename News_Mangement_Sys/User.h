@@ -82,21 +82,22 @@ public:
 
     }
 
-    static void getAverageRateByTitle() {
-        if(News::news.empty()) {
-            cout << "There are no articles in the\n";
-            return;
-        }
-        News::displayAllNews();
+static void getAverageRateByTitle() {
+    bool is_emp = News::displayAllNews();
+    if(is_emp==true)
+    {
+        int num;
         do {
         cout << "Enter The number of article you want to see its rate or -1 to skip\n";
-        int num;
         cin >> num;
         if (num == -1)
             return;
         }while(num<1||num>News::news.size());
         cout << "rate : " << News::news[num - 1].getRate() << "\n";
+    }else{
+        return;
     }
+}
 
     static void bookmarkingMenu() {
         cout << "[1] add article to your favourite \n";

@@ -73,17 +73,17 @@ public:
         }
     }
 
-    static void displayAllNews() {
+    static bool displayAllNews() {
         if (news.size() == 0) {
             cout << "there is no news right now \n";
-            return;
-        } else {
-            cout << "here is all the news\n";
-            cout << "\n";
-        }
+            return false;
+        } 
+        cout << "here is all the news\n";
+        cout << "\n";
         for(int i = 0; i < news.size(); i++) {
             cout<<"["<<i+1<< "] " << news[i].getTitle() <<"\n";
         }
+        return true;
     }
 
 };
