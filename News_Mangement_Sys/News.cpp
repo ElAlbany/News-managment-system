@@ -4,7 +4,8 @@
 #include <iostream>
 #include "User.h"
 using namespace  std;
-
+struct userID {};
+struct newsID {};
 vector<News> News::news;
 vector<string> News::categories;
 
