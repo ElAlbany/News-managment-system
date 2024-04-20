@@ -53,3 +53,26 @@ int Utility::toInt(string str) {
 	}
 	return res;
 }
+
+// converts 'hi im mohamed' to {hi, im, mohamed}
+vector<string> Utility::getKeyWords(string key) {
+	vector<string> result;
+	string s;
+	for (auto c : key) {
+		if (isalpha(c)) { // if it is an alphabet char
+			s.push_back(c);
+		}
+		else {
+			if(!s.empty())result.push_back(s);
+			s.clear();
+		}
+	}
+	if (!s.empty()) result.push_back(s);
+	return result;
+}
+
+string Utility::toLower(string word) { // converts HEllO to hello
+	string res;
+	for (auto c : word) res.push_back(tolower(c));
+	return res;
+}

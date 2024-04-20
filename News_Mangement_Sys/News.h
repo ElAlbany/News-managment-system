@@ -1,5 +1,4 @@
 #pragma once
-
 #include <iostream>
 #include <string>
 #include <map>
@@ -12,6 +11,7 @@ using namespace std;
 
 class News {
 
+private:
     string title;
     string description;
     tm *date;
@@ -21,6 +21,7 @@ class News {
 public:
     static vector<News> news; // main data structure to store all news
     static vector<string> categories;
+
 
     // Constructors
     News(string title, string description, string category, float rate);
@@ -32,12 +33,13 @@ public:
     //functions
     static void rateNews(vector<News> &newsRef, string userName);
 
-    void calculateAverageRate();
 
     static void displayNewsByCategoryName(string);
 
+    static vector<News> serachNews(string title_key);
 
-
+    void calculateAverageRate();
+    void displayPost();
     // Getters
     float getRate();
 
@@ -80,10 +82,12 @@ public:
         if (news.size() == 0) {
             cout << "there is no news right now \n";
             return;
-        } else {
-            cout << "here is all the news\n";
-            cout << "\n";
-        }
+        } 
+
+        // displaying news
+        cout << "here is all the news\n";
+        cout << "\n";
+
         int i = 1;
         for (auto n: news) {
             cout << "[" << i++ << "]" << " " << n.getTitle() << "\n";

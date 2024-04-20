@@ -1,9 +1,14 @@
 #ifndef _CRT_SECURE_NO_WARNINGS
-#define _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS // for the ctime warning
 #endif
-#include "News.h"
+
 #include <ctime>
 #include <vector>
+#include <set>
+#include "News.h"
+#include "Utility.h"
+#include <unordered_map>
+#include <algorithm>
 
 // main data structure to store all news (static definition)
 vector<News> News::news; 
@@ -81,6 +86,7 @@ void News::rateNews(vector<News> &newsRef, string userName) {
     cout << "Your rating has been added successfully." << endl;
 }
 
+/////////////////////////////////////// displayNewsByCategoryName ////////////////////////////////////////////
 void News::displayNewsByCategoryName(string categoryName) {
     if (news.empty()) {
         cout << "Sorry :( There Isn't any News Right Now\n";
@@ -115,7 +121,6 @@ void News::displayNewsByCategoryName(string categoryName) {
 
 
 
-//**************************************************************************
 float News::getRate() {
     return this->rate;
 }
@@ -136,3 +141,62 @@ string News::getDate() {
     return to_string(this->date->tm_mday) + "/" + to_string(this->date->tm_mon + 1) + "/" +
            to_string(this->date->tm_year + 1900);
 }
+
+/////////////////////////////////////// serachNews ////////////////////////////////////////////
+vector<News> News::serachNews(string description_key) { // search by descroption for now , title later
+
+    vector<string> keywords = Utility::getKeyWords(description_key); // get all keywords in the search text
+
+    vector<pair<News, int>> searching_result; 
+    set<string> taken;
+    unordered_map<string, int> indx;
+
+    for (auto &news_post : news) {
+        string lowerDescription = Utility::toLower(news_post.getDescription());
+        string lowerTitle = Utility::toLower(news_post.getTitle());
+        
+        for (auto &word : keywords) {
+            if (lowerDescription.find(Utility::toLower(word) + " ") != string::npos || // search in title and description
+                lowerDescription.find(" " + Utility::toLower(word)) != string::npos || 
+                lowerTitle.find(Utility::toLower(word) + " ") != string::npos ||
+                lowerTitle.find(" " + Utility::toLower(word)) != string::npos) {
+
+                //cout << "describtionnn : " << lowerDescription << endl;
+                if (taken.find(lowerTitle) == taken.end()) {  // if taken i don't need to take it again (no dublicate posts)
+                    indx[lowerTitle] = searching_result.size(); // saving the index of the current pushed post to be used later
+                    searching_result.push_back({ news_post, 1});
+                    taken.insert(lowerTitle); // mark as taken 
+                   
+                }
+                else {
+                    // the bigger the score for each post the more to be displayed at the list beginning
+                    searching_result[indx[lowerTitle]].second++;
+                }
+            }
+        }
+    }
+
+    // sorting the news by the matching score.
+    sort(searching_result.begin(), searching_result.end(), [&](auto p1, auto p2)->bool { 
+            return p1.second > p2.second;
+    });
+
+    // returning the news only without the score
+    vector<News> final_serching_result;
+    for (auto post : searching_result) {
+        final_serching_result.push_back(post.first);
+    }
+
+    return final_serching_result;
+}
+///////////////////////////////////////// displayPost //////////////////////////////////////////
+void News::displayPost() {
+    cout << "\nTitle: " << this->title << endl;
+    cout << "Description: " << this->description << endl;
+    cout << "Date: " << this->date << endl;
+    cout << "Category: " << this->category << endl;
+    cout << "Rate: " << this->rate << endl;
+    cout << "             =========================                       \n";
+}
+
+///////////////////////////////////////////////////////////////////////////////////
