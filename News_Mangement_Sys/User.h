@@ -5,6 +5,8 @@
 #include <vector>
 #include<unordered_set>
 #include<unordered_map>
+#include<set>
+#include"News.h"
 
 
 using namespace std;
@@ -16,10 +18,14 @@ public:
     static vector<User> users;
     static string currentUsername, currentPassword;
     static unordered_map<string, unordered_set<string>> bookmarks;
+    static set<string> spamNews;
+
 
     User(string username, string password);
 
     User();
+
+    void spamNewsFunc();
 
     static void adminMenu();
 
@@ -81,7 +87,6 @@ public:
         cout << "has beed removes successfully\n";
 
     }
-
 static void getAverageRateByTitle() {
     bool is_emp = News::displayAllNews();
     if(is_emp==true)

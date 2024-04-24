@@ -64,7 +64,7 @@ void User::displayAllUsers() {
 
 int User::LogIn() {
     string username, password;
-    bool LogedIn = false;
+    bool LoggedIn = false;
     cout << endl << "Log In" << endl;
     cout << endl << "Enter Username" << endl;
     cin >> username;
@@ -72,15 +72,15 @@ int User::LogIn() {
     cin >> password;
     for (int i = 0; i < User::users.size(); i++) {
         if (username == User::users[i].Username && password == User::users[i].Password) {
-            LogedIn = true;
+            LoggedIn = true;
         }
     }
     if (username == "admin" && password == "admin") {
         return 1;
-    } else if (LogedIn) {
+    } else if (LoggedIn) {
         currentUsername = username;
         currentPassword = password;
-        cout << "Loged in successfully";
+        cout << "Logged in successfully";
         return 0;
     } else {
         return -1;
@@ -113,6 +113,20 @@ void User::userMenu() {
     cout << "[4] rate news \n";
     cout << "[5] bookmarking\n";
     cout << "[6] trending news\n";
-    cout << "[7] log out\n";
+    cout << "[7] Spam News\n";
+    cout << "[8] log out\n";
+}
+void User::spamNewsFunc(){
+  bool is_found = News::displayAllNews();
+  if(is_found){
+    int choice4;
+    do {
+      cout << "Enter the number of title which you want to spam \n ";
+      cin >> choice4;
+    } while (choice4>News::news.size()&& choice4<=0);
+    choice4--;
+    spamNews.insert(News::news[choice4].getTitle());
+    }
+    return;
 }
 

@@ -6,7 +6,7 @@
 #include <vector>
 #include <algorithm>
 #include <ctime>
-
+#include"User.h"
 
 using namespace std;
 
@@ -16,8 +16,8 @@ class News {
     string description;
     tm *date;
     string category;
-    float rate;                  // this is the actual rate comes from summing rates and divied on their size
-    multimap<string, int> allRate; // username and his rate // rates can be edited so we need the username ,so map is convenient for that
+    float rate;                 // this is the actual rate comes from summing rates and divied on their size
+    multimap<string, int> allRate;
 public:
     static vector<News> news; // main data structure to store all news
     static vector<string> categories;
@@ -32,9 +32,6 @@ public:
     void calculateAverageRate();
 
     static void displayNewsByCategoryName(string);
-
-
-
     // Getters
     float getRate();
 
@@ -81,6 +78,7 @@ public:
         cout << "here is all the news\n";
         cout << "\n";
         for(int i = 0; i < news.size(); i++) {
+          if(find(User::spamNews.begin(),User::spamNews.end(),news[i].getTitle())==User::spamNews.end())
             cout<<"["<<i+1<< "] " << news[i].getTitle() <<"\n";
         }
         return true;

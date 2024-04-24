@@ -2,7 +2,6 @@
 #include <ctime>
 #include <vector>
 #include <iostream>
-#include "User.h"
 using namespace  std;
 struct userID {};
 struct newsID {};
@@ -60,7 +59,6 @@ void News::rateNews(vector<News> &newsRef, string userName) {
     newsRef[index].calculateAverageRate();
     cout << "Your rating has been added successfully." << endl;
 }
-
 void News::displayNewsByCategoryName(string categoryName) {
     if (news.empty()) {
         cout << "Sorry :( There Isn't any News Right Now\n";
@@ -68,9 +66,9 @@ void News::displayNewsByCategoryName(string categoryName) {
     }
     bool is_found = false;
     transform(categoryName.begin(), categoryName.end(), categoryName.begin(), ::tolower);
-    for (auto it: news) {
-        transform(it.category.begin(), it.category.end(), it.category.begin(), ::tolower);
-        if (it.category == categoryName) {
+    for (auto  item : news) {
+        transform(item.category.begin(), item.category.end(), item.category.begin(), ::tolower);
+        if (item.category == categoryName ) {
             is_found = true;
             break;
         }
@@ -78,7 +76,7 @@ void News::displayNewsByCategoryName(string categoryName) {
     if (is_found) {
         cout << "     ============    Here Is ALL " << categoryName << " News :)      ============    \n";
         for (auto it: news) {
-            if (it.category == categoryName) {
+            if (it.category == categoryName  ) {
                 cout << "\nTitle: " << it.title << endl;
                 cout << "Description: " << it.description << endl;
                 cout << "Date: " << it.date << endl;
