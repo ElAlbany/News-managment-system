@@ -10,15 +10,25 @@ using namespace std;
 
 int main() {
     
-
-    //return 0;
-    
-
     //Some News Objects Samples for testing ONLY!!!!
-    News new1("Derby Match", "zamalek won 2-1 today againest al ahly", "Sport", 3.4);
-    News new2("Covid19", "coronavirus aka covid19 is back!", "Health", 3.8);
-    News new3("KSA", "KSA gained 100 trillion dollars from oil!", "Industry", 2);
-    News::news = { new1, new2 ,new3 };
+    News news1("Derby Match", "zamalek won 2-1 today againest al ahly", "Sport", 3.4);
+    News news2("Covid19", "coronavirus aka covid19 is back!", "Health", 3.8);
+    News news3("KSA", "gained 100 trillion dollars from oil!", "Industry", 2);
+    News news4("KSA", "hello this is just a test description for news class");
+
+   ////////////////////////////////////////testing///////////////////////////////////////////////////
+    /*string key;
+    cout << "->";
+    getline(cin, key);
+    int i = 1;
+    auto search_result = News::serachNews(key);
+    for (auto news_post : search_result) {
+        cout << '[' << i++ << ']' << endl;
+        news_post.displayPost();
+    }
+    return 0;*/
+    ////////////////////////////////////////testing///////////////////////////////////////////////////
+
 
     string key;
     cout << "->"; getline(cin, key);
@@ -117,7 +127,7 @@ int main() {
                 string key;
                 cout << "->"; cin >> key;
                 int i = 1;
-                auto serch_result = News::serachNews(key);
+                auto search_result = News::serachNews(key);
                 for (auto news_post : serch_result) {
                     cout << '[' << i++ << ']' << endl;
                     news_post.displayPost();

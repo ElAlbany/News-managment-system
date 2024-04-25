@@ -1,6 +1,9 @@
 #include "Utility.h"
 #include <cassert>
+#include <iostream>
+#include <vector>
 #include <algorithm>
+using namespace std;
 // u don't have to trace this just use it as an abstract functions :)
 
 bool Utility::isDigitChar(char c) {
@@ -8,6 +11,7 @@ bool Utility::isDigitChar(char c) {
 }
 
 bool Utility::checkDateFormat(string date) { 
+
 	int n = date.size();
 	int ind = 0;
 
@@ -31,6 +35,8 @@ bool Utility::checkDateFormat(string date) {
 	return 1; // its valid
 }
 
+
+
 string Utility::toString(int num) {
 	assert(num >= 0); // no negative
 	if (num == 0) return "0";
@@ -39,17 +45,17 @@ string Utility::toString(int num) {
 	while (num) {
 		int d = num % 10;
 		res.push_back((d + '0'));
+		num /= 10;
 	}
 	reverse(res.begin(), res.end());
 	return res;
 }
 
 int Utility::toInt(string str) {
-	
 	int res = 0;
 	int n = str.size();
 	for (int i = 0; i < n; i++) {
-		res = res * pow(10, i) + (str[i] - '0');
+		res = res * 10 + (str[i] - '0');
 	}
 	return res;
 }

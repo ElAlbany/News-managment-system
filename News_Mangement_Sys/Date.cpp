@@ -1,4 +1,9 @@
+#ifndef _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS // for the ctime warning
+#endif
+
 #include "Date.h"
+#include "Utility.h"
 #include <cassert>
 
 void Date::constructDate(string date_str) {
@@ -6,7 +11,30 @@ void Date::constructDate(string date_str) {
 		throw exception("Exception: The specified Date have wrong formate!\n");
 		return;
 	}
-	this->fullDate = date_str;
+
+	vector<int> dmy = getDayMonthYear(date_str);	
+	this->mday = dmy[0];
+	this->month = dmy[1];
+	this->year = dmy[2];
+}
+
+vector<int> Date::getDayMonthYear(string date) {
+	int n = date.size();
+	int ind = 0;
+	
+	vector<string> dmy(3, string());
+	for (int i = 0; i < n; i++) {
+		if (Utility::isDigitChar(date[i])) {
+			dmy[ind].push_back(date[i]);
+		}
+		else ind++;
+	}
+	int _d = Utility::toInt(dmy[0]);
+	int _m = Utility::toInt(dmy[1]);
+	int _y = Utility::toInt(dmy[2]);
+	return { _d, _m, _y };
+	
+
 }
 
 Date::Date(string date_str) {
@@ -18,115 +46,53 @@ Date::Date(string date_str) {
 	}
 }
 
+string Date::getCurrentDate(char sep) {
+	tm* d;
+	time_t now = time(0);
+	string n = ctime(&now);
+	d = localtime(&now);
+
+	string _d = Utility::toString(d->tm_mday);
+	string _m = Utility::toString(d->tm_mon+1);
+	string _y = Utility::toString(d->tm_year+1900);
+	return _d + sep + _m + sep + _y;
+	
+}
+
+string Date::fullDate(char sep) {
+	return Utility::toString(this->getDay()) + sep + Utility::toString(this->getMonth()) + sep + Utility::toString(this->getYear());
+}
+
+Date::Date() {
+	string date = getCurrentDate('/');
+	constructDate(date);
+}
+
+
 void Date::setDay(int _d) {
 	assert(_d >= 1 and _d <= 31);
-
-	string sub = Utility::toString(_d); // convert the num to a string
-	string s = this->fullDate;
-	int n = s.size();
-	int  r = 0;
-	for (int i = 0; i < n; i++) {
-		if (Utility::isDigitChar(s[i]) == false) break;
-		r = i;
-	}
-	s.replace(0, r + 1, sub); // replace the day substring with the wanted day string.
-
-	this->fullDate = s; // update the whole date.
-
+	this->mday = _d;
+	
 }
 
 void Date::setMonth(int _m) {
 	assert(_m >= 1 and _m <= 12);
-
-	string s = this->fullDate;
-	string sub = Utility::toString(_m);
-
-	int n = s.size();
-	int l = 0, r = n - 1;
-
-	for (int i = 0; i < n; i++) {
-		if (Utility::isDigitChar(s[i]) == false) { // if / or any separator .. 12/3/2023 -> l = 2, r = 4
-			l = i;
-			break;
-		}
-	}
-	for (int i = n - 1; i >= 0; i--) {
-		if (Utility::isDigitChar(s[i]) == false) { // if / or any separator
-			r = i;
-			break;
-		}
-	}
-
-	s.replace(l + 1, r, sub);
-	this->fullDate = s;
+	this->month = _m;
 }
 
 void Date::setYear(int _y) {
 	assert(_y >= 1000);
-	string s = this->fullDate;
-
-	string sub = Utility::toString(_y);
-
-	int n = s.size();
-	int l = 0;
-	for (int i = n - 1; i >= 0; i--) {
-		if (Utility::isDigitChar(s[i]) == false) {
-			l = i;
-			break;
-		}
-	}
-
-	s.replace(l + 1, n, sub);
-	this->fullDate = s;
-
+	this->year = _y;
 }
 
 int Date::getDay() {
-	int i = 0;
-	while (Utility::isDigitChar(fullDate[i])) {
-		i++;
-	}
-	string sub = fullDate.substr(0, i);
-	int res = Utility::toInt(sub);
-	return res;
-
+	return this->mday;
 }
 
 int Date::getMonth() {
-
-	int n = fullDate.size();
-	int l = 0, r = n - 1;
-
-	for (int i = 0; i < n; i++) {
-		if (Utility::isDigitChar(fullDate[i]) == false) { // if / or any separator .. 12/3/2023 -> l = 2, r = 4
-			l = i;
-			break;
-		}
-	}
-	for (int i = n - 1; i >= 0; i--) {
-		if (Utility::isDigitChar(fullDate[i]) == false) { // if / or any separator
-			r = i;
-			break;
-		}
-	}
-
-	string num_as_str = fullDate.substr(l + 1, r - l - 1);
-	int res = Utility::toInt(num_as_str);
-	return res;
-
+	return this->month;
 }
 
 int Date::getYear() {
-	int n = fullDate.size();
-	int l = 0;
-	for (int i = n - 1; i >= 0; i--) {
-		if (Utility::isDigitChar(fullDate[i]) == false) {
-			l = i;
-			break;
-		}
-	}
-	string num_as_str = fullDate.substr(l + 1, n - l - 1);
-	cout << "year: " << num_as_str << endl;
-	int res = Utility::toInt(num_as_str);
-	return res;
+	return this->year;
 }

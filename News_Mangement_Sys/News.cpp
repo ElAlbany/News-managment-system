@@ -6,6 +6,7 @@
 #include <vector>
 #include <set>
 #include "News.h"
+#include "Date.h"
 #include "Utility.h"
 #include <unordered_map>
 #include <algorithm>
@@ -14,36 +15,21 @@
 vector<News> News::news; 
 vector<string> News::categories;
 
-
-News::News(string title, string description, string category, float rate) {
-    time_t now = time(0);
-    this->date = localtime(&now);
+News::News(string title, string description, string category, float rate, Date date) {
     this->title = title;
     this->description = description;
     this->category = category;
     this->rate = rate;
+    this->date = date;
     news.push_back(*this);
 }
 
-News::News(string title, string description, string category) {
-    time_t now = time(0);
-    this->date = localtime(&now);
-    this->title = title;
-    this->description = description;
-    this->category = category;
-    this->rate = 0.0f;
-    news.push_back(*this);
-}
+News::News(string title, string description, string category, float rate): News(title, description, category, rate, Date::getCurrentDate('/')) {}
 
-News::News(string title, string description) {
-    time_t now = time(0);
-    this->date = localtime(&now);
-    this->title = title;
-    this->description = description;
-    this->rate = 0.0f;
-    this->category = "";
-    news.push_back(*this);
-}//*********************************************
+News::News(string title, string description, string category) : News(title, description, category, 0.f) {}
+
+News::News(string title, string description) : News(title, description, "NO_CATEGORY_SPECIFIED") {}
+
 void News::calculateAverageRate() {
     int totalRatings = 0;
     int numRatings = allRate.size();
@@ -107,7 +93,7 @@ void News::displayNewsByCategoryName(string categoryName) {
             if (it.category == categoryName) {
                 cout << "\nTitle: " << it.title << endl;
                 cout << "Description: " << it.description << endl;
-                cout << "Date: " << it.date << endl;
+                //cout << "Date: " << it.date.fullDate << endl;
                 cout << "Category: " << it.category << endl;
                 cout << "Rate: " << it.rate << endl;
                 cout << "             =========================                       \n";
@@ -137,44 +123,53 @@ string News::getCategory() {
     return this->category;
 }
 
-string News::getDate() {
-    return to_string(this->date->tm_mday) + "/" + to_string(this->date->tm_mon + 1) + "/" +
-           to_string(this->date->tm_year + 1900);
+Date News::getDate() {
+    return this->date;
 }
 
-/////////////////////////////////////// serachNews ////////////////////////////////////////////
+/////////////////////////////////////// serachNews //////////////////////////////////////////// Optimization later
 vector<News> News::serachNews(string description_key) { // search by descroption for now , title later
 
+    int N = news.size();
     vector<string> keywords = Utility::getKeyWords(description_key); // get all keywords in the search text
+    for (auto& word : keywords) {
+        word = Utility::toLower(word);
+    }
+
+
 
     vector<pair<News, int>> searching_result; 
-    set<string> taken;
-    unordered_map<string, int> indx;
+    vector<bool>taken(N + 7, 0);
+    unordered_map<int, int> loc;
 
-    for (auto &news_post : news) {
+    for (int i = 0; i < N; i++) {
+
+        auto news_post = news[i];
         string lowerDescription = Utility::toLower(news_post.getDescription());
         string lowerTitle = Utility::toLower(news_post.getTitle());
-        
-        for (auto &word : keywords) {
-            if (lowerDescription.find(Utility::toLower(word) + " ") != string::npos || // search in title and description
-                lowerDescription.find(" " + Utility::toLower(word)) != string::npos || 
-                lowerTitle.find(Utility::toLower(word) + " ") != string::npos ||
-                lowerTitle.find(" " + Utility::toLower(word)) != string::npos) {
+        for (auto word : keywords) {
+            if (lowerDescription.find(word + " ") != string::npos || // search in title and description
+                lowerDescription.find(" " + word) != string::npos || 
+                lowerTitle.find(word + " ") != string::npos ||
+                lowerTitle.find(" " + word) != string::npos ||
+                lowerTitle == word) {
 
-                //cout << "describtionnn : " << lowerDescription << endl;
-                if (taken.find(lowerTitle) == taken.end()) {  // if taken i don't need to take it again (no dublicate posts)
-                    indx[lowerTitle] = searching_result.size(); // saving the index of the current pushed post to be used later
+                if (!taken[i]) {  // if taken i don't need to take it again (no dublicate posts)
+                    loc[i] = searching_result.size(); // saving the index of the current pushed post to be used later
                     searching_result.push_back({ news_post, 1});
-                    taken.insert(lowerTitle); // mark as taken 
+                    taken[i] = true; // mark as taken 
                    
                 }
                 else {
                     // the bigger the score for each post the more to be displayed at the list beginning
-                    searching_result[indx[lowerTitle]].second++;
+                    searching_result[loc[i]].second++;
                 }
             }
+
         }
     }
+
+
 
     // sorting the news by the matching score.
     sort(searching_result.begin(), searching_result.end(), [&](auto p1, auto p2)->bool { 
@@ -193,10 +188,26 @@ vector<News> News::serachNews(string description_key) { // search by descroption
 void News::displayPost() {
     cout << "\nTitle: " << this->title << endl;
     cout << "Description: " << this->description << endl;
-    cout << "Date: " << this->date << endl;
+    cout << "Date: " << this->date.fullDate('/') << endl;
     cout << "Category: " << this->category << endl;
     cout << "Rate: " << this->rate << endl;
     cout << "             =========================                       \n";
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
+void News::updateNewsTitle(string new_title) {
+    this->title = new_title;
+}
+
+void News::updateNewsDescription(string new_description) {
+    this->description = new_description;
+}
+
+void News::updateNewsCategory(string new_category) {
+    this->category = new_category;
+}
+
+void News::updateNewsDate(Date new_date) { // later
+    this->date = new_date;
+}
+    

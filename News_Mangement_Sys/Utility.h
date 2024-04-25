@@ -1,8 +1,6 @@
 #pragma once
 #include<iostream>
 #include<vector>
-#include<map>
-#include "News.h"
 using namespace std;
 
 class Utility {
