@@ -10,13 +10,10 @@
 using namespace std;
 
 int main() {
-
-
     int admin;
     int registered = 5;
     while (true) // main program
     {
-
         if (registered == -1) {
             cout << "username already exists" << endl
                  << endl;
@@ -101,7 +98,6 @@ int main() {
                 continue;
             }
         }
-
         while (admin == 0) // user
         {
             User::userMenu();

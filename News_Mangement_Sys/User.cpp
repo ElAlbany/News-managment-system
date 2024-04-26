@@ -116,17 +116,4 @@ void User::userMenu() {
     cout << "[7] Spam News\n";
     cout << "[8] log out\n";
 }
-void User::spamNewsFunc(){
-  bool is_found = News::displayAllNews();
-  if(is_found){
-    int choice4;
-    do {
-      cout << "Enter the number of title which you want to spam \n ";
-      cin >> choice4;
-    } while (choice4>News::news.size()&& choice4<=0);
-    choice4--;
-    spamNews.insert(News::news[choice4].getTitle());
-    }
-    return;
-}
 

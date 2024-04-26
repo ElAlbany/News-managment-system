@@ -1,16 +1,10 @@
-#pragma once
-
+    #pragma once
 #include <iostream>
 #include <string>
 #include <vector>
 #include<unordered_set>
 #include<unordered_map>
-#include<set>
-#include"News.h"
-
-
 using namespace std;
-
 class User {
 private:
     string Username, Password;
@@ -18,31 +12,16 @@ public:
     static vector<User> users;
     static string currentUsername, currentPassword;
     static unordered_map<string, unordered_set<string>> bookmarks;
-    static set<string> spamNews;
-
-
     User(string username, string password);
-
     User();
-
-    void spamNewsFunc();
-
     static void adminMenu();
-
     static void userMenu();
-
     string getPassword();
-
     string getUsername();
-
     static int Register();
-
     static void displayAllUsers();
-
     static User searchUserByUsername(string username);
-
     static int LogIn();
-
     static void addCategory() {
         cout << "enter name of category you want to add it : ";
         string cat;
@@ -56,7 +35,6 @@ public:
         News::categories.push_back(cat);
         cout << "added successfully\n";
     }
-
     static void postNews() {
         string title, description, date;
         cout << "fulfill required information to add the article into system \n";
@@ -67,7 +45,6 @@ public:
         cin >> description;
         News(title, description);
     }
-
     static void removeNews() {
         if (News::news.size() == 0) {
             cout << "there is no news right now \n";
@@ -85,9 +62,8 @@ public:
         }
         News::news.erase(News::news.begin() + num - 1);
         cout << "has beed removes successfully\n";
-
     }
-static void getAverageRateByTitle() {
+    static void getAverageRateByTitle() {
     bool is_emp = News::displayAllNews();
     if(is_emp==true)
     {
@@ -108,7 +84,6 @@ static void getAverageRateByTitle() {
         cout << "[1] add article to your favourite \n";
         cout << "[2] delete marked article \n";
         cout << "[3] display all marked articles \n";
-
         cout << "press -1 to skip\n";
         cout << "\n";
         cout << "enter your choice : ";
@@ -126,10 +101,7 @@ static void getAverageRateByTitle() {
             cout << "please select one of the shown operations above \n";
             bookmarkingMenu();
         }
-
-
     }
-
     static void AddToBookmarks() {
         int num;
         News::displayAllNews();
@@ -147,11 +119,9 @@ static void getAverageRateByTitle() {
         User::bookmarks[User::currentUsername].insert(News::news[num - 1].getTitle());
         cout << "added successfully\n";
     }
-
     static bool IsInBookmarks(string title) {
         return (User::bookmarks[User::currentUsername].find(title) != User::bookmarks[User::currentUsername].end());
     }
-
     static void RemoveFromBookmarks() {
         User::PrintBookmarks();
         int num;
@@ -165,14 +135,11 @@ static void getAverageRateByTitle() {
         std::advance(it, num - 1);
         User::bookmarks[User::currentUsername].erase(it);
         cout << "removed successfully\n";
-
     }
-
     static void PrintBookmarks() {
         auto &it = User::bookmarks[User::currentUsername];
         if (it.empty())
             return void(cout << "You don't have bookmarks.\n");
-
         cout << "Your Bookmarks :\n";
         int i = 1;
         for (auto &it2: it) {
@@ -184,4 +151,3 @@ static void getAverageRateByTitle() {
 //khaled
 ////////////////////////////////////////////////////////////
 };
-

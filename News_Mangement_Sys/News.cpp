@@ -2,12 +2,13 @@
 #include <ctime>
 #include <vector>
 #include <iostream>
+#include "User.h"
 using namespace  std;
+
 struct userID {};
 struct newsID {};
 vector<News> News::news;
 vector<string> News::categories;
-
 
 News::News(string title, string description) {
     time_t now = time(0);
@@ -30,7 +31,6 @@ void News::calculateAverageRate() {
     }
     this->rate = (float) totalRatings / numRatings;
 }
-
 void News::rateNews(vector<News> &newsRef, string userName) {
     if (news.empty()) {
         cout << "Sorry :( There Isn't any News Right Now\n";
@@ -53,7 +53,6 @@ void News::rateNews(vector<News> &newsRef, string userName) {
     do {
         cout << "Enter Your Rating ( It Must Be Between 1 and 5 )\n";
         cin >> userRating;
-
     } while (userRating < 1 || userRating > 5);
     newsRef[index].allRate.emplace(pair<string, int>(userName, userRating));
     newsRef[index].calculateAverageRate();
@@ -66,9 +65,9 @@ void News::displayNewsByCategoryName(string categoryName) {
     }
     bool is_found = false;
     transform(categoryName.begin(), categoryName.end(), categoryName.begin(), ::tolower);
-    for (auto  item : news) {
-        transform(item.category.begin(), item.category.end(), item.category.begin(), ::tolower);
-        if (item.category == categoryName ) {
+    for (auto it: news) {
+        transform(it.category.begin(), it.category.end(), it.category.begin(), ::tolower);
+        if (it.category == categoryName) {
             is_found = true;
             break;
         }
@@ -76,7 +75,7 @@ void News::displayNewsByCategoryName(string categoryName) {
     if (is_found) {
         cout << "     ============    Here Is ALL " << categoryName << " News :)      ============    \n";
         for (auto it: news) {
-            if (it.category == categoryName  ) {
+            if (it.category == categoryName) {
                 cout << "\nTitle: " << it.title << endl;
                 cout << "Description: " << it.description << endl;
                 cout << "Date: " << it.date << endl;
@@ -89,27 +88,19 @@ void News::displayNewsByCategoryName(string categoryName) {
         cout << "sorry :( This Is Category Is Not Exist\n";
     }
 }
-
-
-
-
 //**************************************************************************
 float News::getRate() {
     return this->rate;
 }
-
 string News::getTitle() {
     return this->title;
 }
-
 string News::getDescription() {
     return this->description;
 }
-
 string News::getCategory() {
     return this->category;
 }
-
 string News::getDate() {
     return to_string(this->date->tm_mday) + "/" + to_string(this->date->tm_mon + 1) + "/" +
            to_string(this->date->tm_year + 1900);
