@@ -99,19 +99,17 @@ int main() {
             }
         }
         while (admin == 0) // user
-        {
+{
             User::userMenu();
             int choice3;
             cin >> choice3;
             if (choice3 == 1) // search
             {
-
             } else if (choice3 == 2) // display latest news
             {
                 News::displayLatestNews();
             } else if (choice3 == 3) // search by category
             {
-
                 cout<<"enter category you want to see its articles \n";
                 string cat;
                 cin>>cat;

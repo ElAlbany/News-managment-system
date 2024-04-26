@@ -2,14 +2,11 @@
 #include <ctime>
 #include <vector>
 #include <iostream>
-#include "User.h"
 using namespace  std;
-
 struct userID {};
 struct newsID {};
 vector<News> News::news;
 vector<string> News::categories;
-
 News::News(string title, string description) {
     time_t now = time(0);
     this->date = localtime(&now);
@@ -104,4 +101,34 @@ string News::getCategory() {
 string News::getDate() {
     return to_string(this->date->tm_mday) + "/" + to_string(this->date->tm_mon + 1) + "/" +
            to_string(this->date->tm_year + 1900);
+}
+void News::displayLatestNews() {
+  sort(News::news.begin(), News::news.end(), News::sortNewsByDate);
+  for (int i = 0; i < (int) News::news.size(); i++) {
+      cout << "[" << i+1 << "] " << News::news[i].getTitle() << " : " << News::news[i].getDescription()
+            << " \n\tDate : " << News::news[i].getDate() << " \n\tRating : " << News::news[i].getRate()
+            << " \n\tCategory : " << News::news[i].getCategory() << endl;
+  }
+}
+void News::displayTrendingNews() {
+    sort(News::news.begin(), News::news.end(), News::sortNewsByRating);
+    for (int i = 0; i < (int) News::news.size(); i++) {
+        cout << "[" << i+1 << "] " << News::news[i].getTitle() << " : " << News::news[i].getDescription()
+              << " \n\tDate : " << News::news[i].getDate() << " \n\tRating : " << News::news[i].getRate()
+              << " \n\tCategory : " << News::news[i].getCategory() << endl;
+    }
+}
+bool News::displayAllNews(){
+  if (News::news.size() == 0)
+  {
+    cout << "there is no news right now \n";
+    return false;
+  }
+  cout << "here is all the news\n";
+  cout << "\n";
+  for (int i = 0; i < News::news.size(); i++)
+  {
+    cout<<"["<<i+1<< "] " << news[i].getTitle() <<"\n";
+  }
+  return true;
 }
