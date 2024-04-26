@@ -249,6 +249,7 @@ void User::spamNewsFunc(){
     } while (choice4>News::news.size()&& choice4<=0);
     choice4--;
     spamNews.emplace(News::news[choice4].getTitle());
+    spamCount++;
   }
   return;
 }

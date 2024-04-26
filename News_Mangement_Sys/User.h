@@ -15,6 +15,7 @@ public:
     static string currentUsername, currentPassword;
     static unordered_map<string, unordered_set<string>> bookmarks;
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    int spamCount;
     set<string> spamNews;
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     User(string username, string password);
