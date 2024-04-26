@@ -123,10 +123,13 @@ int main() {
             } else if (choice3 == 6) // trending news
             {
                 News::displayTrendingNews();
-            } else if (choice3 == 7) // log out
+            } else if (choice3 == 8) // log out
             {
                 admin=-1;
                 break;
+            } else if(choice3 == 7){
+              User ob;
+              ob.spamNewsFunc();
             } else {
                 cout << "invalid operation , please select only one of the operations below \n";
                 continue;

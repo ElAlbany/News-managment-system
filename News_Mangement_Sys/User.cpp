@@ -236,9 +236,9 @@ void User::userMenu() {
     cout << "[4] rate news \n";
     cout << "[5] bookmarking\n";
     cout << "[6] trending news\n";
-    cout << "[7] log out\n";
+    cout << "[7] spam News \n";
+    cout << "[8] log out\n";
 }
-
 void User::spamNewsFunc(){
   bool is_found = News::displayAllNews();
   if(is_found){
