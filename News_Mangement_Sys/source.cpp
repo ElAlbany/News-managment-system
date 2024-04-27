@@ -1,16 +1,38 @@
-
 #include <iostream>
 #include <algorithm>
 #include <ctime>
+#include "UserRepository.h"
 #include "News.h"
 #include "Date.h"
-#include "News.cpp"
 #include "User.h"
-#include "User.cpp"
 
 using namespace std;
 
 int main() {
+
+    
+    //Some News Objects Samples for testing ONLY!!!!
+    News news1("Derby Match", "zamalek won 2-1 today againest al ahly", "Sport", 3.4);
+    News news2("Covid19", "coronavirus aka covid19 is back!", "Health", 3.8);
+    News news3("KSA", "gained 100 trillion dollars from oil!", "Industry", 2);
+    News news4("KSA", "hello this is just a test description for news class");
+
+   ////////////////////////////////////////testing///////////////////////////////////////////////////
+    /*string key;
+    cout << "->";
+    getline(cin, key);
+    int i = 1;
+    auto search_result = News::serachNews(key);
+    for (auto news_post : search_result) {
+        cout << '[' << i++ << ']' << endl;
+        news_post.displayPost();
+    }
+    */
+    ////////////////////////////////////////testing///////////////////////////////////////////////////
+    cout << "DONE" << endl;
+    return 0;
+
+
     int admin;
     int registered = 5;
     while (true) // main program
@@ -104,8 +126,17 @@ int main() {
             User::userMenu();
             int choice3;
             cin >> choice3;
-            if (choice3 == 1) // search
+            if (choice3 == 1) // search news
             {
+                string key;
+                cout << "[Search for]-> "; getline(cin, key);
+                int i = 1;
+                auto search_result = News::serachNews(key);
+                for (auto news_post : search_result) {
+                    cout << '[' << i++ << ']' << endl;
+                    news_post.displayPost();
+                }
+
             } else if (choice3 == 2) // display latest news
             {
                 News::displayLatestNews();

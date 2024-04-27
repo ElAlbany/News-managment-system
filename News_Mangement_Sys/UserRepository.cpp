@@ -1,5 +1,6 @@
+#include <iostream>
 #include "UserRepository.h"
-
+using namespace std;
 
 void UserRepository::adminMenu()
 {

@@ -1,2 +1,3 @@
 C:\Users\Legion\source\repos\News_Mangement_Sys\x64\Debug\News_Mangement_Sys.exe
 C:\Users\Legion\source\repos\News-managment-system-hossam\News_Mangement_Sys\x64\Debug\News_Mangement_Sys.exe
+D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\x64\Debug\News_Mangement_Sys.exe
