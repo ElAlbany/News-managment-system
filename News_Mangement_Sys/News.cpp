@@ -1,3 +1,4 @@
+
 #include "News.h"
 #include <ctime>
 #include <vector>
