@@ -7,6 +7,17 @@
 #include <ctime>
 #include "User.h"
 using namespace std;
+class Comment
+{
+    public:
+    string UserName;
+    string Comment;
+    Comment(string user_name, string comment)
+    {
+        UserName = user_name;
+        Comment = comment;
+    }
+}
 class News {
     string title;
     string description;
@@ -14,6 +25,8 @@ class News {
     string category;
     float rate;                  // this is the actual rate comes from summing rates and divied on their size
     multimap<string, int> allRate; // username and his rate // rates can be edited so we need the username ,so map is convenient for that
+    vector<Comment> comments;
+    int nextCommentIdx;
 public:
     static vector<News> news; // main data structure to store all news
     static vector<string> categories;
@@ -41,4 +54,6 @@ public:
     static void displayLatestNews();
     static void displayTrendingNews();
     static bool displayAllNews();
+    void addComment();
+    void displayComments();
 };
