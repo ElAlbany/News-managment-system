@@ -9,19 +9,20 @@
 using namespace std;
 class Comment
 {
-    public:
+public:
     string UserName;
-    string Comment;
-    Comment(string user_name, string comment)
+    string comment;
+    Comment(string user_name, string coment)
     {
         UserName = user_name;
-        Comment = comment;
+        comment = coment;
     }
-}
+};
+
 class News {
     string title;
     string description;
-    tm *date;
+    tm* date;
     string category;
     float rate;                  // this is the actual rate comes from summing rates and divied on their size
     multimap<string, int> allRate; // username and his rate // rates can be edited so we need the username ,so map is convenient for that
@@ -34,7 +35,7 @@ public:
     News(string title, string description);
     News(string title, string description, string category, float rate);
     News(string title, string description, string category); // functions
-    static void rateNews(vector<News> &newsRef, string userName);
+    static void rateNews(vector<News>& newsRef, string userName);
     void calculateAverageRate();
     float getAverageRateByTitle(string);
     static void displayNewsByCategoryName(string);
@@ -45,15 +46,15 @@ public:
     string getCategory();
     string getDate();
     // Display News sorted by [rating, date]
-    static bool sortNewsByRating(News &news1, News &news2) {
+    static bool sortNewsByRating(News& news1, News& news2) {
         return news1.getRate() > news2.getRate();
     }
-    static bool sortNewsByDate(News &news1, News &news2) {
+    static bool sortNewsByDate(News& news1, News& news2) {
         return news1.getDate() > news2.getDate();
     }
     static void displayLatestNews();
     static void displayTrendingNews();
     static bool displayAllNews();
-    void addComment();
+    void addComment(string user);
     void displayComments();
 };
