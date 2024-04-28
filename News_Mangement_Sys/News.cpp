@@ -26,6 +26,7 @@ News::News(string title, string description, string category, float rate, Date d
     this->rate = rate;
     this->date = date;
     news.push_back(*this);
+    nextCommentIdx = 0;
 }
 
 News::News(string title, string description, string category, float rate): News(title, description, category, rate, Date::getCurrentDate('/')) {}
@@ -34,6 +35,8 @@ News::News(string title, string description, string category) : News(title, desc
 
 News::News(string title, string description) : News(title, description, "NO_CATEGORY_SPECIFIED") {}
 
+
+
 void News::calculateAverageRate() {
     int totalRatings = 0;
     int numRatings = allRate.size();
@@ -41,13 +44,14 @@ void News::calculateAverageRate() {
         this->rate = 0.0f;
         return;
     }
-    for (auto it: allRate) {
+    for (auto it : allRate) {
         totalRatings += it.second;
     }
-    this->rate = (float) totalRatings / numRatings;
+    this->rate = (float)totalRatings / numRatings;
 }
 
 void News::rateNews(vector<News> &newsRef, string userName) {
+
     if (news.empty()) {
         cout << "Sorry :( There Isn't any News Right Now\n";
         return;
@@ -85,7 +89,7 @@ void News::displayNewsByCategoryName(string categoryName) {
     }
     bool is_found = false;
     transform(categoryName.begin(), categoryName.end(), categoryName.begin(), ::tolower);
-    for (auto it: news) {
+    for (auto it : news) {
         transform(it.category.begin(), it.category.end(), it.category.begin(), ::tolower);
         if (it.category == categoryName) {
             is_found = true;
@@ -94,7 +98,7 @@ void News::displayNewsByCategoryName(string categoryName) {
     }
     if (is_found) {
         cout << "     ============    Here Is ALL " << categoryName << " News :)      ============    \n";
-        for (auto it: news) {
+        for (auto it : news) {
             if (it.category == categoryName) {
                 cout << "\nTitle: " << it.title << endl;
                 cout << "Description: " << it.description << endl;
@@ -104,7 +108,8 @@ void News::displayNewsByCategoryName(string categoryName) {
                 cout << "             =========================                       \n";
             }
         }
-    } else {
+    }
+    else {
         cout << "sorry :( This Is Category Is Not Exist\n";
     }
 }
@@ -126,38 +131,51 @@ string News::getCategory() {
     return this->category;
 }
 
-
 void News::displayLatestNews() {
-  sort(News::news.begin(), News::news.end(), News::sortNewsByDate);
-  for (int i = 0; i < (int) News::news.size(); i++) {
-      cout << "[" << i+1 << "] " << News::news[i].getTitle() << " : " << News::news[i].getDescription()
+    sort(News::news.begin(), News::news.end(), News::sortNewsByDate);
+    for (int i = 0; i < (int)News::news.size(); i++) {
+        cout << "[" << i + 1 << "] " << News::news[i].getTitle() << " : " << News::news[i].getDescription()
             << " \n\tDate : " << News::news[i].getDate() << " \n\tRating : " << News::news[i].getRate()
             << " \n\tCategory : " << News::news[i].getCategory() << endl;
-  }
+    }
 }
 
 
 void News::displayTrendingNews() {
     sort(News::news.begin(), News::news.end(), News::sortNewsByRating);
-    for (int i = 0; i < (int) News::news.size(); i++) {
-        cout << "[" << i+1 << "] " << News::news[i].getTitle() << " : " << News::news[i].getDescription()
-              << " \n\tDate : " << News::news[i].getDate() << " \n\tRating : " << News::news[i].getRate()
-              << " \n\tCategory : " << News::news[i].getCategory() << endl;
+    for (int i = 0; i < (int)News::news.size(); i++) {
+        cout << "[" << i + 1 << "] " << News::news[i].getTitle() << " : " << News::news[i].getDescription()
+            << " \n\tDate : " << News::news[i].getDate() << " \n\tRating : " << News::news[i].getRate()
+            << " \n\tCategory : " << News::news[i].getCategory() << endl;
     }
 }
-bool News::displayAllNews(){
-  if (News::news.size() == 0)
-  {
-    cout << "there is no news right now \n";
-    return false;
-  }
-  cout << "here is all the news\n";
-  cout << "\n";
-  for (int i = 0; i < News::news.size(); i++)
-  {
-    cout<<"["<<i+1<< "] " << news[i].getTitle() <<"\n";
-  }
-  return true;
+bool News::displayAllNews() {
+    if (News::news.size() == 0)
+    {
+        cout << "there is no news right now \n";
+        return false;
+    }
+    cout << "here is all the news\n";
+    cout << "\n";
+    for (int i = 0; i < News::news.size(); i++)
+    {
+        cout << "[" << i + 1 << "] " << news[i].getTitle() << "\n";
+    }
+    return true;
+}
+void News::addComment(string userName)
+{
+    string comment;
+    getline(cin >> ws, comment);
+    comments.push_back({ userName,comment });
+}
+void News::displayComments()
+{
+    while (nextCommentIdx < comments.size())
+    {
+        cout << "User : " << comments[nextCommentIdx].UserName << "\nComment : " << comments[nextCommentIdx].comment << "\n";
+        nextCommentIdx++;
+    }
 }
 
 
@@ -248,4 +266,3 @@ void News::updateNewsCategory(string new_category) {
 void News::updateNewsDate(Date new_date) { // later
     this->date = new_date;
 }
-    
