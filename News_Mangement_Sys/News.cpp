@@ -15,6 +15,8 @@ News::News(string title, string description) {
     this->rate = 0.0f;
     this->category = "";
     news.push_back(*this);
+    
+    nextCommentIdx = 0;
 }//*********************************************
 void News::calculateAverageRate() {
     int totalRatings = 0;
@@ -131,4 +133,18 @@ bool News::displayAllNews(){
     cout<<"["<<i+1<< "] " << news[i].getTitle() <<"\n";
   }
   return true;
+}
+void News::addComment(string userName)
+{
+    string comment;
+    getline(cin >> ws, comment);
+    comments.push_back({userName,comment});
+}
+void News::displayComments()
+{
+    while(nextCommentIdx <  comments.size())
+        {
+            cout << "User : " << comments[nextCommentIdx].UserName << "\nComment : " << comments[nextCommentIdx].Comment << "\n";
+            nextCommentIdx++;
+        }
 }
