@@ -1,4 +1,17 @@
-﻿  Source.cpp
+﻿  Date.cpp
+D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\Date.cpp(24,8): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  News.cpp
+D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\News.cpp(39,20): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\News.cpp(171,11): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\News.cpp(196,51): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  Source.cpp
 D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\Source.cpp(15,82): warning C4305: 'argument': truncation from 'double' to 'float'
 D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\Source.cpp(16,73): warning C4305: 'argument': truncation from 'double' to 'float'
+  User.cpp
+  UserRepository.cpp
+  Utility.cpp
+D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\Utility.cpp(15,8): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\Utility.cpp(19,10): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\Utility.cpp(56,8): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Generating Code...
   News_Mangement_Sys.vcxproj -> D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\x64\Debug\News_Mangement_Sys.exe
