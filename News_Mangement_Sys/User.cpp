@@ -1,6 +1,9 @@
+#include <iostream>
+#include <unordered_set>
+#include <unordered_map>
 #include "User.h"
-#include<unordered_set>
-#include<unordered_map>
+
+using namespace std;
 
 vector<User> User::users;
 string User::currentUsername, User::currentPassword;
