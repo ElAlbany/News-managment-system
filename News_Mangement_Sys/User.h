@@ -8,9 +8,10 @@
 #include<set>
 using namespace std;
 class User {
-private:
-    string Username, Password;
+
+    
 public:
+    string Username, Password;
     static vector<User> users;
     static string currentUsername, currentPassword;
     static unordered_map<string, unordered_set<string>> bookmarks;
@@ -28,6 +29,7 @@ public:
     static void displayAllUsers();
     static User searchUserByUsername(string username);
     static int LogIn();
+
     //----------------
     void spamNewsFunc();
     //---------------
@@ -40,4 +42,5 @@ public:
     static bool IsInBookmarks(string title);
     static void RemoveFromBookmarks();
     static void PrintBookmarks();
+
 };
