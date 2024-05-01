@@ -1,13 +1,17 @@
 #include "Utility.h"
 #include <cassert>
+#include <iostream>
+#include <vector>
 #include <algorithm>
+using namespace std;
 // u don't have to trace this just use it as an abstract functions :)
 
 bool Utility::isDigitChar(char c) {
 	return (c >= '0' and c <= '9');
 }
 
-bool Utility::checkDateFormat(string date) { 
+bool Utility::checkDateFormat(string date) {
+
 	int n = date.size();
 	int ind = 0;
 
@@ -31,6 +35,8 @@ bool Utility::checkDateFormat(string date) {
 	return 1; // its valid
 }
 
+
+
 string Utility::toString(int num) {
 	assert(num >= 0); // no negative
 	if (num == 0) return "0";
@@ -39,17 +45,40 @@ string Utility::toString(int num) {
 	while (num) {
 		int d = num % 10;
 		res.push_back((d + '0'));
+		num /= 10;
 	}
 	reverse(res.begin(), res.end());
 	return res;
 }
 
 int Utility::toInt(string str) {
-	
 	int res = 0;
 	int n = str.size();
 	for (int i = 0; i < n; i++) {
-		res = res * pow(10, i) + (str[i] - '0');
+		res = res * 10 + (str[i] - '0');
 	}
+	return res;
+}
+
+// converts 'hi im mohamed' to {hi, im, mohamed}
+vector<string> Utility::getKeyWords(string key) {
+	vector<string> result;
+	string s;
+	for (auto c : key) {
+		if (isalpha(c)) { // if it is an alphabet char
+			s.push_back(c);
+		}
+		else {
+			if (!s.empty())result.push_back(s);
+			s.clear();
+		}
+	}
+	if (!s.empty()) result.push_back(s);
+	return result;
+}
+
+string Utility::toLower(string word) { // converts HEllO to hello
+	string res;
+	for (auto c : word) res.push_back(tolower(c));
 	return res;
 }
