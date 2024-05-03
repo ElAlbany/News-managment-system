@@ -2,9 +2,11 @@
 #define _CRT_SECURE_NO_WARNINGS // for the ctime warning
 #endif
 
+#include <iostream>
 #include "Date.h"
 #include "Utility.h"
 #include <cassert>
+using namespace std;
 
 void Date::constructDate(string date_str) {
 	if (Utility::checkDateFormat(date_str) == 0) { // if not a valid date format
@@ -12,7 +14,7 @@ void Date::constructDate(string date_str) {
 		return;
 	}
 
-	vector<int> dmy = getDayMonthYear(date_str);
+	vector<int> dmy = getDayMonthYear(date_str);	
 	this->mday = dmy[0];
 	this->month = dmy[1];
 	this->year = dmy[2];
@@ -21,7 +23,7 @@ void Date::constructDate(string date_str) {
 vector<int> Date::getDayMonthYear(string date) {
 	int n = date.size();
 	int ind = 0;
-
+	
 	vector<string> dmy(3, string());
 	for (int i = 0; i < n; i++) {
 		if (Utility::isDigitChar(date[i])) {
@@ -33,7 +35,7 @@ vector<int> Date::getDayMonthYear(string date) {
 	int _m = Utility::toInt(dmy[1]);
 	int _y = Utility::toInt(dmy[2]);
 	return { _d, _m, _y };
-
+	
 
 }
 
@@ -53,10 +55,10 @@ string Date::getCurrentDate(char sep) {
 	d = localtime(&now);
 
 	string _d = Utility::toString(d->tm_mday);
-	string _m = Utility::toString(d->tm_mon + 1);
-	string _y = Utility::toString(d->tm_year + 1900);
+	string _m = Utility::toString(d->tm_mon+1);
+	string _y = Utility::toString(d->tm_year+1900);
 	return _d + sep + _m + sep + _y;
-
+	
 }
 
 string Date::fullDate(char sep) {
@@ -72,7 +74,7 @@ Date::Date() {
 void Date::setDay(int _d) {
 	assert(_d >= 1 and _d <= 31);
 	this->mday = _d;
-
+	
 }
 
 void Date::setMonth(int _m) {
