@@ -2,6 +2,8 @@
 #include<iostream>
 #include <vector>
 #include "Utility.h"
+#include <sstream>
+#include <iomanip>
 using namespace std;
 
 class Date {
@@ -11,7 +13,7 @@ private:
 	int mday, month, year;
 
 public:
-
+	
 
 	// constructor
 	Date(string date_str);
@@ -49,4 +51,25 @@ public:
 	friend std::ostream& operator << (std::ostream& os, const Date& d) {
 		return (os << d.mday << '/' << d.month << '/' << d.year);
 	}
+
+	// Converts date to string
+	std::string toString() const {
+		std::ostringstream oss;
+		oss << std::setw(4) << std::setfill('0') << year << "-"
+			<< std::setw(2) << std::setfill('0') << month << "-"
+			<< std::setw(2) << std::setfill('0') << mday;
+		return oss.str();
+	}
+
+	// Static method to create Date from string
+	static Date fromString(const std::string& dateStr) {
+		std::istringstream iss(dateStr);
+		Date date;
+		char dash; // for skipping the dashes
+		if (!(iss >> date.year >> dash >> date.month >> dash >> date.mday)) {
+			throw std::runtime_error("Invalid date format");
+		}
+		return date;
+	}
 };
+

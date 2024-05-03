@@ -25,6 +25,7 @@ class News {
 
 
 private:
+public:
     std::string title;
     std::string description;
     Date date;
@@ -35,7 +36,6 @@ private:
     multimap<string, int> allRate; // username and his rate // rates can be edited so we need the username ,so map is convenient for that
     vector<Comment> comments;
     int nextCommentIdx;
-public:
     static vector<News> news; // main data structure to store all news
     static vector<string> categories;
 

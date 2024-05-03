@@ -1,4 +1,1 @@
-﻿  source.cpp
-C:\Users\Legion\source\repos\News-managment-system-hossam\News_Mangement_Sys\source.cpp(14,85): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\Legion\source\repos\News-managment-system-hossam\News_Mangement_Sys\source.cpp(15,76): warning C4305: 'argument': truncation from 'double' to 'float'
-  News_Mangement_Sys.vcxproj -> C:\Users\Legion\source\repos\News-managment-system-hossam\News_Mangement_Sys\x64\Debug\News_Mangement_Sys.exe
+﻿  News_Mangement_Sys.vcxproj -> C:\Users\Legion\source\repos\News-managment-system-hossam\News_Mangement_Sys\x64\Debug\News_Mangement_Sys.exe

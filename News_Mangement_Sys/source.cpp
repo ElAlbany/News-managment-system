@@ -5,6 +5,7 @@
 #include "News.h"
 #include "Date.h"
 #include "User.h"
+#include "Database.h"
 using namespace std;
 
 int main() {
@@ -32,7 +33,7 @@ int main() {
 
    
 
-
+    Database::read();
     int admin;
     int registered = 5;
     while (true) // main program
@@ -56,6 +57,7 @@ int main() {
 
         cin >> choice;
         if (choice == 3) {
+            Database::write();
             exit(1);
         } else if (choice == 2) // sign up
         {
