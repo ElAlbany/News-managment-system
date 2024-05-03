@@ -11,22 +11,24 @@ class User {
 
     
 public:
-    string Username, Password;
-    static vector<User> users;
+    string Username, Password, Email;
+    int LoginAtempts;
+    static map<string,User> users;
     static string currentUsername, currentPassword;
     static unordered_map<string, unordered_set<string>> bookmarks;
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     int spamCount;
     set<string> spamNews;
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    User(string username, string password);
+    User(string username, string password, string email);
     User();
+    static bool is_email_valid(string email);
     static void adminMenu();
     static void userMenu();
     string getPassword();
     string getUsername();
+    void ForgetPassword(string username);
     static int Register();
-    static void displayAllUsers();
     static User searchUserByUsername(string username);
     static int LogIn();
 

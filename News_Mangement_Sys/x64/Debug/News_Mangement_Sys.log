@@ -1,3 +1,4 @@
-﻿  News.cpp
-D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\News.cpp(44,20): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  News_Mangement_Sys.vcxproj -> D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\x64\Debug\News_Mangement_Sys.exe
+﻿  source.cpp
+C:\Users\Legion\source\repos\News-managment-system-hossam\News_Mangement_Sys\source.cpp(14,85): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Legion\source\repos\News-managment-system-hossam\News_Mangement_Sys\source.cpp(15,76): warning C4305: 'argument': truncation from 'double' to 'float'
+  News_Mangement_Sys.vcxproj -> C:\Users\Legion\source\repos\News-managment-system-hossam\News_Mangement_Sys\x64\Debug\News_Mangement_Sys.exe

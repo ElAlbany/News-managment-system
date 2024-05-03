@@ -1,22 +1,26 @@
 #include <iostream>
 #include <unordered_set>
 #include <unordered_map>
+#include<regex>
 #include "User.h"
 
 using namespace std;
 
-vector<User> User::users;
+map<string,User> User::users;
 string User::currentUsername, User::currentPassword;
 unordered_map<string, unordered_set<string>> User::bookmarks;
 
-User::User(string username, string password) {
+User::User(string username, string password, string email) {
     this->Username = username;
     this->Password = password;
+    this->Email = email;
+    this->LoginAtempts = 2;
 }
 
 User::User() {
     this->Username = "";
     this->Password = "";
+    this->LoginAtempts = 2;
 }
 
 string User::getUsername() {
@@ -26,6 +30,13 @@ string User::getUsername() {
 string User::getPassword() {
     return this->Password;
 }
+
+bool User::is_email_valid(string email)
+{
+    regex pattern("(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.(\\w+))+");
+    return regex_match(email, pattern);
+}
+
 void User::addCategory() {
         cout << "enter name of category you want to add it : ";
         string cat;
@@ -152,55 +163,67 @@ void User::PrintBookmarks() {
     cout << "~~~~~~~~~~~~~~~~~~~~\n";
 }
 int User::Register() {
-    string username, password;
-    cout << endl << "Sign In" << endl;
+    string username, password, email;
+    cout << endl << "Sign up" << endl;
     cout << endl << "Enter your username" << endl;
     cin >> username;
     cout << endl << "Enter your password" << endl;
     cin >> password;
-    if (username == "admin")
-        return -1;
-    for (int i = 0; i < User::users.size(); i++) {
-        if (username == User::users[i].Username) {
-            return -1;
+    cout << endl << "Enter your email" << endl;
+    cin >> email;
+    while (true) {
+        if (!is_email_valid(email)) {
+            cout << "\nEmail is invalid, please enter a valid email\n\n";
+            cin >> email;
+        }
+        else {
+            break;
         }
     }
-    User usr(username, password);
-    User::users.push_back(usr);
+    if (username == "admin")
+        return -1;
+
+    if (User::users.find(username) != User::users.end()) {
+        return -1;
+    }
+    User usr(username, password, email);
+    User::users.insert({ username, usr });
     return 0;
 }
 
 User User::searchUserByUsername(string username) {
-    User us;
-    for (int i = 0; i < User::users.size(); i++) {
-        if (username == User::users[i].Username) {
-            return User::users[i];
-        }
+    User usr;
+    if (User::users.find(username) != User::users.end()) {
+            return User::users[username];
     }
-    return us;
-}
-
-void User::displayAllUsers() {
-    for (int i = 0; i < User::users.size(); i++) {
-        cout << endl << "[" << i << "]" << endl;
-        cout << "username: " + User::users[i].Username << endl;
-        cout << "password: " + User::users[i].Password << endl;
-    }
+    return usr;
 }
 
 int User::LogIn() {
     string username, password;
     bool LoggedIn = false;
+    int responce = 0;
     cout << endl << "Log In" << endl;
     cout << endl << "Enter Username" << endl;
     cin >> username;
     cout << endl << "Enter Password" << endl;
     cin >> password;
-    for (int i = 0; i < User::users.size(); i++) {
-        if (username == User::users[i].Username && password == User::users[i].Password) {
+    if (User::users.find(username) != User::users.end()) {
+        if (User::users[username].Password == password) {
             LoggedIn = true;
+            User::users[username].LoginAtempts = 2;
+        }
+        else {
+            User::users[username].LoginAtempts--;
+            if (User::users[username].LoginAtempts < 0) {
+                cout << "\nEnter [1] to send your password to your email or [0] to continue\n\n";
+                cin >> responce;
+                if (responce == 1)
+                    User::users[username].ForgetPassword(username);
+            }
         }
     }
+
     if (username == "admin" && password == "admin") {
         return 1;
     } else if (LoggedIn) {
@@ -212,8 +235,10 @@ int User::LogIn() {
         return -1;
     }
     return -1;
+}
 
-
+void User::ForgetPassword(string username) {
+    cout << "\npassword has been sent to your email\n\n";
 }
 
 void User::adminMenu() {
