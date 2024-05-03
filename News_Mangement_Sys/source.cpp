@@ -51,7 +51,7 @@ int main() {
         int UserIndex = -1;         // to check weather the account is user and if is not -1 then we have the index to use it in other operations
         int choice;
         l :
-        cout << "Enter one of the shown operations below\n\n";
+        cout << "\nEnter one of the shown operations below\n\n";
         cout << "[1] log in \n[2] sign up \n[3] exit \n\n";
 
         cin >> choice;
