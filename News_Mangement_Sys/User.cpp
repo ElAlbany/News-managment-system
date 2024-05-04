@@ -3,10 +3,11 @@
 #include <unordered_map>
 #include<regex>
 #include "User.h"
+#include "Utility.h"
 
 using namespace std;
 
-map<string,User> User::users;
+map<string, User> User::users;
 string User::currentUsername, User::currentPassword;
 unordered_map<string, unordered_set<string>> User::bookmarks;
 
@@ -38,17 +39,28 @@ bool User::is_email_valid(string email)
 }
 
 void User::addCategory() {
-        cout << "enter name of category you want to add it : ";
-        string cat;
-        cin >> cat;
-        for (int i = 0; i < News::categories.size(); i++) {
-            if (cat == News::categories[i]) {
-                cout << "this category already exists \n";
-                return;
-            }
+    cout << "enter name of category you want to add it : ";
+    string cat;
+    cin.ignore();
+    getline(cin, cat);
+    cat = Utility::toLower(cat);
+    for (int i = 0; i < News::categories.size(); i++) {
+        if (cat == News::categories[i]) {
+            cout << "this category already exists \n";
+            return;
         }
-        News::categories.push_back(cat);
-        cout << "added successfully\n";
+    }
+    News::categories.push_back(cat);
+    cout << "added successfully\n";
+}
+void User::addCategoryAuto(string cate) {
+ 
+    for (int i = 0; i < News::categories.size(); i++) {
+        if (cate == News::categories[i]) {
+            return;
+        }
+    }
+    News::categories.push_back(cate);
 }
 void User::removeNews() {
     if (News::news.size() == 0) {
@@ -66,33 +78,40 @@ void User::removeNews() {
         removeNews();
     }
     News::news.erase(News::news.begin() + num - 1);
-    cout << "has beed removes successfully\n";
+    cout << "has been removed successfully\n";
 }
 void User::postNews() {
-    string title, description, date;
+    string title, description,category ,date;
     cout << "fulfill required information to add the article into system \n";
     cout << "\n";
     cout << "Enter title : ";
-    cin >> title;
-    cout << "enter description : ";
-    cin >> description;
-    News(title, description);
+    cin.ignore();
+    getline(cin, title);
+    cout << "enter description : ";   
+    getline(cin, description);
+    cout << "Enter category : ";
+    getline(cin, category);
+    cout << "enter date(mm/dd//year) : ";
+    cin >> date;
+    News news1(title , description,category,0.0,Date(date));
+    addCategoryAuto(Utility::toLower(category));
 }
 void User::getAverageRateByTitle() {
-      bool is_emp = News::displayAllNews();
-      if(is_emp==true)
-      {
-          int num;
-          do {
-          cout << "Enter The number of article you want to see its rate or -1 to skip\n";
-          cin >> num;
-          if (num == -1)
-              return;
-          }while(num<1||num>News::news.size());
-          cout << "rate : " << News::news[num - 1].getRate() << "\n";
-      }else{
-          return;
-      }
+    bool is_emp = News::displayAllNews();
+    if (is_emp == true)
+    {
+        int num;
+        do {
+            cout << "Enter The number of article you want to see its rate or -1 to skip\n";
+            cin >> num;
+            if (num == -1)
+                return;
+        } while (num<1 || num>News::news.size());
+        cout << "rate : " << News::news[num - 1].getRate() << "\n";
+    }
+    else {
+        return;
+    }
 }
 void User::bookmarkingMenu() {
     cout << "[1] add article to your favourite \n";
@@ -105,11 +124,14 @@ void User::bookmarkingMenu() {
     cin >> choice;
     if (choice == 1) {
         AddToBookmarks();
-    } else if (choice == 2) {
+    }
+    else if (choice == 2) {
         RemoveFromBookmarks();
-    } else if (choice == 3) {
+    }
+    else if (choice == 3) {
         PrintBookmarks();
-    } else if (choice == -1)
+    }
+    else if (choice == -1)
         return;
     else {
         cout << "please select one of the shown operations above \n";
@@ -134,8 +156,8 @@ void User::AddToBookmarks() {
     cout << "added successfully\n";
 }
 bool User::IsInBookmarks(string title) {
-        return (User::bookmarks[User::currentUsername].find(title) != User::bookmarks[User::currentUsername].end());
-    }
+    return (User::bookmarks[User::currentUsername].find(title) != User::bookmarks[User::currentUsername].end());
+}
 void User::RemoveFromBookmarks() {
     User::PrintBookmarks();
     int num;
@@ -151,12 +173,12 @@ void User::RemoveFromBookmarks() {
     cout << "removed successfully\n";
 }
 void User::PrintBookmarks() {
-    auto &it = User::bookmarks[User::currentUsername];
+    auto& it = User::bookmarks[User::currentUsername];
     if (it.empty())
         return void(cout << "You don't have bookmarks.\n");
     cout << "Your Bookmarks :\n";
     int i = 1;
-    for (auto &it2: it) {
+    for (auto& it2 : it) {
         cout << "[" << i++ << "]" << it2 << "\n";
         cout << "~~~~~~";
     }
@@ -166,11 +188,13 @@ int User::Register() {
     string username, password, email;
     cout << endl << "Sign up" << endl;
     cout << endl << "Enter your username" << endl;
-    cin >> username;
+    cin.ignore();
+    getline(cin, username);
     cout << endl << "Enter your password" << endl;
-    cin >> password;
+    getline(cin, password);
     cout << endl << "Enter your email" << endl;
-    cin >> email;
+    cin.ignore();
+    getline(cin, email);
     while (true) {
         if (!is_email_valid(email)) {
             cout << "\nEmail is invalid, please enter a valid email\n\n";
@@ -194,7 +218,7 @@ int User::Register() {
 User User::searchUserByUsername(string username) {
     User usr;
     if (User::users.find(username) != User::users.end()) {
-            return User::users[username];
+        return User::users[username];
     }
     return usr;
 }
@@ -204,10 +228,17 @@ int User::LogIn() {
     bool LoggedIn = false;
     int responce = 0;
     cout << endl << "Log In" << endl;
-    cout << endl << "Enter Username" << endl;
-    cin >> username;
-    cout << endl << "Enter Password" << endl;
-    cin >> password;
+    cout << endl << "Enter Username " << endl;
+    cin.ignore();
+    getline(cin, username);
+    cout << endl << "Enter Password " << endl;
+    getline(cin, password);
+    std::cout << "Username: '" << username << "'" << std::endl;
+    std::cout << "Password: '" << password << "'" << std::endl;
+    if (username == "admin" && password == "admin") {
+        return 1;
+    }
+
     if (User::users.find(username) != User::users.end()) {
         if (User::users[username].Password == password) {
             LoggedIn = true;
@@ -224,14 +255,14 @@ int User::LogIn() {
         }
     }
 
-    if (username == "admin" && password == "admin") {
-        return 1;
-    } else if (LoggedIn) {
+   
+    else if (LoggedIn) {
         currentUsername = username;
         currentPassword = password;
         cout << "Logged in successfully";
         return 0;
-    } else {
+    }
+    else {
         return -1;
     }
     return -1;
@@ -265,19 +296,101 @@ void User::userMenu() {
     cout << "[5] bookmarking\n";
     cout << "[6] trending news\n";
     cout << "[7] spam News \n";
-    cout << "[8] log out\n";
+    cout << "[8] comment\n";
+    cout << "[9] log out\n";
 }
-void User::spamNewsFunc(){
-  bool is_found = News::displayAllNews();
-  if(is_found){
+   
+
+void User::spamNewsMenu()
+{   
+    cout << "welcome to spam menu\n";
+    cout << "[1]spam news\n";
+    cout << "[2]remove from spam \n";
+    cout << "[3]print spam \n";
+    cout << "[4]return\n";
+    int choice;
+    cin >> choice;
+    if (choice == 4)
+        return;
+    else if (choice == 1)
+        spamNewsFunc();
+    else if (choice == 2)
+        removeSpamNews();
+    else if (choice == 3)
+        printSpam();
+    
+    else
+    {       
+        cout << "invalid input , please try again \n";
+        spamNewsMenu();
+    }
+
+}
+
+void User::spamNewsFunc() {
+    News::displayNewsForUser();
     int choice4;
-    do {
-        cout << "Enter the number of title which you want to spam \n ";
-        cin >> choice4;
-    } while (choice4>News::news.size()&& choice4<=0);
-    choice4--;
-    spamNews.emplace(News::news[choice4].getTitle());
-    spamCount++;
-  }
-  return;
+    cout << "Enter the number of title which you want to spam or -1 to skip \n ";
+    cin >> choice4;
+    if (choice4 == -1)
+        return;
+    else if (!News::validChoice(choice4))
+    {
+        cout << "you have entered invalid number \n\n\n";
+        spamNewsFunc();
+    }
+    else
+    {
+        User::users[User::currentUsername].spamNews.insert(News::news[choice4 - 1].getTitle());
+        spamCount++;
+    }
+    cout << User::users[currentUsername].spamNews.size();
+}
+
+void User::printSpam()
+{
+    if (User::users[currentUsername].spamNews.size() <= 0)
+    {
+        cout << "you haven't added one to spam yet \n";
+        return;
+    }
+    cout << "here is all added spam \n\n";
+        int i = 1;
+        for (auto news : User::users[currentUsername].spamNews)
+        {
+            cout << "[" << i++ << "]" << news << "\n";
+        }
+    
+}
+void User::removeSpamNews()
+{
+    if (User::users[currentUsername].spamNews.size() <= 0)
+    {
+        cout << "you haven't added one to spam yet \n";
+        return;
+    }
+
+    cout << "here is all added spam \n\n";
+    int i = 1;
+    for (auto news : User::users[currentUsername].spamNews)
+    {
+        cout << "[" << i++ << "]" << news << "\n";
+    }
+    int choice;
+    cin >> choice;
+    if (choice > User::users[currentUsername].spamNews.size() || choice <= 0)
+    {
+        system("CLS");
+        cout << "you have entered invalid number \n\n\n";
+        return;
+    }
+    else
+    {
+        auto it = User::users[currentUsername].spamNews.begin();
+        advance(it, choice - 1);
+        User::users[currentUsername].spamNews.erase(it);
+    }
+     
+
+
 }
