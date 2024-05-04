@@ -9,13 +9,14 @@
 using namespace std;
 class User {
 
-    
+
 public:
     string Username, Password, Email;
     int LoginAtempts;
-    static map<string,User> users;
+    static map<string, User> users;
     static string currentUsername, currentPassword;
     static unordered_map<string, unordered_set<string>> bookmarks;
+   
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     int spamCount;
     set<string> spamNews;
@@ -34,8 +35,12 @@ public:
 
     //----------------
     void spamNewsFunc();
+    void spamNewsMenu();
+    void removeSpamNews();
+    void printSpam();
     //---------------
     static void addCategory();
+    static void addCategoryAuto(string cate);
     static void postNews();
     static void removeNews();
     static void getAverageRateByTitle();
