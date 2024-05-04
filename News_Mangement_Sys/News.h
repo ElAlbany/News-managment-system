@@ -7,6 +7,7 @@
 #include <ctime>
 #include "User.h"
 #include "Date.h"
+#include  <set>
 
 using namespace std;
 class Comment
@@ -35,10 +36,9 @@ public:
     float rate;                  // this is the actual rate comes from summing rates and divied on their size
     multimap<string, int> allRate; // username and his rate // rates can be edited so we need the username ,so map is convenient for that
     vector<Comment> comments;
-    int nextCommentIdx;
     static vector<News> news; // main data structure to store all news
     static vector<string> categories;
-
+    static set<int> valid;
 
 
     // Constructors
@@ -50,7 +50,7 @@ public:
 
     News(string title, string description);
 
-    static void rateNews(vector<News> &newsRef, string userName);
+    static void rateNews(vector<News>& newsRef, string userName);
     void updateNewsTitle(string new_title);
     void updateNewsDescription(string new_description);
     void updateNewsDate(Date new_date);
@@ -77,7 +77,7 @@ public:
     static bool sortNewsByRating(News& news1, News& news2) {
         return news1.getRate() > news2.getRate();
     }
-    static bool sortNewsByDate(News &news1, News &news2) {
+    static bool sortNewsByDate(News& news1, News& news2) {
         Date d1 = news1.getDate();
         Date d2 = news2.getDate();
         return (d1 > d2);
@@ -87,7 +87,9 @@ public:
     static void displayLatestNews();
     static void displayTrendingNews();
     static bool displayAllNews();
+    static void displayNewsForUser();
+    static bool validChoice(int choice);
 
-    void addComment(string user);
+    void addComment();
     void displayComments();
 };
