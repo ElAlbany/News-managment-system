@@ -11,13 +11,12 @@
 #include "Utility.h"
 #include <unordered_map>
 #include <algorithm>
-struct userID {};
-struct newsID {};
 using namespace std;
 
 // main data structure to store all news (static definition)
-vector<News> News::news; 
+vector<News> News::news;
 vector<string> News::categories;
+set<int> News::valid;
 
 News::News(string title, string description, string category, float rate, Date date) {
     this->title = title;
@@ -26,10 +25,9 @@ News::News(string title, string description, string category, float rate, Date d
     this->rate = rate;
     this->date = date;
     news.push_back(*this);
-    nextCommentIdx = 0;
 }
 
-News::News(string title, string description, string category, float rate): News(title, description, category, rate, Date::getCurrentDate('/')) {}
+News::News(string title, string description, string category, float rate) : News(title, description, category, rate, Date::getCurrentDate('/')) {}
 
 News::News(string title, string description, string category) : News(title, description, category, 0.f) {}
 
@@ -50,7 +48,7 @@ void News::calculateAverageRate() {
     this->rate = (float)totalRatings / numRatings;
 }
 
-void News::rateNews(vector<News> &newsRef, string userName) {
+void News::rateNews(vector<News>& newsRef, string userName) {
 
     if (news.empty()) {
         cout << "Sorry :( There Isn't any News Right Now\n";
@@ -163,19 +161,58 @@ bool News::displayAllNews() {
     }
     return true;
 }
-void News::addComment(string userName)
+void News::displayNewsForUser() {
+    if (News::news.size() == 0)
+    {
+        cout << "there is no news right now \n";
+        return;
+    }
+    cout << "some content will be hidden for you if was needed\n";
+    cout << "here is all the news\n";
+    cout << "\n";
+   
+    for (int i = 0; i < News::news.size(); i++)
+    {
+        auto it = User::users[User::currentUsername].spamNews.find(news[i].getTitle());
+        if (it != User::users[User::currentUsername].spamNews.end())
+            continue;
+        float rate = News::news[i].getRate();
+        if (rate >= 2.0 || rate == 0.0)
+        {
+            cout << "[" << i + 1 << "] " << News::news[i].getTitle() << "\n";
+            News::valid.insert(i+1);
+        }
+    }
+  
+   
+}
+bool  News::validChoice(int choice)
+{
+    auto it = News::valid.find(choice);
+    if (it == News::valid.end())
+        return false;
+    return true;
+}
+void News::addComment()
 {
     string comment;
     getline(cin >> ws, comment);
-    comments.push_back({ userName,comment });
+    comments.push_back({ User::currentUsername,comment });
 }
 void News::displayComments()
 {
-    while (nextCommentIdx < comments.size())
+    if (comments.size())
+        cout << "no comments\n";
+    else
     {
-        cout << "User : " << comments[nextCommentIdx].UserName << "\nComment : " << comments[nextCommentIdx].comment << "\n";
-        nextCommentIdx++;
+        cout << "comments : ";
+        for (int i = 0; i < comments.size(); i++)
+        {
+            cout << "User : " << comments[i].UserName << "\nComment : " << comments[i].comment << "\n";
+
+        }
     }
+ 
 }
 
 
@@ -194,7 +231,7 @@ vector<News> News::serachNews(string description_key) { // search by descroption
 
 
 
-    vector<pair<News, int>> searching_result; 
+    vector<pair<News, int>> searching_result;
     vector<bool>taken(N + 7, 0);
     unordered_map<int, int> loc;
 
@@ -205,16 +242,16 @@ vector<News> News::serachNews(string description_key) { // search by descroption
         string lowerTitle = Utility::toLower(news_post.getTitle());
         for (auto word : keywords) {
             if (lowerDescription.find(word + " ") != string::npos || // search in title and description
-                lowerDescription.find(" " + word) != string::npos || 
+                lowerDescription.find(" " + word) != string::npos ||
                 lowerTitle.find(word + " ") != string::npos ||
                 lowerTitle.find(" " + word) != string::npos ||
                 lowerTitle == word) {
 
                 if (!taken[i]) {  // if taken i don't need to take it again (no dublicate posts)
                     loc[i] = searching_result.size(); // saving the index of the current pushed post to be used later
-                    searching_result.push_back({ news_post, 1});
+                    searching_result.push_back({ news_post, 1 });
                     taken[i] = true; // mark as taken 
-                   
+
                 }
                 else {
                     // the bigger the score for each post the more to be displayed at the list beginning
@@ -228,9 +265,9 @@ vector<News> News::serachNews(string description_key) { // search by descroption
 
 
     // sorting the news by the matching score.
-    sort(searching_result.begin(), searching_result.end(), [&](auto p1, auto p2)->bool { 
-            return p1.second > p2.second;
-    });
+    sort(searching_result.begin(), searching_result.end(), [&](auto p1, auto p2)->bool {
+        return p1.second > p2.second;
+        });
 
     // returning the news only without the score
     vector<News> final_serching_result;
