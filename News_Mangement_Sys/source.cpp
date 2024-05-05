@@ -101,7 +101,8 @@ int main() {
             }
             else if (choice2 == 4) //  update news
             {
-
+              
+                News::updateMenu();
             }
             else if (choice2 == 5) //   display an article rate
             {
@@ -115,7 +116,20 @@ int main() {
                 News::displayAllNews();
 
             }
-            else if (choice2 == 7) // log out
+            else if (choice2 == 7) //display details
+            {
+                News::displayAllNews();
+                cout << "enter number to see its details \n";
+                int choice3; cin >> choice3;
+                if (choice3 > News::news.size() || choice3 <= 0)
+                {
+                    cout << "you have entered invalid number\n";
+                    continue;
+                }
+                News::news[choice3 - 1].displayPost();
+
+            }
+            else if (choice2 == 8) // log out
             {
                 admin = -1;
                 break;
