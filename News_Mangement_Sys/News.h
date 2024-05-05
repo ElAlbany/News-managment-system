@@ -51,13 +51,15 @@ public:
     News(string title, string description);
 
     static void rateNews(vector<News>& newsRef, string userName);
+    static void updateMenu();
     void updateNewsTitle(string new_title);
     void updateNewsDescription(string new_description);
     void updateNewsDate(Date new_date);
-    void updateNewsCategory(string new_category);
+    void updateNewsCategory();
 
     static void displayNewsByCategoryName(string);
     void displayPost();
+    static void displayCategories();
 
 
 
