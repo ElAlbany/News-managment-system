@@ -26,13 +26,14 @@ public:
     static bool is_email_valid(string email);
     static void adminMenu();
     static void userMenu();
+    //----------------
     string getPassword();
     string getUsername();
     void ForgetPassword(string username);
+    //----------------
     static int Register();
-    static User searchUserByUsername(string username);
     static int LogIn();
-
+    static User searchUserByUsername(string username);
     //----------------
     void spamNewsFunc();
     void spamNewsMenu();
@@ -41,9 +42,12 @@ public:
     //---------------
     static void addCategory();
     static void addCategoryAuto(string cate);
+    //----------------
     static void postNews();
     static void removeNews();
+    //---------------
     static void getAverageRateByTitle();
+    //---------------
     static void bookmarkingMenu();
     static void AddToBookmarks();
     static bool IsInBookmarks(string title);
