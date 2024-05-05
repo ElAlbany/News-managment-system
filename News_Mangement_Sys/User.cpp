@@ -188,13 +188,11 @@ int User::Register() {
     string username, password, email;
     cout << endl << "Sign up" << endl;
     cout << endl << "Enter your username" << endl;
-    cin.ignore();
-    getline(cin, username);
+    cin >> username;
     cout << endl << "Enter your password" << endl;
-    getline(cin, password);
+    cin >> password;
     cout << endl << "Enter your email" << endl;
-    cin.ignore();
-    getline(cin, email);
+    cin >> email;
     while (true) {
         if (!is_email_valid(email)) {
             cout << "\nEmail is invalid, please enter a valid email\n\n";
@@ -229,12 +227,9 @@ int User::LogIn() {
     int responce = 0;
     cout << endl << "Log In" << endl;
     cout << endl << "Enter Username " << endl;
-    cin.ignore();
-    getline(cin, username);
+    cin >> username;
     cout << endl << "Enter Password " << endl;
-    getline(cin, password);
-    std::cout << "Username: '" << username << "'" << std::endl;
-    std::cout << "Password: '" << password << "'" << std::endl;
+    cin >> password;
     if (username == "admin" && password == "admin") {
         return 1;
     }
@@ -255,7 +250,7 @@ int User::LogIn() {
         }
     }
 
-   
+
     else if (LoggedIn) {
         currentUsername = username;
         currentPassword = password;
@@ -282,7 +277,8 @@ void User::adminMenu() {
     cout << "[4] update news \n";
     cout << "[5] display an article rate\n";
     cout << "[6] display all news\n";
-    cout << "[7] log out\n";
+    cout << "[7] display details\n";
+    cout << "[8] log out\n";
 }
 
 void User::userMenu() {
