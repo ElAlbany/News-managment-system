@@ -230,6 +230,7 @@ int User::LogIn() {
     cin >> username;
     cout << endl << "Enter Password " << endl;
     cin >> password;
+
     if (username == "admin" && password == "admin") {
         return 1;
     }
@@ -238,6 +239,10 @@ int User::LogIn() {
         if (User::users[username].Password == password) {
             LoggedIn = true;
             User::users[username].LoginAtempts = 2;
+            currentUsername = username;
+            currentPassword = password;
+            cout << "Logged in successfully";
+            return 0;
         }
         else {
             User::users[username].LoginAtempts--;
@@ -250,16 +255,6 @@ int User::LogIn() {
         }
     }
 
-
-    else if (LoggedIn) {
-        currentUsername = username;
-        currentPassword = password;
-        cout << "Logged in successfully";
-        return 0;
-    }
-    else {
-        return -1;
-    }
     return -1;
 }
 
