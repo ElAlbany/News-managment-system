@@ -288,6 +288,75 @@ void News::displayPost() {
 }
 
 ////////////////////////////////////////Updating///////////////////////////////////////////
+
+void News::displayCategories()
+{
+    if (News::categories.size() == 0) {
+        cout << "there is no categories right now \n";
+        return;
+    }
+    cout << "here is all of categories :\n";
+    for (int i = 0; i < News::categories.size(); i++)
+    {
+        cout << "[" << i + 1 << "]" << News::categories[i] << "\n";
+    }
+
+}
+void News::updateMenu()
+{   
+    if (News::news.size() == 0)
+    {
+        cout << "there is no news right now \n";
+        return;
+    }
+    News::displayAllNews();
+    cout << "enter number to edit in information or -1 to skip\n";
+    int num;
+    cin >> num;
+    if (num == -1) {
+        return;
+    }
+    if (num > News::news.size() || num <= 0)
+    {
+        cout << "you have entered invalid number \n";
+        return;
+    }
+
+    cout << "enter one of the operations below or -1 to skip\n";
+    cout << "[1]title\n";
+    cout << "[2]description\n";
+    cout << "[3]category\n";
+    cout << "[4]date\n";
+    int choice;
+    cin >> choice;
+    if (choice == -1)
+        return;
+    else if (choice == 1)
+    {
+        string newTitle;
+        cin.ignore();
+        getline(cin, newTitle);
+        News::news[num - 1].updateNewsTitle(newTitle);
+    }
+    else if (choice == 2)
+    {
+        string newDescription;
+        cin.ignore();
+        getline(cin, newDescription);
+        News::news[num - 1].updateNewsDescription(newDescription);
+    }
+    else if (choice == 3)
+    {
+        News::news[num - 1].updateNewsCategory();
+    }
+    else if (choice == 4)
+    {
+        string newDate;
+        cin >> newDate;
+        News::news[num - 1].updateNewsDate(newDate);
+    }
+
+}
 void News::updateNewsTitle(string new_title) {
     this->title = new_title;
 }
@@ -296,8 +365,18 @@ void News::updateNewsDescription(string new_description) {
     this->description = new_description;
 }
 
-void News::updateNewsCategory(string new_category) {
-    this->category = new_category;
+void News::updateNewsCategory() {
+
+    displayCategories();
+    cout << "\n\nEnter one to replace it with the current\n";
+    int choice;
+    cin >> choice;
+    if (choice > News::categories.size() || choice <= 0)
+    {
+        cout << "you have entered invalid number \n";
+        return;
+    }
+    this->category = News::categories[choice - 1];
 }
 
 void News::updateNewsDate(Date new_date) { // later
