@@ -29,7 +29,7 @@ public:
     //----------------
     string getPassword();
     string getUsername();
-    void ForgetPassword(string username);
+    int ForgetPassword(string username);
     //----------------
     static int Register();
     static int LogIn();
