@@ -2,6 +2,9 @@
 #include <unordered_set>
 #include <unordered_map>
 #include<regex>
+#include <cstdlib>
+#include <fstream>
+#include <string>
 #include "User.h"
 #include "Utility.h"
 
@@ -258,8 +261,73 @@ int User::LogIn() {
     return -1;
 }
 
-void User::ForgetPassword(string username) {
+int User::ForgetPassword(string username) {
+    string mail, password;
+    mail = User::users[username].Email;
+    password = User::users[username].Password;
+    fstream file;
+    file.open("ForgetPassword.ps1", ios::in | ios::out);
+
+    if (!file) {
+        cout << "Error in opening file";
+        return 0;
+    }
+
+    string line;
+    string content = "";
+    int lineNumber = 1;
+
+    while (getline(file, line)) {
+        if (lineNumber == 4) {
+            line += mail + "\"";
+        }
+
+        if (lineNumber == 6)
+        {
+            line += password + "\"";
+        }
+        content += line + "\n";
+
+        lineNumber++;
+    }
+
+    file.clear();
+    file.seekp(0, ios::beg);
+    file << content;
+    file.close();
+
+    system("powershell -ExecutionPolicy Bypass -File C:\\Users\\Legion\\source\\repos\\News-managment-system-hossam\\News_Mangement_Sys\\ForgetPassword.ps1");
+
+    string newContent = "";
+    string::size_type pos;
+    lineNumber = 1;
+
+    file.open("ForgetPassword.ps1", ios::in);
+
+    while (getline(file, line)) {
+        if (lineNumber == 4) {
+            pos = line.find(mail + "\"");
+            if (pos != string::npos) {
+                line.erase(pos, mail.size() + 1);
+            }
+        }
+        if (lineNumber == 6) {
+            pos = line.find(password + "\"");
+            if (pos != string::npos) {
+                line.erase(pos, password.size() + 1);
+            }
+        }
+        newContent += line + "\n";
+
+        lineNumber++;
+    }
+    file.close();
+    file.open("ForgetPassword.ps1", ios::out);
+    file << newContent;
+    file.close();
+
     cout << "\npassword has been sent to your email\n\n";
+    return 0;
 }
 
 void User::adminMenu() {
