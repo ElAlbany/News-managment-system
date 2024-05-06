@@ -31,6 +31,7 @@ public:
     string getUsername();
     int ForgetPassword(string username);
     //----------------
+    static string gen_random();
     static int Register();
     static int LogIn();
     static User searchUserByUsername(string username);
