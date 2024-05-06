@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <fstream>
 #include <string>
+#include <ctime> 
 #include "User.h"
 #include "Utility.h"
 
@@ -255,16 +256,22 @@ int User::LogIn() {
                 if (responce == 1)
                     User::users[username].ForgetPassword(username);
             }
+            else {
+                cout << "Username or Password is incorrect";
+            }
         }
+    }
+    else {
+        cout << "Username or Password is incorrect";
     }
 
     return -1;
 }
 
 int User::ForgetPassword(string username) {
-    string mail, password;
+    string mail, randomCode, enteredCode, password, confirmPassword;
     mail = User::users[username].Email;
-    password = User::users[username].Password;
+    randomCode = User::gen_random();
     fstream file;
     file.open("ForgetPassword.ps1", ios::in | ios::out);
 
@@ -284,7 +291,7 @@ int User::ForgetPassword(string username) {
 
         if (lineNumber == 6)
         {
-            line += password + "\"";
+            line += randomCode + "\"";
         }
         content += line + "\n";
 
@@ -312,9 +319,9 @@ int User::ForgetPassword(string username) {
             }
         }
         if (lineNumber == 6) {
-            pos = line.find(password + "\"");
+            pos = line.find(randomCode + "\"");
             if (pos != string::npos) {
-                line.erase(pos, password.size() + 1);
+                line.erase(pos, randomCode.size() + 1);
             }
         }
         newContent += line + "\n";
@@ -325,8 +332,31 @@ int User::ForgetPassword(string username) {
     file.open("ForgetPassword.ps1", ios::out);
     file << newContent;
     file.close();
-
-    cout << "\npassword has been sent to your email\n\n";
+    cout << "enter the 6-digit code or enter \"1\" to exit\n";
+    cin >> enteredCode;
+    while (true) {
+        if (enteredCode == randomCode) {
+            cout << "\nenter password\n";
+            cin >> password;
+            cout << "\nenter password again\n";
+            cin >> confirmPassword;
+            if (password == confirmPassword) {
+                User::users[username].Password = password;
+                cout << "\npassword changed\n\n";
+                break;
+            }
+            else {
+                cout << "\npasswords do not match\n";
+            }
+        }
+        else if (enteredCode == "1") {
+            break;
+        }
+        else {
+            cout << "code does'nt match\n\nplease enter the 6-digit code again\n";
+            cin >> enteredCode;
+        }
+    }
     return 0;
 }
 
@@ -449,7 +479,17 @@ void User::removeSpamNews()
         advance(it, choice - 1);
         User::users[currentUsername].spamNews.erase(it);
     }
-     
 
+}
 
+string User::gen_random() {
+    string alphanum = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    string random;
+    srand(time(0));
+
+    for (int i = 0; i < 6; ++i) {
+        random += alphanum[rand() % (sizeof(alphanum) - 1)];
+    }
+
+    return random;
 }

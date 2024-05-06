@@ -10,7 +10,6 @@ using namespace std;
 
 int main() {
 
-
  /*   Some News Objects Samples for testing ONLY!!!!
     News news1("Derby Match", "zamalek won 2-1 today againest al ahly", "Sport", 3.4);
     News news2("Covid19", "coronavirus aka covid19 is back!", "Health", 1.5);
@@ -62,10 +61,7 @@ int main() {
         {
             admin = User::LogIn();
             if (admin == -1) {
-
-                cout << "Username or Password is incorrect";
                 continue;
-
             }
         }
         else {
