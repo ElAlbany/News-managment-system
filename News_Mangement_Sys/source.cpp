@@ -10,21 +10,7 @@ using namespace std;
 
 int main() {
 
- /*   Some News Objects Samples for testing ONLY!!!!
-    News news1("Derby Match", "zamalek won 2-1 today againest al ahly", "Sport", 3.4);
-    News news2("Covid19", "coronavirus aka covid19 is back!", "Health", 1.5);
-    News news3("KSA", "gained 100 trillion dollars from oil!", "Industry", 2);
-    News news4("KSA", "hello this is just a test description for news class");
-    News::displayNewsForUser();*/
-
- 
-   
-
-    //   return 0;
-
-
     Database::read();
-    cout << 'a' << endl;
 
     int admin;
     int registered = 5;

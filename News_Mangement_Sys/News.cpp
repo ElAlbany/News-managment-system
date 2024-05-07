@@ -26,6 +26,7 @@ News::News(string title, string description, string category, float rate, Date d
     this->category = category;
     this->rate = rate;
     this->date = date;
+    News::news.push_back(*this);
 }
 
 News::News(string title, string description, string category, float rate) : News(title, description, category, rate, Date::getCurrentDate('/')) {}

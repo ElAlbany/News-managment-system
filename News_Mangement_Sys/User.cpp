@@ -95,7 +95,7 @@ void User::postNews() {
     getline(cin, description);
     cout << "Enter category : ";
     getline(cin, category);
-    cout << "enter date(mm/dd//year) : ";
+    cout << "enter date(dd/mm/year) : ";
     cin >> date;
     News news1(title , description,category,0.0,Date(date));
     addCategoryAuto(Utility::toLower(category));
@@ -310,7 +310,7 @@ int User::ForgetPassword(string username) {
     file << content;
     file.close();
 
-    system("powershell -ExecutionPolicy Bypass -File C:\\Users\\Legion\\source\\repos\\News-managment-system-hossam\\News_Mangement_Sys\\ForgetPassword.ps1");
+    system("powershell -ExecutionPolicy Bypass -File C:\\Users\\alyas\\source\\repos\\ElAlbany\\News-managment-system\\News_Mangement_Sys\\ForgetPassword.ps1");
 
     string newContent = "";
     string::size_type pos;

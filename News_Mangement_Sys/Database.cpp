@@ -214,7 +214,6 @@ void Database::read()
             newsItem.comments.push_back(Comment(userName, comment, Date(comment_date)));
         }
 
-         News::news.push_back(newsItem);
     }
     innFile.close();
     ifstream innnFile("category.txt");
