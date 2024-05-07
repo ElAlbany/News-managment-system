@@ -26,7 +26,7 @@ public:
 	static string toString(int num);
 	static int toInt(string str);
 
-	static void DM(string source, string message) {
+	static void DM(string source, string message) { // debug message output to the console
 		cout << "[" << source << "] " << message << endl;
 	}
 

@@ -13,10 +13,11 @@
 #include <algorithm>
 using namespace std;
 
-// main data structure to store all news (static definition)
+// main data structures to store all news (static definition)
 vector<News> News::news;
 vector<string> News::categories;
 set<int> News::valid;
+map<int, vector<Comment>> News::saveComments;
 
 // chaining constructor
 News::News(string title, string description, string category, float rate, Date date) {
@@ -116,40 +117,55 @@ void News::displayNewsByCategoryName(string categoryName) {
 
 
 
-float News::getRate() {
+float News::getRate() const {
     return this->rate;
 }
-string News::getTitle() {
+string News::getTitle() const {
     return this->title;
 }
-string News::getDescription() {
+string News::getDescription() const {
     return this->description;
 }
-string News::getCategory() {
+string News::getCategory() const {
     return this->category;
 }
 
 void News::displayLatestNews() {
     sort(News::news.begin(), News::news.end(), News::sortNewsByDate);
     for (int i = 0; i < (int)News::news.size(); i++) {
-        cout << "[" << i + 1 << "] " << News::news[i].getTitle() << " : " << News::news[i].getDescription()
-            << " \n\tDate : " << News::news[i].getDate() << " \n\tRating : " << News::news[i].getRate()
-            << " \n\tCategory : " << News::news[i].getCategory() << endl;
+        cout << "[" << i + 1 << "] ";
+        news[i].displayNewsPost();
+
+        saveComments.insert({ i + 1, news[i].comments });
     }
+    
+    cout << endl;
+    displayCommentsOnUserChoice();
+    saveComments.clear();
+  
 }
 
 
 void News::displayTrendingNews() {
+
     sort(News::news.begin(), News::news.end(), News::sortNewsByRating);
     for (int i = 0; i < (int)News::news.size(); i++) {
-        cout << "[" << i + 1 << "] " << News::news[i].getTitle() << " : " << News::news[i].getDescription()
-            << " \n\tDate : " << News::news[i].getDate() << " \n\tRating : " << News::news[i].getRate()
-            << " \n\tCategory : " << News::news[i].getCategory() << endl;
 
-        News::news[i].displayComments();
+        // display post
+        cout << "[" << i+1 << "] ";
+        news[i].displayNewsPost();
+
+        // save comments for user choice after the displaying
+        saveComments.insert({ i + 1, news[i].comments });
+      
     }
     cout << endl;
+    News::displayCommentsOnUserChoice(); // make the user choose the post he want to display the comments
+    saveComments.clear();
+
 }
+
+
 bool News::displayAllNews() {
     if (News::news.size() == 0)
     {
@@ -182,11 +198,12 @@ void News::displayNewsForUser() {
         float rate = News::news[i].getRate();
         if (rate >= 2.0 || rate == 0.0)
         {
-            cout << "[" << i + 1 << "] " << News::news[i].getTitle() << "\n";
+            cout << "[" << i + 1 << "] ";
+            news[i].displayNewsPost();
             News::valid.insert(i+1);
         }
     }
-  
+
    
 }
 bool  News::validChoice(int choice)
@@ -366,6 +383,13 @@ void News::updateNewsDate(Date new_date) { // later
     this->date = new_date;
 }
 
+
+void News::displayNewsPost() const {
+    cout << this->title << " : " << this->description
+            << " \n\tDate : " << this->date << " \n\tRating : " << this->rate
+            << " \n\tCategory : " << this->category << endl;
+}
+
 //////////////////////////////////////////////////Comment class/////////////////////////////////////////////////////////
 Comment::Comment(const string& _user_name, const string& _body, const Date& _date) {
     this-> commentUserName = _user_name;
@@ -399,17 +423,37 @@ void News::addComment()
     getline(cin >> ws, comment);
     comments.push_back(Comment(User::currentUsername, comment, Date::getCurrentDate('/')));
 }
-void News::displayComments()
+void News::displayCommentsOnUserChoice()
 {
-    if (comments.empty()) cout << "[no comments]\n";
-    else
-    {
-        cout << "--------------Comments----------------------------\n";
-        for (int i = 0; i < comments.size(); i++) {
-            comments[i].display();
-        }
-        cout << "--------------------------------------------------\n";
+    cout << "\t\tEnter the post for which you want the comments (other number to continue..): \n";
+    for (auto p : saveComments) {
+        cout << "Post (" << p.first << ')' << '\n';
     }
+
+again:
+    cout << "-> "; 
+    string s;
+    cin.ignore();
+    cin >> s;
+    int choice = (s[0] - '0'); // so to prevent infinite loop on invalid inputs
+    if (s.size() == 1 and saveComments.find(choice) != saveComments.end()) { // if post number exist in the map
+
+        if (saveComments[choice].empty()) cout << "[no comments]\n";
+        else
+        {
+            cout << "--------------Comments----------------------------\n";
+            for (int i = 0; i < saveComments[choice].size(); i++) {
+                saveComments[choice][i].display();
+            }
+            cout << "--------------------------------------------------\n";
+        }
+        
+        goto again;
+    }
+    else goto done;
+
+done: {saveComments.clear(); }
+    
  
 }
 

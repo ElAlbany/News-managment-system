@@ -68,11 +68,11 @@ void Database::write()
     }
 
     for (News& news : News::news) {
-        outFile << news.title << "\n";
-        outFile << news.description << "\n";
-        outFile << news.date.toString() << "\n";  // assuming Date has a toString() method
-        outFile << news.category << "\n";
-        outFile << news.rate << "\n";
+        outFile << news.getTitle() << "\n";
+        outFile << news.getDescription() << "\n";
+        outFile << news.getDate() << "\n";  // assuming Date has a toString() method
+        outFile << news.getCategory() << "\n";
+        outFile << news.getRate() << "\n";
 
         // Save ratings
         outFile << news.allRate.size() << "\n";

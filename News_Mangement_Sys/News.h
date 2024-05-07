@@ -32,14 +32,17 @@ class News {
 
 
 private:
-public:
     std::string title;
     std::string description;
     Date date;
     std::string category; // should be replaced by enum later.
-
-
     float rate;                  // this is the actual rate comes from summing rates and divied on their size
+
+protected:
+    static map<int, vector<Comment>> saveComments; // for displaying the comments in organized way
+public:
+
+
     multimap<string, int> allRate; // username and his rate // rates can be edited so we need the username ,so map is convenient for that
     vector<Comment> comments;
     static vector<News> news; // main data structure to store all news
@@ -75,10 +78,10 @@ public:
 
     static vector<News> serachNews(string title_key);
     // Getters
-    float getRate();
-    string getTitle();
-    string getDescription();
-    string getCategory();
+    float getRate() const;
+    string getTitle() const;
+    string getDescription() const;
+    string getCategory() const;
     Date getDate() const;
 
     // Display News sorted by [rating, date]
@@ -98,6 +101,9 @@ public:
     static void displayNewsForUser();
     static bool validChoice(int choice);
 
+    static void displayCommentsOnUserChoice();
+
+    void displayNewsPost() const;
+    
     void addComment();
-    void displayComments();
 };

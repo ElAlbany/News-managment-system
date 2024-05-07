@@ -137,6 +137,7 @@ int main() {
                 continue;
             }
         }
+
         while (admin == 0) // user
         {
             User::userMenu();
@@ -150,9 +151,14 @@ int main() {
                 getline(cin, key);
                 int i = 1;
                 auto search_result = News::serachNews(key);
-                for (auto news_post : search_result) {
-                    cout << '[' << i++ << ']' << endl;
-                    news_post.displayPost();
+                if (search_result.empty()) cout << "NO NEWS FOUND!\n";
+                else {
+                    cout << "\t--------------SEARCH RESULt-----------\n";
+                    for (auto news_post : search_result) {
+                        cout << '[' << i++ << ']' << endl;
+                        news_post.displayPost();
+                    }
+
                 }
 
             }
