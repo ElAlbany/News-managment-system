@@ -1,17 +1,19 @@
 ﻿  Database.cpp
   Date.cpp
-D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\Date.cpp(24,8): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Legion\source\repos\News-managment-system-hossam\News_Mangement_Sys\Date.cpp(24,21): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   News.cpp
-D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\News.cpp(41,20): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\News.cpp(226,11): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\News.cpp(251,51): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Legion\source\repos\News-managment-system-hossam\News_Mangement_Sys\News.cpp(41,36): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Legion\source\repos\News-managment-system-hossam\News_Mangement_Sys\News.cpp(226,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Legion\source\repos\News-managment-system-hossam\News_Mangement_Sys\News.cpp(251,53): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
   source.cpp
   UserRepository.cpp
   User.cpp
-D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\User.cpp(495,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\Legion\source\repos\News-managment-system-hossam\News_Mangement_Sys\User.cpp(495,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   Utility.cpp
-D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\Utility.cpp(15,8): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\Utility.cpp(19,10): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
-D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\Utility.cpp(56,8): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Legion\source\repos\News-managment-system-hossam\News_Mangement_Sys\Utility.cpp(15,21): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Legion\source\repos\News-managment-system-hossam\News_Mangement_Sys\Utility.cpp(19,10): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+C:\Users\Legion\source\repos\News-managment-system-hossam\News_Mangement_Sys\Utility.cpp(56,20): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   Generating Code...
-  News_Mangement_Sys.vcxproj -> D:\VisualStudio22\PROJECTS\News-managment-system\News_Mangement_Sys\x64\Debug\News_Mangement_Sys.exe
+  News_Mangement_Sys.vcxproj -> C:\Users\Legion\Source\Repos\News-managment-system-hossam\News_Mangement_Sys\x64\Debug\News_Mangement_Sys.exe
+  'pwsh.exe' is not recognized as an internal or external command,
+  operable program or batch file.
