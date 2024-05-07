@@ -11,6 +11,7 @@
 #include "Utility.h"
 #include <unordered_map>
 #include <algorithm>
+#include <cctype>
 using namespace std;
 
 // main data structures to store all news (static definition)
@@ -435,7 +436,7 @@ again:
     cout << "-> "; 
     string s;
     cin.ignore();
-    cin >> s;
+    getline(cin, s);
     int choice = (s[0] - '0'); // so to prevent infinite loop on invalid inputs
     if (s.size() == 1 and saveComments.find(choice) != saveComments.end()) { // if post number exist in the map
 

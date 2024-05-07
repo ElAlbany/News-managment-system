@@ -146,7 +146,6 @@ int main() {
                     }
 
                 }
-
             }
             else if (choice3 == 2) // display latest news
             {
@@ -178,7 +177,7 @@ int main() {
                 ob.spamNewsMenu();
             }
             else if (choice3 == 8) { // comment
-               
+                News::displayLatestNews();
             }
             else if (choice3 == 9) // log out
             {

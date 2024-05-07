@@ -97,7 +97,7 @@ void User::postNews() {
     getline(cin, category);
     cout << "enter date(dd/mm/year) : ";
     cin >> date;
-    News news1(title , description,category,0.0,Date(date));
+    News news1(title , description, Utility::toLower(category),0.0,Date(date));
     addCategoryAuto(Utility::toLower(category));
 }
 void User::getAverageRateByTitle() {
