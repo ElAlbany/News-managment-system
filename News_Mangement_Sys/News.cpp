@@ -18,13 +18,13 @@ vector<News> News::news;
 vector<string> News::categories;
 set<int> News::valid;
 
+// chaining constructor
 News::News(string title, string description, string category, float rate, Date date) {
     this->title = title;
     this->description = description;
     this->category = category;
     this->rate = rate;
     this->date = date;
-    news.push_back(*this);
 }
 
 News::News(string title, string description, string category, float rate) : News(title, description, category, rate, Date::getCurrentDate('/')) {}
@@ -145,7 +145,10 @@ void News::displayTrendingNews() {
         cout << "[" << i + 1 << "] " << News::news[i].getTitle() << " : " << News::news[i].getDescription()
             << " \n\tDate : " << News::news[i].getDate() << " \n\tRating : " << News::news[i].getRate()
             << " \n\tCategory : " << News::news[i].getCategory() << endl;
+
+        News::news[i].displayComments();
     }
+    cout << endl;
 }
 bool News::displayAllNews() {
     if (News::news.size() == 0)
@@ -193,30 +196,10 @@ bool  News::validChoice(int choice)
         return false;
     return true;
 }
-void News::addComment()
-{
-    string comment;
-    getline(cin >> ws, comment);
-    comments.push_back({ User::currentUsername,comment });
-}
-void News::displayComments()
-{
-    if (comments.size())
-        cout << "no comments\n";
-    else
-    {
-        cout << "comments : ";
-        for (int i = 0; i < comments.size(); i++)
-        {
-            cout << "User : " << comments[i].UserName << "\nComment : " << comments[i].comment << "\n";
-
-        }
-    }
- 
-}
 
 
-Date News::getDate() {
+
+Date News::getDate() const {
     return this->date;
 }
 
@@ -382,3 +365,55 @@ void News::updateNewsCategory() {
 void News::updateNewsDate(Date new_date) { // later
     this->date = new_date;
 }
+
+//////////////////////////////////////////////////Comment class/////////////////////////////////////////////////////////
+Comment::Comment(const string& _user_name, const string& _body, const Date& _date) {
+    this-> commentUserName = _user_name;
+    this->commentBody = _body;
+    this->commentDate = _date;
+}
+
+void Comment::setCommentBody(const string& new_body) {
+    this->commentBody = new_body;
+}
+
+void Comment::setUserName(const string& new_user_name) {
+    this->commentUserName = new_user_name;
+}
+
+string Comment::getUserName() const {
+    return this->commentUserName;
+}
+
+string Comment::getBody() const {
+    return this->commentBody;
+}
+
+Date Comment::getDate() const {
+    return this->commentDate;
+}
+
+void News::addComment()
+{
+    string comment;
+    getline(cin >> ws, comment);
+    comments.push_back(Comment(User::currentUsername, comment, Date::getCurrentDate('/')));
+}
+void News::displayComments()
+{
+    if (comments.empty()) cout << "[no comments]\n";
+    else
+    {
+        cout << "--------------Comments----------------------------\n";
+        for (int i = 0; i < comments.size(); i++) {
+            comments[i].display();
+        }
+        cout << "--------------------------------------------------\n";
+    }
+ 
+}
+
+void Comment::display() {
+    cout << "| [User : " << getUserName() << " - " << getDate() << "]" << "\n|----> " << getBody() << "\n|\n";
+}
+//////////////////////////////////////////////////Comment class/////////////////////////////////////////////////////////

@@ -26,5 +26,9 @@ public:
 	static string toString(int num);
 	static int toInt(string str);
 
+	static void DM(string source, string message) {
+		cout << "[" << source << "] " << message << endl;
+	}
+
 
 };

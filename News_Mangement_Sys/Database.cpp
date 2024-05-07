@@ -10,6 +10,7 @@
 #include <iostream>
 #include "User.h"
 #include "News.h"
+#include "Date.h"
 using namespace std;
 
 void Database::write()
@@ -82,7 +83,7 @@ void Database::write()
         // Save comments
         outFile << news.comments.size() << "\n";
         for (const Comment& comment : news.comments) {
-            outFile << comment.UserName << "\n" << comment.comment << "\n";
+            outFile << comment.getUserName() << "\n" << comment.getBody() << comment.getDate() << "\n";
         }
     }
     outFile.close();
@@ -142,7 +143,6 @@ void Database::read()
 
     ////////////////////////////////////////////////////
 
-
     User::bookmarks.clear();
     // Loading bookmarks
     ifstream bookmarkFile("bookmarks.txt");
@@ -174,8 +174,7 @@ void Database::read()
     }
 
     News::news.clear();
-    line;
-    while (getline(innFile, line)) {
+    while (getline(innFile, line) and !line.empty()) {
         string title = line;
         getline(innFile, line);
         string description = line;
@@ -200,7 +199,7 @@ void Database::read()
             ss >> username >> userRate;
             newsItem.allRate.insert({ username, userRate });
         }
-
+ 
         // Read comments
         size_t commentsCount;
         innFile >> commentsCount;
@@ -210,13 +209,14 @@ void Database::read()
             string userName = line;
             getline(innFile, line);
             string comment = line;
-            newsItem.comments.push_back(Comment(userName, comment));
+            getline(innFile, line);
+            string comment_date = line;
+            newsItem.comments.push_back(Comment(userName, comment, Date(comment_date)));
         }
 
-        // News::news.push_back(newsItem);
+         News::news.push_back(newsItem);
     }
     innFile.close();
-
     ifstream innnFile("category.txt");
     if (!innnFile) {
         cerr << "Error opening file for reading: " << "category.txt" << endl;
@@ -228,5 +228,7 @@ void Database::read()
     while (getline(innnFile, category)) {
         News::categories.push_back(category);
     }
+    
+    Utility::DM("database", "news read done"); // debug message
     innnFile.close();
 }

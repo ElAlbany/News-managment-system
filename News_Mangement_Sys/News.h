@@ -10,16 +10,22 @@
 #include  <set>
 
 using namespace std;
-class Comment
-{
+class Comment {
+private:
+    string commentUserName;
+    string commentBody;
+    Date commentDate;
 public:
-    string UserName;
-    string comment;
-    Comment(string user_name, string coment)
-    {
-        UserName = user_name;
-        comment = coment;
-    }
+    Comment(const string& _user, const string& _body, const Date& _date);
+
+    void setCommentBody(const string& new_body);
+    void setUserName(const string& new_user_name);
+    void setDate(const Date& new_date);
+    void display();
+
+    string getUserName() const;
+    string getBody() const;
+    Date getDate() const;
 };
 
 class News {
@@ -73,7 +79,7 @@ public:
     string getTitle();
     string getDescription();
     string getCategory();
-    Date getDate();
+    Date getDate() const;
 
     // Display News sorted by [rating, date]
     static bool sortNewsByRating(News& news1, News& news2) {

@@ -23,8 +23,9 @@ int main() {
     //   return 0;
 
 
-
     Database::read();
+    cout << 'a' << endl;
+
     int admin;
     int registered = 5;
     while (true) // main program
@@ -74,7 +75,7 @@ int main() {
 
         while (admin == 1) // admin
         {
-            cout << News::categories.size();
+            //cout << News::categories.size() << endl;
             User::adminMenu();
             int choice2;
             cin >> choice2;
