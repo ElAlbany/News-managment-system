@@ -4,7 +4,7 @@ $emailFrom = "newsmanegmentsystem@gmail.com"
 $emailTo = "
 $subject = "News Account Password"
 $body = "your random genrated code is 
-$password = ConvertTo-SecureString "negs tbck ltlw bkhf " -AsPlainText -Force
+$password = ConvertTo-SecureString "vpru ibii enjc arjw " -AsPlainText -Force
 $credential = New-Object System.Management.Automation.PSCredential ($emailFrom, $password)
 $mailMessage = New-Object System.Net.Mail.MailMessage
 $mailMessage.Subject = $subject
@@ -14,5 +14,4 @@ $mailMessage.To.Add($emailTo)
 $smtpClient = New-Object System.Net.Mail.SmtpClient($smtpServer, $smtpPort)
 $smtpClient.EnableSsl = $true
 $smtpClient.Credentials = $credential
-#Sending email
 $smtpClient.Send($mailMessage)
