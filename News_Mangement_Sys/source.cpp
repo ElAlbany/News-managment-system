@@ -149,7 +149,7 @@ int main() {
             }
             else if (choice3 == 2) // display latest news
             {
-                News::displayLatestNews();
+                News::displayLatestNews(0);
             }
             else if (choice3 == 3) // search by category
             {
@@ -177,12 +177,17 @@ int main() {
                 ob.spamNewsMenu();
             }
             else if (choice3 == 8) { // comment
-                News::displayLatestNews();
+                News::displayLatestNews(8);
             }
-            else if (choice3 == 9) // log out
-            {
+            else if (choice3 == 9) { // add interested categories
+               User::AddCategoryToInterested();
+            }
+            else if (choice3 == 10) { // log out
                 admin = -1;
                 break;
+            }
+            else if (choice3 == 11) {
+                User::displayInterestedCategories();
             }
             else {
                 cout << "invalid operation , please select only one of the operations below \n";

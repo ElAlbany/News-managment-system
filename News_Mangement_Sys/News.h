@@ -95,7 +95,7 @@ public:
 
     }
 
-    static void displayLatestNews();
+    static void displayLatestNews(int);
     static void displayTrendingNews();
     static bool displayAllNews();
     static void displayNewsForUser();

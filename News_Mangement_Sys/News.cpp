@@ -132,7 +132,7 @@ string News::getCategory() const {
     return this->category;
 }
 
-void News::displayLatestNews() {
+void News::displayLatestNews(int choice) {
     sort(News::news.begin(), News::news.end(), News::sortNewsByDate);
     for (int i = 0; i < (int)News::news.size(); i++) {
         cout << "[" << i + 1 << "] ";
@@ -141,10 +141,11 @@ void News::displayLatestNews() {
         saveComments.insert({ i + 1, news[i].comments });
     }
     
-    cout << endl;
-    displayCommentsOnUserChoice();
-    saveComments.clear();
-  
+    if (choice == 8) {
+        cout << endl;
+        displayCommentsOnUserChoice();
+        saveComments.clear();
+    }  
 }
 
 

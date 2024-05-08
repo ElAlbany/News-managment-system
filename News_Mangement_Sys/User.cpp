@@ -14,6 +14,7 @@ using namespace std;
 map<string, User> User::users;
 string User::currentUsername, User::currentPassword;
 unordered_map<string, unordered_set<string>> User::bookmarks;
+unordered_map<string, unordered_set<string>> User::interestedCategories;
 
 User::User(string username, string password, string email) {
     this->Username = username;
@@ -99,6 +100,7 @@ void User::postNews() {
     cin >> date;
     News news1(title , description, Utility::toLower(category),0.0,Date(date));
     addCategoryAuto(Utility::toLower(category));
+    User::emailInterestedUsers(category);
 }
 void User::getAverageRateByTitle() {
     bool is_emp = News::displayAllNews();
@@ -188,6 +190,112 @@ void User::PrintBookmarks() {
     }
     cout << "~~~~~~~~~~~~~~~~~~~~\n";
 }
+void User::AddCategoryToInterested()
+{
+
+again:
+    cout << "Choose a category of the following to add to your interested Categories\n\n";
+    for (int i = 0; i < (int)News::categories.size(); i++) {
+        cout << "[" << (i + 1) << "]" << News::categories[i] << "\n";
+    }
+
+    int category;
+    cin >> category;
+
+    if (category >= 1 && category <= (int)News::categories.size()) {
+        interestedCategories[currentUsername].insert(News::categories[category-1]);
+    }
+    else {
+        cout << "\nPlease choose a vaild category\n";
+        goto again;
+    }
+    
+}
+
+void User::displayInterestedCategories()
+{
+    int counter = 1;
+    cout << "\n";
+    for (auto& it1 : interestedCategories) {
+        cout << it1.first << "\n";
+        for (auto& it2 : (it1.second)) {
+            cout << "[" << counter << "]" << it2 << "\n";
+            counter++;
+        }
+        cout << "\n";
+        counter = 1;
+    }
+}
+
+void User::emailInterestedUsers(string category)
+{
+    for (auto& user : User::users) {
+        if (find(interestedCategories[user.first].begin(), interestedCategories[user.first].end(), category) != interestedCategories[user.first].end()) {
+            string mail = User::users[user.first].Email;
+            fstream file;
+            file.open("emailNotification.ps1", ios::in | ios::out);
+
+            if (!file) {
+                cout << "Error in opening file";
+                return;
+            }
+
+            string line;
+            string content = "";
+            int lineNumber = 1;
+
+            while (getline(file, line)) {
+                if (lineNumber == 4) {
+                    line += mail + "\"";
+                }
+
+                if (lineNumber == 6)
+                {
+                    line += "You have a new article for your interested category : " + category +  ".\"";
+                }
+                content += line + "\n";
+
+                lineNumber++;
+            }
+
+            file.clear();
+            file.seekp(0, ios::beg);
+            file << content;
+            file.close();
+
+            system("powershell -ExecutionPolicy Bypass -File C:\\Users\\alyas\\source\\repos\\ElAlbany\\News-managment-system\\News_Mangement_Sys\\emailNotification.ps1");
+
+            string newContent = "";
+            string::size_type pos;
+            lineNumber = 1;
+
+            file.open("emailNotification.ps1", ios::in);
+
+            while (getline(file, line)) {
+                if (lineNumber == 4) {
+                    pos = line.find(mail + "\"");
+                    if (pos != string::npos) {
+                        line.erase(pos, mail.size() + 1);
+                    }
+                }
+                if (lineNumber == 6) {
+                    pos = line.find("You have a new article for your interested category : " + category + ".\"");
+                    if (pos != string::npos) {
+                        line.erase(pos, 56 + category.size());
+                    }
+                }
+                newContent += line + "\n";
+
+                lineNumber++;
+            }
+            file.close();
+            file.open("emailNotification.ps1", ios::out);
+            file << newContent;
+            file.close();
+        }
+    }
+}
+
 int User::Register() {
     string username, password, email;
     cout << endl << "Sign up" << endl;
@@ -393,7 +501,8 @@ void User::userMenu() {
     cout << "[6] trending news\n";
     cout << "[7] spam News \n";
     cout << "[8] comment\n";
-    cout << "[9] log out\n";
+    cout << "[9] add category to interested\n";
+    cout << "[10] log out\n";
 }
    
 

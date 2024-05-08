@@ -16,6 +16,7 @@ public:
     static map<string, User> users;
     static string currentUsername, currentPassword;
     static unordered_map<string, unordered_set<string>> bookmarks;
+    static unordered_map<string, unordered_set<string>> interestedCategories;
    
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     int spamCount;
@@ -54,5 +55,7 @@ public:
     static bool IsInBookmarks(string title);
     static void RemoveFromBookmarks();
     static void PrintBookmarks();
-
+    static void AddCategoryToInterested();
+    static void displayInterestedCategories();
+    static void emailInterestedUsers(string category);
 };
