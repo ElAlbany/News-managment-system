@@ -100,7 +100,7 @@ void User::postNews() {
     cin >> date;
     News news1(title , description, Utility::toLower(category),0.0,Date(date));
     addCategoryAuto(Utility::toLower(category));
-    User::emailInterestedUsers(category);
+    User::emailInterestedUsers(Utility::toLower(category));
 }
 void User::getAverageRateByTitle() {
     bool is_emp = News::displayAllNews();
@@ -263,7 +263,7 @@ void User::emailInterestedUsers(string category)
             file << content;
             file.close();
 
-            system("powershell -ExecutionPolicy Bypass -File C:\\Users\\alyas\\source\\repos\\ElAlbany\\News-managment-system\\News_Mangement_Sys\\emailNotification.ps1");
+            system("powershell -ExecutionPolicy Bypass -File C:\\Users\\Suhail\\source\\repos\\News-managment-system\\News_Mangement_Sys\\emailNotification.ps1");
 
             string newContent = "";
             string::size_type pos;
@@ -418,7 +418,7 @@ int User::ForgetPassword(string username) {
     file << content;
     file.close();
 
-    system("powershell -ExecutionPolicy Bypass -File C:\\Users\\alyas\\source\\repos\\ElAlbany\\News-managment-system\\News_Mangement_Sys\\ForgetPassword.ps1");
+    system("powershell -ExecutionPolicy Bypass -File C:\\Users\\Suhail\\source\\repos\\News-managment-system\\News_Mangement_Sys\\ForgetPassword.ps1");
 
     string newContent = "";
     string::size_type pos;

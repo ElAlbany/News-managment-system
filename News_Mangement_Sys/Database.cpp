@@ -58,6 +58,28 @@ void Database::write()
 
     ///////////////////////////////////
 
+       /////////////////////////////////////////////////////
+
+
+    // Saving notifications
+    ofstream notifications("notifications.txt");
+    if (!notifications.is_open()) {
+        cerr << "Error opening notifications.txt for writing.\n";
+        return;
+    }
+    for (const auto& pair : User::interestedCategories) {
+        notifications << pair.first; // Username
+        for (const auto& site : pair.second) {
+            notifications << " " << site;
+        }
+        notifications << "\n";
+    }
+    notifications.close();
+
+
+
+    ///////////////////////////////////
+
     //News
 
     ////////////////////////////////////
@@ -160,6 +182,29 @@ void Database::read()
         }
     }
     bookmarkFile.close();
+
+    ////////////////////////////////
+
+
+     ////////////////////////////////////////////////////
+
+    User::interestedCategories.clear();
+    // Loading notifications
+    ifstream notifications("notifications.txt");
+    if (!notifications.is_open()) {
+        cerr << "Error opening notifications.txt for reading.\n";
+        return;
+    }
+    while (std::getline(notifications, line)) {
+        istringstream iss(line);
+        string username;
+        iss >> username;
+        string site;
+        while (iss >> site) {
+            User::interestedCategories[username].insert(site);
+        }
+    }
+    notifications.close();
 
     ////////////////////////////////
 
