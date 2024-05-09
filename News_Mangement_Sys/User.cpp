@@ -193,8 +193,8 @@ void User::PrintBookmarks() {
 void User::AddCategoryToInterested()
 {
 
-again:
     cout << "Choose a category of the following to add to your interested Categories\n\n";
+again:
     for (int i = 0; i < (int)News::categories.size(); i++) {
         cout << "[" << (i + 1) << "]" << News::categories[i] << "\n";
     }
@@ -203,13 +203,43 @@ again:
     cin >> category;
 
     if (category >= 1 && category <= (int)News::categories.size()) {
+        if (find(interestedCategories[currentUsername].begin(), interestedCategories[currentUsername].end(), News::categories[category-1]) != interestedCategories[currentUsername].end()) {
+            cout << "\nCategory already exists in your interested\n\n";
+            return;
+        }
         interestedCategories[currentUsername].insert(News::categories[category-1]);
     }
     else {
-        cout << "\nPlease choose a vaild category\n";
+        cout << "\nPlease choose a vaild category to add\n";
         goto again;
     }
     
+}
+
+void User::RemoveCategoryFromInterested()
+{
+
+    
+    cout << "Choose a category from yours to remove from your interested Categories\n\n";
+again:
+    int counter = 1;
+    for (unordered_set<string>::iterator i = interestedCategories[currentUsername].begin(); i != interestedCategories[currentUsername].end(); i++) {
+        cout << "[" << counter << "]" << *i << "\n";
+        counter++;
+    }
+
+    int category;
+    cin >> category;
+
+    if (category >= 1 && category <= (int)interestedCategories[currentUsername].size()) {
+        auto it = interestedCategories[currentUsername].begin();
+        advance(it, category-1);
+        interestedCategories[currentUsername].erase(it);
+    }
+    else {
+        cout << "\nPlease choose a vaild category to remove\n\n";
+        goto again;
+    }
 }
 
 void User::displayInterestedCategories()
@@ -263,7 +293,7 @@ void User::emailInterestedUsers(string category)
             file << content;
             file.close();
 
-            system("powershell -ExecutionPolicy Bypass -File C:\\Users\\Suhail\\source\\repos\\News-managment-system\\News_Mangement_Sys\\emailNotification.ps1");
+            system("powershell -ExecutionPolicy Bypass -File C:\\Users\\alyas\\source\\repos\\News-managment-system\\News_Mangement_Sys\\emailNotification.ps1");
 
             string newContent = "";
             string::size_type pos;
@@ -418,7 +448,7 @@ int User::ForgetPassword(string username) {
     file << content;
     file.close();
 
-    system("powershell -ExecutionPolicy Bypass -File C:\\Users\\Suhail\\source\\repos\\News-managment-system\\News_Mangement_Sys\\ForgetPassword.ps1");
+    system("powershell -ExecutionPolicy Bypass -File C:\\Users\\alyas\\source\\repos\\News-managment-system\\News_Mangement_Sys\\ForgetPassword.ps1");
 
     string newContent = "";
     string::size_type pos;
@@ -502,7 +532,8 @@ void User::userMenu() {
     cout << "[7] spam News \n";
     cout << "[8] comment\n";
     cout << "[9] add category to interested\n";
-    cout << "[10] log out\n";
+    cout << "[10] remove category from interested\n";
+    cout << "[11] log out\n";
 }
    
 

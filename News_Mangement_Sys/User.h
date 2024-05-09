@@ -55,7 +55,9 @@ public:
     static bool IsInBookmarks(string title);
     static void RemoveFromBookmarks();
     static void PrintBookmarks();
+    //---------------
     static void AddCategoryToInterested();
+    static void RemoveCategoryFromInterested();
     static void displayInterestedCategories();
     static void emailInterestedUsers(string category);
 };

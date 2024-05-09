@@ -61,5 +61,8 @@
     <None Include="ForgetPassword.ps1">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="emailNotification.ps1">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

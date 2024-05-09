@@ -179,14 +179,17 @@ int main() {
             else if (choice3 == 8) { // comment
                 News::displayLatestNews(8);
             }
-            else if (choice3 == 9) { // add interested categories
+            else if (choice3 == 9) { // add to interested categories
                User::AddCategoryToInterested();
             }
-            else if (choice3 == 10) { // log out
+            else if (choice3 == 10) { // remove from interested categories
+                User::RemoveCategoryFromInterested();
+            }
+            else if (choice3 == 11) { // log out
                 admin = -1;
                 break;
             }
-            else if (choice3 == 11) {
+            else if (choice3 == 12) {
                 User::displayInterestedCategories();
             }
             else {
