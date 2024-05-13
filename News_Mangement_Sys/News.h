@@ -20,7 +20,7 @@ public:
 
     void setCommentBody(const string& new_body);
     void setUserName(const string& new_user_name);
-    void setDate(const Date& new_date);
+    //void setDate(const Date& new_date);
     void display();
 
     string getUserName() const;

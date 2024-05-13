@@ -76,7 +76,7 @@ void User::removeNews() {
         return;
     }
     News::displayAllNews();
-    cout << "\n please selecet one of the shown above to remove  or enter -1 to skip\n";
+    cout << "\n please select one of the shown above to remove  or enter -1 to skip\n";
     int num;
     cin >> num;
     if (num == -1)
@@ -101,7 +101,7 @@ void User::postNews() {
     getline(cin, category);
     cout << "enter date(dd/mm/year) : ";
     cin >> date;
-    News news1(title , description, Utility::toLower(category),0.0,Date(date));
+    News news1(title , description, Utility::toLower(category),0.0, Date::fromString(date));
     addCategoryAuto(Utility::toLower(category));
     User::emailInterestedUsers(Utility::toLower(category));
 }

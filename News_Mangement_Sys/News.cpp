@@ -26,7 +26,7 @@ News::News(string title, string description, string category, float rate, Date d
     this->description = description;
     this->category = category;
     this->rate = rate;
-    this->date = date.getCurrentDate();
+    this->date = date;
     News::news.push_back(*this);
 }
 
@@ -57,9 +57,9 @@ void News::rateNews(vector<News>& newsRef, string userName) {
         cout << "Sorry :( There Isn't any News Right Now\n";
         return;
     }
-    cout << "     ============    Here Is ALL News :)      ============    \n";
+    cout << "     ============    Here Are All The News    ============    \n";
     for (int i = 0; i < newsRef.size(); i++) {
-        cout << "[" << i + 1 << "]" << newsRef[i].title;
+        cout << "[" << i + 1 << "]" << newsRef[i].title <<"\n";
     }
     int index;
     do {
@@ -164,14 +164,17 @@ void News::displayTrendingNews() {
         // display post
         cout << "[" << i+1 << "] ";
         news[i].displayNewsPost();
+        
+
 
         // save comments for user choice after the displaying
-        saveComments.insert({ i + 1, news[i].comments });
+        //saveComments.insert({ i + 1, news[i].comments });
       
     }
-    cout << endl;
-    News::displayCommentsOnUserChoice(); // make the user choose the post he want to display the comments
-    saveComments.clear();
+    system("pause");
+    //cout << endl;
+    //News::displayCommentsOnUserChoice(); // make the user choose the post he want to display the comments
+    //saveComments.clear();
 
 }
 
@@ -198,9 +201,8 @@ void News::displayNewsForUser() {
         cout << "there is no news right now \n";
         return;
     }
-    cout << "some content will be hidden for you if was needed\n";
-    cout << "here is all the news\n";
-    cout << "\n";
+    //cout << "some content will be hidden for you if was needed\n";
+    cout << "here is all the news : \n\n";
    
     for (int i = 0; i < News::news.size(); i++)
     {

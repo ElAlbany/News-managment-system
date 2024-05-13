@@ -69,6 +69,7 @@ int main() {
 
         while (admin == 1) // admin
         {
+            system("ClS");
             User::adminMenu();
             int choice2;
             cin >> choice2;
@@ -127,8 +128,8 @@ int main() {
                 break;
             }
             else {
-                system("CLS"); // clear screan
                 cout << "invalid operation , please select only one of the operations below \n";
+                system("pause");
                 continue;
             }
             system("CLS");
@@ -136,6 +137,7 @@ int main() {
 
         while (admin == 0) // user
         {
+            system("ClS");
             User::userMenu();
             int choice3;
             cin >> choice3;
@@ -206,6 +208,7 @@ int main() {
             }
             else {
                 cout << "invalid operation , please select only one of the operations below \n";
+                system("pause");
                 continue;
             }
             system("CLS");
