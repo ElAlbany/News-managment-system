@@ -38,7 +38,7 @@ int main() {
     l:
         system("CLS");
         Style::styleText(" Enter one of the shown operations below ");
-        cout << "[1] log in \n[2] sign up \n[3] exit \n\n";
+        cout << "[1] log in \n\n[2] sign up \n\n[3] exit \n\n";
 
         cin >> choice;
         system("CLS");
@@ -72,12 +72,14 @@ int main() {
             User::adminMenu();
             int choice2;
             cin >> choice2;
+            system("ClS");
+            Style::styleText(" Admin's Main Menu ");
             if (choice2 == 1) //  add new category
             {
 
                 User::addCategory();
             }
-            else if (choice2 == 2) // remove category
+            else if (choice2 == 2) // add post
             {
                 User::postNews();
                
@@ -129,6 +131,7 @@ int main() {
                 cout << "invalid operation , please select only one of the operations below \n";
                 continue;
             }
+            system("CLS");
         }
 
         while (admin == 0) // user
@@ -136,6 +139,8 @@ int main() {
             User::userMenu();
             int choice3;
             cin >> choice3;
+            system("ClS");
+            Style::styleText(" User's Main Menu ");
             if (choice3 == 1) // search news
             {
                 string key;
@@ -190,7 +195,7 @@ int main() {
                User::AddCategoryToInterested();
             }
             else if (choice3 == 10) { // remove from interested categories
-               // User::RemoveCategoryFromInterested();
+               User::RemoveCategoryFromInterested();
             }
             else if (choice3 == 11) { //display Interested Categories
                 User::displayInterestedCategories();
@@ -203,6 +208,7 @@ int main() {
                 cout << "invalid operation , please select only one of the operations below \n";
                 continue;
             }
+            system("CLS");
         }
     }
 }

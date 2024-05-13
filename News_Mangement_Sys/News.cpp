@@ -26,7 +26,7 @@ News::News(string title, string description, string category, float rate, Date d
     this->description = description;
     this->category = category;
     this->rate = rate;
-    this->date = date;
+    this->date = date.getCurrentDate();
     News::news.push_back(*this);
 }
 
@@ -133,19 +133,26 @@ string News::getCategory() const {
 }
 
 void News::displayLatestNews(int choice) {
-    sort(News::news.begin(), News::news.end(), News::sortNewsByDate);
-    for (int i = 0; i < (int)News::news.size(); i++) {
-        cout << "[" << i + 1 << "] ";
-        news[i].displayNewsPost();
-
-        saveComments.insert({ i + 1, news[i].comments });
+    if (!News::news.size()) {
+        cout << "NO NEWS AVAILABLE AT THE MOMENT\n";
     }
-    
-    if (choice == 8) {
-        cout << endl;
-        displayCommentsOnUserChoice();
-        saveComments.clear();
-    }  
+    else {
+        cout << "Here are all the available news :\n\n";
+        sort(News::news.begin(), News::news.end(), News::sortNewsByDate);
+        for (int i = 0; i < (int)News::news.size(); i++) {
+            cout << "[" << i + 1 << "] ";
+            news[i].displayNewsPost();
+
+            saveComments.insert({ i + 1, news[i].comments });
+        }
+
+        if (choice == 8) {
+            cout << endl;
+            displayCommentsOnUserChoice();
+            saveComments.clear();
+        }
+    }
+    system("pause");
 }
 
 
@@ -172,7 +179,8 @@ void News::displayTrendingNews() {
 bool News::displayAllNews() {
     if (News::news.size() == 0)
     {
-        cout << "there is no news right now \n";
+        cout << "there are no news right now \n";
+        system("pause");
         return false;
     }
     cout << "here is all the news\n";
@@ -181,6 +189,7 @@ bool News::displayAllNews() {
     {
         cout << "[" << i + 1 << "] " << news[i].getTitle() << "\n";
     }
+    system("pause");
     return true;
 }
 void News::displayNewsForUser() {

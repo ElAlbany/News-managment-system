@@ -52,12 +52,14 @@ void User::addCategory() {
     cat = Utility::toLower(cat);
     for (int i = 0; i < News::categories.size(); i++) {
         if (cat == News::categories[i]) {
-            cout << "this category already exists \n";
+            cout << "this category already exists\n";
+            system("pause");
             return;
         }
     }
     News::categories.push_back(cat);
     cout << "added successfully\n";
+    system("pause");
 }
 void User::addCategoryAuto(string cate) {
  
@@ -195,65 +197,75 @@ void User::AddCategoryToInterested()
 {
 
     cout << "Choose a category of the following to add to your interested Categories\n\n";
-again:
+
     for (int i = 0; i < (int)News::categories.size(); i++) {
         cout << "[" << (i + 1) << "]" << News::categories[i] << "\n";
     }
-
+again:
     int category;
     cin >> category;
 
     if (category >= 1 && category <= (int)News::categories.size()) {
         if (find(interestedCategories[currentUsername].begin(), interestedCategories[currentUsername].end(), News::categories[category-1]) != interestedCategories[currentUsername].end()) {
-            cout << "\nCategory already exists in your interested\n\n";
+            cout << "Category already exists in your interested\n";
+            system("pause");
             return;
         }
         interestedCategories[currentUsername].insert(News::categories[category-1]);
+        cout << "Category added successfully\n";
     }
     else {
         cout << "\nPlease choose a vaild category to add\n";
         goto again;
     }
+    system("pause");
     
 }
 
 void User::RemoveCategoryFromInterested()
 {
-
-    
-    cout << "Choose a category from yours to remove from your interested Categories\n\n";
-again:
-    int counter = 1;
-    for (unordered_set<string>::iterator i = interestedCategories[currentUsername].begin(); i != interestedCategories[currentUsername].end(); i++) {
-        cout << "[" << counter << "]" << *i << "\n";
-        counter++;
-    }
-
-    int category;
-    cin >> category;
-
-    if (category >= 1 && category <= (int)interestedCategories[currentUsername].size()) {
-        auto it = interestedCategories[currentUsername].begin();
-        advance(it, category-1);
-        interestedCategories[currentUsername].erase(it);
+    if (!interestedCategories[currentUsername].size()) {
+        cout << "You have no interested categories\n";
     }
     else {
-        cout << "\nPlease choose a vaild category to remove\n\n";
-        goto again;
+        cout << "Choose a category from yours to remove from your interested Categories\n\n";
+        int counter = 1;
+        for (unordered_set<string>::iterator i = interestedCategories[currentUsername].begin(); i != interestedCategories[currentUsername].end(); i++) {
+            cout << "[" << counter << "]" << *i << "\n";
+            counter++;
+        }
+    again:
+        int category;
+        cin >> category;
+
+        if (category >= 1 && category <= (int)interestedCategories[currentUsername].size()) {
+            auto it = interestedCategories[currentUsername].begin();
+            advance(it, category - 1);
+            interestedCategories[currentUsername].erase(it);
+            cout << "\nCategory Removed Successfuly\n";
+        }
+        else {
+            cout << "\nPlease choose a vaild category to remove\n\n";
+            goto again;
+        }
     }
+    system("pause");
 }
 
 void User::displayInterestedCategories()
 {
-    system("cls");
-    int counter = 1;
-    cout << "\n";
+    if (!interestedCategories[User::currentUsername].size()) {
+        cout << "You have no interested categories\n";
+    }
+    else {
+        cout << "Your interested Categores :\n\n";
+        int counter = 1;
         for (auto& it2 : (interestedCategories[User::currentUsername])) {
             cout << "[" << counter << "]" << it2 << "\n";
             counter++;
         }
-        system("pause");
-        system("cls");
+    }
+    system("pause");
 }
 
 void User::emailInterestedUsers(string category)
@@ -407,11 +419,13 @@ direct:
             }
             else {
                 cout << "Username or Password is incorrect\n";
+                system("pause");
             }
         }
     }
     else {
         cout << "Username or Password is incorrect\n";
+        system("pause");
     }
 
     return -1;
@@ -490,7 +504,8 @@ int User::ForgetPassword(string username) {
             cin >> confirmPassword;
             if (password == confirmPassword) {
                 User::users[username].Password = password;
-                cout << "\npassword changed\n\n";
+                cout << "\npassword changed successfuly\n\n";
+                User::users[username].LoginAtempts = 2;
                 system("pause");
                 break;
             }
@@ -499,6 +514,7 @@ int User::ForgetPassword(string username) {
             }
         }
         else if (enteredCode == "1") {
+            system("CLS");
             break;
         }
         else {
@@ -510,35 +526,37 @@ int User::ForgetPassword(string username) {
 }
 
 void User::adminMenu() {
-    cout << "\twelcome to admin menu\n";
-    cout << "Here is all admin operations \n";
-    cout << "please select one of the operations below\n\n\n";
-    cout << "[1] add new category \n";
-    cout << "[2] post news \n";
-    cout << "[3] remove news \n";
-    cout << "[4] update news \n";
-    cout << "[5] display an article rate\n";
-    cout << "[6] display all news\n";
-    cout << "[7] display details\n";
-    cout << "[8] log out\n";
+    //cout << "\twelcome to admin menu\n";
+    //cout << "Here is all admin operations \n";
+    //cout << "please select one of the operations below\n\n\n";
+    Style::styleText(" Admin's Main Menu ");
+    cout << "[1] add new category \n\n";
+    cout << "[2] post news \n\n";
+    cout << "[3] remove news \n\n";
+    cout << "[4] update news \n\n";
+    cout << "[5] display an article rate\n\n";
+    cout << "[6] display all news\n\n";
+    cout << "[7] display details\n\n";
+    cout << "[8] log out\n\n";
 }
 
 void User::userMenu() {
-    cout << "\twelcome to user menu\n";
-    cout << "Here is all user operations \n";
-    cout << "please select one of the operations below\n\n\n";
-    cout << "[1] search  \n";//-------
-    cout << "[2] display latest news \n";//-----
-    cout << "[3] search by category \n";//------
-    cout << "[4] rate news \n";
-    cout << "[5] bookmarking\n";
-    cout << "[6] trending news\n";
-    cout << "[7] spam News \n";
-    cout << "[8] comment\n";
-    cout << "[9] add category to interested\n";
-    cout << "[10] remove category from interested\n";
-    cout << "[11] display Interested Categories\n";
-    cout << "[12] log out\n";
+    //cout << "\twelcome to user menu\n";
+    //cout << "Here is all user operations \n";
+    //cout << "please select one of the operations below\n\n\n";
+    Style::styleText(" User's Main Menu ");
+    cout << "[1] search  \n\n";//-------
+    cout << "[2] display latest news \n\n";//-----
+    cout << "[3] search by category \n\n";//------
+    cout << "[4] rate news \n\n";
+    cout << "[5] bookmarking\n\n";
+    cout << "[6] trending news\n\n";
+    cout << "[7] spam News \n\n";
+    cout << "[8] comment\n\n";
+    cout << "[9] add category to interested\n\n";
+    cout << "[10] remove category from interested\n\n";
+    cout << "[11] display Interested Categories\n\n";
+    cout << "[12] log out\n\n";
 }
    
 
