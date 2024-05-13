@@ -6,11 +6,14 @@
 #include "Date.h"
 #include "User.h"
 #include "Database.h"
+#include <windows.h>
+#include "Style.h"
 using namespace std;
+
 
 int main() {
 
-    Database::read();
+    Style::setupConsole();
 
     int admin;
     int registered = 5;
@@ -30,11 +33,15 @@ int main() {
         bool adminExist = false; // to chech weather the account is admin
         int UserIndex = -1;         // to check weather the account is user and if is not -1 then we have the index to use it in other operations
         int choice;
+
+        
     l:
-        cout << "\nEnter one of the shown operations below\n\n";
+        system("CLS");
+        Style::styleText(" Enter one of the shown operations below ");
         cout << "[1] log in \n[2] sign up \n[3] exit \n\n";
 
         cin >> choice;
+        system("CLS");
         if (choice == 3) {
             Database::write();
             exit(1);
@@ -52,16 +59,16 @@ int main() {
             }
         }
         else {
-            system("CLS"); // clear screan
-            cout << "invalid operation , please select only one of the operations below \n";
+            system("CLS"); 
+            cout << "invalid operation\n";
             goto l;
         }
+        system("CLS");
 
 
 
         while (admin == 1) // admin
         {
-            //cout << News::categories.size() << endl;
             User::adminMenu();
             int choice2;
             cin >> choice2;

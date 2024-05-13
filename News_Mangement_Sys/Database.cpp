@@ -273,6 +273,6 @@ void Database::read()
         News::categories.push_back(category);
     }
     
-    Utility::DM("database", "news read done"); // debug message
+    //Utility::DM("database", "news read done"); // debug message
     innnFile.close();
 }

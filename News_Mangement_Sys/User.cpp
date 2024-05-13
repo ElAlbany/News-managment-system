@@ -8,6 +8,7 @@
 #include <ctime> 
 #include "User.h"
 #include "Utility.h"
+#include "Style.h"
 
 using namespace std;
 
@@ -291,7 +292,7 @@ void User::emailInterestedUsers(string category)
             file << content;
             file.close();
 
-            system("powershell -ExecutionPolicy Bypass -File C:\\Users\\Suhail\\source\\repos\\News-managment-system\\News_Mangement_Sys\\emailNotification.ps1");
+            system("powershell -ExecutionPolicy Bypass -File C:\\Users\\alyas\\source\\repos\\News-managment-system\\News_Mangement_Sys\\emailNotification.ps1");
 
             string newContent = "";
             string::size_type pos;
@@ -325,13 +326,11 @@ void User::emailInterestedUsers(string category)
 }
 
 int User::Register() {
+    Style::styleText(" Sign up ");
     string username, password, email;
-    cout << endl << "Sign up" << endl;
-    cout << endl << "Enter your username" << endl;
+    cout << endl << "Enter your Username, Password and Email :" << endl;
     cin >> username;
-    cout << endl << "Enter your password" << endl;
     cin >> password;
-    cout << endl << "Enter your email" << endl;
     cin >> email;
     while (true) {
         if (!is_email_valid(email)) {
@@ -346,10 +345,14 @@ int User::Register() {
         return -1;
 
     if (User::users.find(username) != User::users.end()) {
+        cout << "User already exists\n";
+        system("pause");
         return -1;
     }
     User usr(username, password, email);
     User::users.insert({ username, usr });
+    cout << "registered successfully\n";
+    system("pause");
     return 0;
 }
 
@@ -365,13 +368,15 @@ int User::LogIn() {
     string username, password;
     bool LoggedIn = false;
     int responce = 0;
-    cout << endl << "Log In" << endl;
-    cout << endl << "Enter Username " << endl;
+    
+    Style::styleText("  Log In  ");
+    cout << endl << "Enter Username and Password :" << endl;
     cin >> username;
-    cout << endl << "Enter Password " << endl;
     cin >> password;
 
     if (username == "admin" && password == "admin") {
+        cout << "Logged in successfully as an admin\n";
+        system("pause");
         return 1;
     }
 
@@ -388,7 +393,8 @@ direct:
             User::users[username].LoginAtempts = 2;
             currentUsername = username;
             currentPassword = password;
-            cout << "Logged in successfully";
+            cout << "Logged in successfully\n";
+            system("pause");
             return 0;
         }
         else {
@@ -400,12 +406,12 @@ direct:
                     User::users[username].ForgetPassword(username);
             }
             else {
-                cout << "Username or Password is incorrect";
+                cout << "Username or Password is incorrect\n";
             }
         }
     }
     else {
-        cout << "Username or Password is incorrect";
+        cout << "Username or Password is incorrect\n";
     }
 
     return -1;
@@ -446,7 +452,7 @@ int User::ForgetPassword(string username) {
     file << content;
     file.close();
 
-    system("powershell -ExecutionPolicy Bypass -File C:\\Users\\Suhail\\source\\repos\\News-managment-system\\News_Mangement_Sys\\ForgetPassword.ps1");
+    system("powershell -ExecutionPolicy Bypass -File C:\\Users\\alyas\\source\\repos\\News-managment-system\\News_Mangement_Sys\\ForgetPassword.ps1");
 
     string newContent = "";
     string::size_type pos;
@@ -479,13 +485,13 @@ int User::ForgetPassword(string username) {
     cin >> enteredCode;
     while (true) {
         if (enteredCode == randomCode) {
-            cout << "\nenter password\n";
+            cout << "\nenter your new password twice\n";
             cin >> password;
-            cout << "\nenter password again\n";
             cin >> confirmPassword;
             if (password == confirmPassword) {
                 User::users[username].Password = password;
                 cout << "\npassword changed\n\n";
+                system("pause");
                 break;
             }
             else {
