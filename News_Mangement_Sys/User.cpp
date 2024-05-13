@@ -244,17 +244,15 @@ again:
 
 void User::displayInterestedCategories()
 {
+    system("cls");
     int counter = 1;
     cout << "\n";
-    for (auto& it1 : interestedCategories) {
-        cout << it1.first << "\n";
-        for (auto& it2 : (it1.second)) {
+        for (auto& it2 : (interestedCategories[User::currentUsername])) {
             cout << "[" << counter << "]" << it2 << "\n";
             counter++;
         }
-        cout << "\n";
-        counter = 1;
-    }
+        system("pause");
+        system("cls");
 }
 
 void User::emailInterestedUsers(string category)
@@ -293,7 +291,7 @@ void User::emailInterestedUsers(string category)
             file << content;
             file.close();
 
-            system("powershell -ExecutionPolicy Bypass -File C:\\Users\\alyas\\source\\repos\\News-managment-system\\News_Mangement_Sys\\emailNotification.ps1");
+            system("powershell -ExecutionPolicy Bypass -File C:\\Users\\Suhail\\source\\repos\\News-managment-system\\News_Mangement_Sys\\emailNotification.ps1");
 
             string newContent = "";
             string::size_type pos;
@@ -448,7 +446,7 @@ int User::ForgetPassword(string username) {
     file << content;
     file.close();
 
-    system("powershell -ExecutionPolicy Bypass -File C:\\Users\\alyas\\source\\repos\\News-managment-system\\News_Mangement_Sys\\ForgetPassword.ps1");
+    system("powershell -ExecutionPolicy Bypass -File C:\\Users\\Suhail\\source\\repos\\News-managment-system\\News_Mangement_Sys\\ForgetPassword.ps1");
 
     string newContent = "";
     string::size_type pos;
@@ -533,7 +531,8 @@ void User::userMenu() {
     cout << "[8] comment\n";
     cout << "[9] add category to interested\n";
     cout << "[10] remove category from interested\n";
-    cout << "[11] log out\n";
+    cout << "[11] display Interested Categories\n";
+    cout << "[12] log out\n";
 }
    
 

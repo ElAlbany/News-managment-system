@@ -1,3 +1,3 @@
 ﻿  User.cpp
-C:\Users\Suhail\source\repos\News-managment-system\News_Mangement_Sys\User.cpp(604,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\Suhail\source\repos\News-managment-system\News_Mangement_Sys\User.cpp(634,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   News_Mangement_Sys.vcxproj -> C:\Users\Suhail\source\repos\News-managment-system\News_Mangement_Sys\x64\Debug\News_Mangement_Sys.exe

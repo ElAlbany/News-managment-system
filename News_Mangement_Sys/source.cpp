@@ -183,14 +183,14 @@ int main() {
                User::AddCategoryToInterested();
             }
             else if (choice3 == 10) { // remove from interested categories
-                User::RemoveCategoryFromInterested();
+               // User::RemoveCategoryFromInterested();
             }
-            else if (choice3 == 11) { // log out
+            else if (choice3 == 11) { //display Interested Categories
+                User::displayInterestedCategories();
+            }
+            else if (choice3 == 12) { // log out
                 admin = -1;
                 break;
-            }
-            else if (choice3 == 12) {
-                User::displayInterestedCategories();
             }
             else {
                 cout << "invalid operation , please select only one of the operations below \n";
