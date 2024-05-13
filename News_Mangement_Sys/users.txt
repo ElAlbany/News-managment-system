@@ -1,6 +1,5 @@
 Ali,Alinist.1872004,alyashrafelprince2004@gmail.com,0,
 Buzz,hossam,abdo210xl@gmail.com,0,
-a,a,a@gmail.com,2,0,;
 ali,ashraf,alyashrafelprince2004@gmail.com,0,
 hazem,ah,h@gmail.com,0,
 hossam,ahmed,ahmed@gmail.com,2,0,;

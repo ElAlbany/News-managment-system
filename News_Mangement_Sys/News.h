@@ -73,7 +73,7 @@ public:
 
 
     void calculateAverageRate();
-    float getAverageRateByTitle(string);
+    //float getAverageRateByTitle(string);
 
 
     static vector<News> serachNews(string title_key);
@@ -95,10 +95,10 @@ public:
 
     }
 
-    static void displayLatestNews(int);
+    //static void displayLatestNews(int);
     static void displayTrendingNews();
-    static bool displayAllNews();
-    static void displayNewsForUser();
+    static bool displayAllNews(string,int,string);
+    //static void displayNewsForUser();
     static bool validChoice(int choice);
 
     static void displayCommentsOnUserChoice();

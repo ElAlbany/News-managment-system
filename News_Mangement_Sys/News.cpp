@@ -57,15 +57,18 @@ void News::rateNews(vector<News>& newsRef, string userName) {
         cout << "Sorry :( There Isn't any News Right Now\n";
         return;
     }
-    cout << "     ============    Here Are All The News    ============    \n";
+    cout << "     ============    Here Are All The articles    ============    \n";
     for (int i = 0; i < newsRef.size(); i++) {
         cout << "[" << i + 1 << "]" << newsRef[i].title <<"\n";
     }
     int index;
-    do {
-        cout << "Enter The News Number To Rate ( Or Enter -1 To Skip)\n";
-        cin >> index;
-    } while (index < -1 || index > newsRef.size());
+    cout << "Enter The Article Number To Rate it ( Or Enter -1 To Skip)\n";
+again:
+    cin >> index;
+    if ((index <= 0 && index != -1) || index > newsRef.size()) {
+        cout << "Please enter a vaild article number to rate (or enter -1 to skip)\n";
+        goto again;
+    }
     if (index == -1) {
         return;
     }
@@ -76,6 +79,7 @@ void News::rateNews(vector<News>& newsRef, string userName) {
         cin >> userRating;
     } while (userRating < 1 || userRating > 5);
 
+    newsRef[index].allRate.erase(userName);
     newsRef[index].allRate.emplace(pair<string, int>(userName, userRating));
     newsRef[index].calculateAverageRate();
     cout << "Your rating has been added successfully." << endl;
@@ -85,7 +89,7 @@ void News::rateNews(vector<News>& newsRef, string userName) {
 /////////////////////////////////////// displayNewsByCategoryName ////////////////////////////////////////////
 void News::displayNewsByCategoryName(string categoryName) {
     if (news.empty()) {
-        cout << "Sorry :( There Isn't any News Right Now\n";
+        cout << "Sorry :( There Isn't any articles Right Now\n";
         return;
     }
     bool is_found = false;
@@ -98,21 +102,17 @@ void News::displayNewsByCategoryName(string categoryName) {
         }
     }
     if (is_found) {
-        cout << "     ============    Here Is ALL " << categoryName << " News :)      ============    \n";
+        cout << "\nhere are all the " << categoryName << " News : \n\n";
         for (auto it : news) {
             if (it.category == categoryName) {
-                cout << "\nTitle: " << it.title << endl;
-                cout << "Description: " << it.description << endl;
-                //cout << "Date: " << it.date.fullDate << endl;
-                cout << "Category: " << it.category << endl;
-                cout << "Rate: " << it.rate << endl;
-                cout << "             =========================                       \n";
+                it.displayNewsPost();
             }
         }
     }
     else {
-        cout << "sorry :( This Is Category Is Not Exist\n";
+        cout << "sorry this category doesn't exist\n";
     }
+    system("pause");
 }
 //**************************************************************************
 
@@ -131,94 +131,56 @@ string News::getDescription() const {
 string News::getCategory() const {
     return this->category;
 }
-
-void News::displayLatestNews(int choice) {
-    if (!News::news.size()) {
-        cout << "NO NEWS AVAILABLE AT THE MOMENT\n";
-    }
-    else {
-        cout << "Here are all the available news :\n\n";
-        sort(News::news.begin(), News::news.end(), News::sortNewsByDate);
-        for (int i = 0; i < (int)News::news.size(); i++) {
-            cout << "[" << i + 1 << "] ";
-            news[i].displayNewsPost();
-
-            saveComments.insert({ i + 1, news[i].comments });
-        }
-
-        if (choice == 8) {
-            cout << endl;
-            displayCommentsOnUserChoice();
-            saveComments.clear();
-        }
-    }
-    system("pause");
-}
-
-
 void News::displayTrendingNews() {
 
     sort(News::news.begin(), News::news.end(), News::sortNewsByRating);
     for (int i = 0; i < (int)News::news.size(); i++) {
-
-        // display post
         cout << "[" << i+1 << "] ";
         news[i].displayNewsPost();
-        
-
-
-        // save comments for user choice after the displaying
-        //saveComments.insert({ i + 1, news[i].comments });
-      
     }
     system("pause");
-    //cout << endl;
-    //News::displayCommentsOnUserChoice(); // make the user choose the post he want to display the comments
-    //saveComments.clear();
 
 }
 
 
-bool News::displayAllNews() {
+bool News::displayAllNews(string sortedBy, int user, string details) {
     if (News::news.size() == 0)
     {
-        cout << "there are no news right now \n";
-        system("pause");
+        cout << "there are no articles right now \n";
         return false;
     }
-    cout << "here is all the news\n";
-    cout << "\n";
+    if (sortedBy == "Date") {
+       sort(News::news.begin(), News::news.end(), News::sortNewsByDate);
+    }
+    else {
+        sort(News::news.begin(), News::news.end(), News::sortNewsByRating);
+    }
+    cout << "here are all the articles\n\n";
     for (int i = 0; i < News::news.size(); i++)
     {
-        cout << "[" << i + 1 << "] " << news[i].getTitle() << "\n";
-    }
-    system("pause");
-    return true;
-}
-void News::displayNewsForUser() {
-    if (News::news.size() == 0)
-    {
-        cout << "there is no news right now \n";
-        return;
-    }
-    //cout << "some content will be hidden for you if was needed\n";
-    cout << "here is all the news : \n\n";
-   
-    for (int i = 0; i < News::news.size(); i++)
-    {
-        auto it = User::users[User::currentUsername].spamNews.find(news[i].getTitle());
-        if (it != User::users[User::currentUsername].spamNews.end())
-            continue;
-        float rate = News::news[i].getRate();
-        if (rate >= 2.0 || rate == 0.0)
-        {
-            cout << "[" << i + 1 << "] ";
-            news[i].displayNewsPost();
-            News::valid.insert(i+1);
+        if (user == 0) {
+            auto it = User::users[User::currentUsername].spamNews.find(news[i].getTitle());
+            if (it != User::users[User::currentUsername].spamNews.end())
+                continue;
+            float rate = News::news[i].getRate();
+
+            if (rate >= 2.0 || rate == 0.0)
+            {
+                cout << "[" << i + 1 << "] ";
+                news[i].displayPost();
+                News::valid.insert(i + 1);
+            }
+        }
+        else {
+            if (details == "Details") {
+                news[i].displayNewsPost();
+            }
+            else {
+                cout << "[" << i + 1 << "] " << news[i].title << "\n";
+            }
         }
     }
-
-   
+    return true;
 }
 bool  News::validChoice(int choice)
 {
@@ -227,8 +189,6 @@ bool  News::validChoice(int choice)
         return false;
     return true;
 }
-
-
 
 Date News::getDate() const {
     return this->date;
@@ -255,10 +215,10 @@ vector<News> News::serachNews(string description_key) { // search by descroption
         string lowerDescription = Utility::toLower(news_post.getDescription());
         string lowerTitle = Utility::toLower(news_post.getTitle());
         for (auto word : keywords) {
-            if (lowerDescription.find(word + " ") != string::npos || // search in title and description
-                lowerDescription.find(" " + word) != string::npos ||
-                lowerTitle.find(word + " ") != string::npos ||
-                lowerTitle.find(" " + word) != string::npos ||
+            if (lowerDescription.find(word) != string::npos || // search in title and description
+                lowerDescription.find(word) != string::npos ||
+                lowerTitle.find(word) != string::npos ||
+                lowerTitle.find(word) != string::npos ||
                 lowerTitle == word) {
 
                 if (!taken[i]) {  // if taken i don't need to take it again (no dublicate posts)
@@ -320,10 +280,10 @@ void News::updateMenu()
 {   
     if (News::news.size() == 0)
     {
-        cout << "there is no news right now \n";
+        cout << "there is no articles right now \n";
         return;
     }
-    News::displayAllNews();
+    News::displayAllNews("Date",1,"Details");
     cout << "enter number to edit in information or -1 to skip\n";
     int num;
     cin >> num;

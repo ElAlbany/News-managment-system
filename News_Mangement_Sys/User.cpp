@@ -72,10 +72,10 @@ void User::addCategoryAuto(string cate) {
 }
 void User::removeNews() {
     if (News::news.size() == 0) {
-        cout << "there is no news right now \n";
+        cout << "there is no articles right now \n";
         return;
     }
-    News::displayAllNews();
+    News::displayAllNews("Date",1,"NoDetails");
     cout << "\n please select one of the shown above to remove  or enter -1 to skip\n";
     int num;
     cin >> num;
@@ -86,7 +86,8 @@ void User::removeNews() {
         removeNews();
     }
     News::news.erase(News::news.begin() + num - 1);
-    cout << "has been removed successfully\n";
+    cout << "article has been removed successfully\n";
+    system("pause");
 }
 void User::postNews() {
     string title, description,category ,date;
@@ -104,9 +105,11 @@ void User::postNews() {
     News news1(title , description, Utility::toLower(category),0.0, Date::fromString(date));
     addCategoryAuto(Utility::toLower(category));
     User::emailInterestedUsers(Utility::toLower(category));
+    cout << "article posted successfuly\n";
+    system("pause");
 }
 void User::getAverageRateByTitle() {
-    bool is_emp = News::displayAllNews();
+    bool is_emp = News::displayAllNews("Date",1,"NoDetails");
     if (is_emp == true)
     {
         int num;
@@ -146,23 +149,24 @@ void User::bookmarkingMenu() {
         cout << "please select one of the shown operations above \n";
         bookmarkingMenu();
     }
+    system("pause");
 }
 void User::AddToBookmarks() {
     int num;
-    News::displayAllNews();
-    cout << "enter number : ";
+    News::displayAllNews("Date",0,"Details");
+    cout << "enter a number : ";
     cin >> num;
     if (num < 1 || num > News::news.size()) {
-        cout << "you have entered wrong number \n";
+        cout << "you have entered a wrong number \n";
         return;
     }
     bool flag = User::IsInBookmarks(News::news[num - 1].getTitle());
     if (flag) {
-        cout << "already exists\n";
+        cout << "bookmark already exists\n";
         return;
     }
     User::bookmarks[User::currentUsername].insert(News::news[num - 1].getTitle());
-    cout << "added successfully\n";
+    cout << "bookmark added successfully\n";
 }
 bool User::IsInBookmarks(string title) {
     return (User::bookmarks[User::currentUsername].find(title) != User::bookmarks[User::currentUsername].end());
@@ -587,7 +591,7 @@ void User::spamNewsMenu()
 }
 
 void User::spamNewsFunc() {
-    News::displayNewsForUser();
+    News::displayAllNews("Date",0,"Details");
     int choice4;
     cout << "Enter the number of title which you want to spam or -1 to skip \n ";
     cin >> choice4;
@@ -602,6 +606,8 @@ void User::spamNewsFunc() {
     {
         User::users[User::currentUsername].spamNews.insert(News::news[choice4 - 1].getTitle());
         spamCount++;
+        cout << "article added you spam successfuly\n";
+        system("pause");
     }
     cout << User::users[currentUsername].spamNews.size();
 }
@@ -611,21 +617,23 @@ void User::printSpam()
     if (User::users[currentUsername].spamNews.size() <= 0)
     {
         cout << "you haven't added one to spam yet \n";
+        system("pause");
         return;
     }
     cout << "here is all added spam \n\n";
-        int i = 1;
-        for (auto news : User::users[currentUsername].spamNews)
-        {
-            cout << "[" << i++ << "]" << news << "\n";
-        }
-    
+    int i = 1;
+    for (auto news : User::users[currentUsername].spamNews)
+    {
+        cout << "[" << i++ << "]" << news << "\n";
+    }
+    system("pause");
 }
 void User::removeSpamNews()
 {
     if (User::users[currentUsername].spamNews.size() <= 0)
     {
         cout << "you haven't added one to spam yet \n";
+        system("pause");
         return;
     }
 
@@ -639,8 +647,8 @@ void User::removeSpamNews()
     cin >> choice;
     if (choice > User::users[currentUsername].spamNews.size() || choice <= 0)
     {
-        system("CLS");
-        cout << "you have entered invalid number \n\n\n";
+        cout << "you have entered invalid number \n";
+        system("pause");
         return;
     }
     else
@@ -648,6 +656,8 @@ void User::removeSpamNews()
         auto it = User::users[currentUsername].spamNews.begin();
         advance(it, choice - 1);
         User::users[currentUsername].spamNews.erase(it);
+        cout << "article removed successfully from spam\n";
+        system("pause");
     }
 
 }

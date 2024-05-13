@@ -100,19 +100,20 @@ int main() {
             else if (choice2 == 5) //   display an article rate
             {
 
-                News::displayAllNews();
+                News::displayAllNews("Date", 1, "NoDetails");
                 User::getAverageRateByTitle();
 
             }
             else if (choice2 == 6) //display all news
             {
-                News::displayAllNews();
+                News::displayAllNews("Date",1,"NoDetails");
+                system("pause");
 
             }
             else if (choice2 == 7) //display details
             {
-                News::displayAllNews();
-                cout << "enter number to see its details \n";
+                News::displayAllNews("Date",1,"NoDetails");
+                cout << "\nenter number to see its details : \n";
                 int choice3; cin >> choice3;
                 if (choice3 > News::news.size() || choice3 <= 0)
                 {
@@ -120,6 +121,7 @@ int main() {
                     continue;
                 }
                 News::news[choice3 - 1].displayPost();
+                system("pause");
 
             }
             else if (choice2 == 8) // log out
@@ -151,7 +153,9 @@ int main() {
                 getline(cin, key);
                 int i = 1;
                 auto search_result = News::serachNews(key);
-                if (search_result.empty()) cout << "NO NEWS FOUND!\n";
+                if (search_result.empty()) { 
+                    cout << "NO NEWS FOUND!\n";
+                }
                 else {
                     cout << "\t--------------SEARCH RESULt-----------\n";
                     for (auto news_post : search_result) {
@@ -160,10 +164,12 @@ int main() {
                     }
 
                 }
+                system("pause");
             }
             else if (choice3 == 2) // display latest news
             {
-                News::displayLatestNews(0);
+                News::displayAllNews("Date", 0, "Details");
+                system("pause");
             }
             else if (choice3 == 3) // search by category
             {
@@ -182,7 +188,8 @@ int main() {
             }
             else if (choice3 == 6) // trending news
             {
-                News::displayTrendingNews();
+                News::displayAllNews("Trending", 0, "Details");
+                system("pause");
             }
            
             else if (choice3 == 7) { // spam function
@@ -191,7 +198,7 @@ int main() {
                 ob.spamNewsMenu();
             }
             else if (choice3 == 8) { // comment
-                News::displayLatestNews(8);
+                News::displayAllNews("Date", 0, "Details");
             }
             else if (choice3 == 9) { // add to interested categories
                User::AddCategoryToInterested();

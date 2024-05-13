@@ -66,7 +66,7 @@ public:
 		std::istringstream iss(dateStr);
 		Date date;
 		char dash; // for skipping the dashes
-		if (!(iss >> date.year >> dash >> date.month >> dash >> date.mday)) {
+		if (!(iss >> date.mday >> dash >> date.month >> dash >> date.year)) {
 			throw std::runtime_error("Invalid date format");
 		}
 		return date;
