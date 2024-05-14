@@ -17,7 +17,7 @@ using namespace std;
 // main data structures to store all news (static definition)
 vector<News> News::news;
 vector<string> News::categories;
-set<int> News::valid;
+map<int,bool> News::valid;
 map<int, vector<Comment>> News::saveComments;
 
 // chaining constructor
@@ -159,16 +159,18 @@ bool News::displayAllNews(string sortedBy, int user, string details) {
     for (int i = 0; i < News::news.size(); i++)
     {
         if (user == 0) {
-            auto it = User::users[User::currentUsername].spamNews.find(news[i].getTitle());
-            if (it != User::users[User::currentUsername].spamNews.end())
+            auto it = User::users[User::currentUsername].spamNews.find(News::news[i].getTitle());
+            if (it != User::users[User::currentUsername].spamNews.end()) {
+                News::valid[i+1] = false;
                 continue;
+            }
             float rate = News::news[i].getRate();
 
             if (rate >= 2.0 || rate == 0.0)
             {
                 cout << "[" << i + 1 << "] ";
                 news[i].displayPost();
-                News::valid.insert(i + 1);
+                News::valid[i + 1] = true;
             }
         }
         else {
@@ -182,13 +184,7 @@ bool News::displayAllNews(string sortedBy, int user, string details) {
     }
     return true;
 }
-bool  News::validChoice(int choice)
-{
-    auto it = News::valid.find(choice);
-    if (it == News::valid.end())
-        return false;
-    return true;
-}
+
 
 Date News::getDate() const {
     return this->date;
