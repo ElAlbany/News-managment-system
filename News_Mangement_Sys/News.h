@@ -89,7 +89,60 @@ public:
         return news1.getRate() > news2.getRate();
     }
     static bool sortNewsByDate(News& news1, News& news2) {
-        return (news1.getDate().fullDate('/') > news2.getDate().fullDate('/'));
+
+        string date1 = news1.getDate().fullDate('/'), date2 = news2.getDate().fullDate('/');
+
+        int year1 = std::stoi(date1.substr(0, 4));
+        int year2 = std::stoi(date2.substr(0, 4));
+        int month1, month2, day1, day2;
+
+        if (date1[6] == '/') {
+             month1 = std::stoi(date1.substr(5, 1));
+             if (date1.size() == 9) {
+                 day1 = std::stoi(date1.substr(7, 2));
+             }
+             else {
+                 day1 = std::stoi(date1.substr(7, 1));
+             } 
+        }
+        else {
+             month1 = std::stoi(date1.substr(5, 2));
+             if (date1.size() == 10) {
+                 day1 = std::stoi(date1.substr(8, 2));
+             }
+             else {
+                 day1 = std::stoi(date1.substr(8, 1));
+             }
+             
+        }
+
+        if (date2[6] == '/') {
+            month2 = std::stoi(date2.substr(5, 1));
+            if (date2.size() == 9) {
+                day2 = std::stoi(date2.substr(7, 2));
+            }
+            else {
+                day2 = std::stoi(date2.substr(7, 1));
+            }
+        }
+        else {
+            month2 = std::stoi(date2.substr(5, 2));
+            if (date2.size() == 10) {
+                day2 = std::stoi(date2.substr(8, 2));
+            }
+            else {
+                day2 = std::stoi(date2.substr(8, 1));
+            }
+
+        }
+        // Compare the dates
+        if (year1 > year2) return true;
+        if (year1 < year2) return false;
+        if (month1 > month2) return true;
+        if (month1 < month2) return false;
+        if (day1 > day2) return true;
+
+        return false;
     }
 
     //static void displayLatestNews(int);

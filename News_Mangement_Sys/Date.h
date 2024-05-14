@@ -55,8 +55,8 @@ public:
 	// Converts date to string
 	std::string toString() const {
 		std::ostringstream oss;
-		oss << std::setw(4) << std::setfill('0') << year << "-"
-			<< std::setw(2) << std::setfill('0') << month << "-"
+		oss << std::setw(4) << std::setfill('0') << year << "/"
+			<< std::setw(2) << std::setfill('0') << month << "/"
 			<< std::setw(2) << std::setfill('0') << mday;
 		return oss.str();
 	}
