@@ -47,7 +47,7 @@ public:
     vector<Comment> comments;
     static vector<News> news; // main data structure to store all news
     static vector<string> categories;
-    static set<int> valid;
+    static map<int,bool> valid;
 
 
     // Constructors
@@ -149,7 +149,7 @@ public:
     static void displayTrendingNews();
     static bool displayAllNews(string,int,string);
     //static void displayNewsForUser();
-    static bool validChoice(int choice);
+   
 
     static void displayCommentsOnUserChoice();
 
