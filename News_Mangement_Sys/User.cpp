@@ -167,7 +167,7 @@ void User::AddToBookmarks() {
     News::displayAllNews("Date",0,"Details");
     cout << "enter a number : ";
     cin >> num;
-    if (num < 1 || num > News::news.size()) {
+    if (News::valid[num]==false) {
         cout << "you have entered a wrong number \n";
         return;
     }
@@ -185,6 +185,8 @@ bool User::IsInBookmarks(string title) {
 void User::RemoveFromBookmarks() {
     User::PrintBookmarks();
     int num;
+    if (User::bookmarks[User::currentUsername].size() == 0)
+        return;
     cout << "enter number to remove : ";
     cin >> num;
     if (num < 1 || num > User::bookmarks[User::currentUsername].size()) {
@@ -604,19 +606,23 @@ void User::spamNewsMenu()
 void User::spamNewsFunc() {
     News::displayAllNews("Date",0,"Details");
     int choice4;
+    
     cout << "Enter the number of title which you want to spam or -1 to skip \n ";
+    again:
     cin >> choice4;
     if (choice4 == -1)
         return;
-    else if (!News::validChoice(choice4))
+    else if (News::valid[choice4]==false)
     {
-        cout << "you have entered invalid number \n\n\n";
-        spamNewsFunc();
+        cout << "you have entered invalid number , please enter valid choice or -1 to skip\n\n\n";
+        goto again;
     }
     else
     {
         User::users[User::currentUsername].spamNews.insert(News::news[choice4 - 1].getTitle());
         spamCount++;
+        News::valid[choice4] = false;
+        User::bookmarks[User::currentUsername].erase(News::news[choice4 - 1].getTitle());
         cout << "article added you spam successfuly\n";
         system("pause");
     }
