@@ -102,14 +102,16 @@ void User::postNews() {
     getline(cin, category);
     cout << "enter date(dd/mm/year) : ";
     cin >> date;
-    reverse(date.begin(), date.end());
-    char tmp;
-    tmp = date[0];
-    date[0] = date[3];
-    date[3] = tmp;
-    tmp = date[1];
-    date[1] = date[2];
-    date[2] = tmp;
+    if (date[1] == '/' || date[2] == '/') {
+        reverse(date.begin(), date.end());
+        char tmp;
+        tmp = date[0];
+        date[0] = date[3];
+        date[3] = tmp;
+        tmp = date[1];
+        date[1] = date[2];
+        date[2] = tmp;
+    }
     News news1(title , description, Utility::toLower(category),0.0, Date::fromString(date));
     addCategoryAuto(Utility::toLower(category));
     User::emailInterestedUsers(Utility::toLower(category));
