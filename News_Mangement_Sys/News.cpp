@@ -173,7 +173,7 @@ bool News::displayAllNews(string sortedBy, int user, string details) {
         }
         else {
             if (details == "Details") {
-                news[i].displayNewsPost();
+                news[i].displayPost();
             }
             else {
                 cout << "[" << i + 1 << "] " << news[i].title << "\n";
@@ -255,7 +255,7 @@ vector<News> News::serachNews(string description_key) { // search by descroption
 void News::displayPost() {
     cout << "\nTitle: " << this->title << endl;
     cout << "Description: " << this->description << endl;
-    cout << "Date: " << this->date.fullDate('/') << endl;
+    cout << "Date: " << this->date << endl;
     cout << "Category: " << this->category << endl;
     cout << "Rate: " << this->rate << endl;
     cout << "             =========================                       \n";

@@ -89,10 +89,7 @@ public:
         return news1.getRate() > news2.getRate();
     }
     static bool sortNewsByDate(News& news1, News& news2) {
-        Date d1 = news1.getDate();
-        Date d2 = news2.getDate();
-        return (d1 > d2);
-
+        return (news1.getDate().fullDate('/') > news2.getDate().fullDate('/'));
     }
 
     //static void displayLatestNews(int);
