@@ -3,4 +3,4 @@ Buzz,hossam,abdo210xl@gmail.com,0,
 ali,ashraf,alyashrafelprince2004@gmail.com,0,
 hazem,ah,h@gmail.com,0,
 hossam,ahmed,ahmed@gmail.com,2,0,;
-zaid,zaid,zajdhany112@gmail.com,0,"Russia, Ukraine to hold second round of talks on March 2, TASS reports";
+zaid,zaid,zajdhany112@gmail.com,0,

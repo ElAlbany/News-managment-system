@@ -17,7 +17,7 @@ using namespace std;
 // main data structures to store all news (static definition)
 vector<News> News::news;
 vector<string> News::categories;
-map<int,bool> News::valid;
+vector<News> News::valid;
 
 
 // chaining constructor
@@ -142,37 +142,39 @@ void News::displayAllNews(string sortedBy, int user, string details) {
     {
         cout << "There Are No Articles Right Now \n";
         system("pause");
-    }
-    if (sortedBy == "Date") {
-       sort(News::news.begin(), News::news.end(), News::sortNewsByDate);
-    }
-    else {
-        sort(News::news.begin(), News::news.end(), News::sortNewsByRating);
+        return;
     }
     cout << "Here Are All The Articles :\n\n";
-    for (int i = 0; i < News::news.size(); i++)
-    {
-        if (user == 0) {
-            auto it = User::users[User::currentUsername].spamNews.find(News::news[i].getTitle());
-            if (it != User::users[User::currentUsername].spamNews.end()) {
-                News::valid[i+1] = false;
-                continue;
-            }
-            float rate = News::news[i].getRate();
-
-            if (rate >= 2.0 || rate == 0.0)
+    if (user == 0) { // user
+        if (sortedBy == "Date") {
+            sort(News::valid.begin(), News::valid.end(), News::sortNewsByDate);
+        }
+        else {
+            sort(News::valid.begin(), News::valid.end(), News::sortNewsByRating);
+        }
+        for (int i = 0; i < News::valid.size(); i++)
+        {
+            cout << "[" << i + 1 << "] ";
+            News::valid[i].displayPost();
+        }
+    }
+    else { // admin
+        if (sortedBy == "Date") {
+            sort(News::news.begin(), News::news.end(), News::sortNewsByDate);
+        }
+        else {
+            sort(News::news.begin(), News::news.end(), News::sortNewsByRating);
+        }
+        if (details == "Details") {
+            for (int i = 0; i < News::news.size(); i++)
             {
                 cout << "[" << i + 1 << "] ";
                 news[i].displayPost();
-                News::valid[i + 1] = true;
             }
         }
         else {
-            if (details == "Details") {
-                cout << "[" << i + 1 << "] ";
-                news[i].displayPost();
-            }
-            else {
+            for (int i = 0; i < News::news.size(); i++)
+            {
                 cout << "[" << i + 1 << "] " << news[i].title << "\n";
             }
         }
@@ -445,7 +447,7 @@ again:
     cin >> choice;
     if (choice == -1)
         return;
-    if (choice <= 0 || choice > News::news.size() || News::valid[choice] == false)
+    if (choice <= 0 || choice > News::valid.size())
     {
         cout << "You Have Entered an Invalid Number, Please Enter a Valid One : ";
         goto again;
@@ -475,7 +477,7 @@ again:
         system("pause");
         return;
     }
-    if (num <= 0 || num > News::news.size() || News::valid[num] == false)
+    if (num <= 0 || num > News::valid.size())
     {
         cout << "You Have Entered Invalid Number, Please Enter Valid Number \n";
         goto again;

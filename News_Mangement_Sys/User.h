@@ -46,7 +46,7 @@ public:
     void spamNewsFunc();
     void spamNewsMenu();
     void removeSpamNews();
-    void printSpam();
+    bool printSpam();
 
     // News
     static void postNews();
