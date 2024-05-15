@@ -1,6 +1,2 @@
-ali
 Ali fashion
-zaid sport science health
-Buzz
-hazem
-hossam
+zaid science sport health

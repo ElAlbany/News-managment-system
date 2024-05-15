@@ -105,7 +105,7 @@ void Database::write()
         // Save comments
         outFile << news.comments.size() << "\n";
         for (const Comment& comment : news.comments) {
-            outFile << comment.getUserName() << "\n" << comment.getBody() << comment.getDate() << "\n";
+            outFile << comment.getUserName() << "\n" << comment.getBody() <<  "\n";
         }
     }
     outFile.close();
@@ -242,7 +242,7 @@ void Database::read()
             string username;
             int userRate;
             ss >> username >> userRate;
-            newsItem.allRate.insert({ username, userRate });
+            News::news.back().allRate.insert({username, userRate});
         }
  
         // Read comments
@@ -254,9 +254,7 @@ void Database::read()
             string userName = line;
             getline(innFile, line);
             string comment = line;
-            getline(innFile, line);
-            string comment_date = line;
-            newsItem.comments.push_back(Comment(userName, comment, Date(comment_date)));
+            News::news.back().comments.push_back(Comment(userName, comment));
         }
 
     }

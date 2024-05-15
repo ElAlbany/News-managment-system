@@ -14,18 +14,15 @@ class Comment {
 private:
     string commentUserName;
     string commentBody;
-    Date commentDate;
 public:
-    Comment(const string& _user, const string& _body, const Date& _date);
+    Comment(const string& _user, const string& _body);
 
     void setCommentBody(const string& new_body);
     void setUserName(const string& new_user_name);
-    //void setDate(const Date& new_date);
     void display();
 
     string getUserName() const;
     string getBody() const;
-    Date getDate() const;
 };
 
 class News {
@@ -37,14 +34,10 @@ private:
     Date date;
     std::string category; // should be replaced by enum later.
     float rate;                  // this is the actual rate comes from summing rates and divied on their size
-
-protected:
-    static map<int, vector<Comment>> saveComments; // for displaying the comments in organized way
 public:
 
-
-    multimap<string, int> allRate; // username and his rate // rates can be edited so we need the username ,so map is convenient for that
     vector<Comment> comments;
+    multimap<string, int> allRate; // username and his rate // rates can be edited so we need the username ,so map is convenient for that
     static vector<News> news; // main data structure to store all news
     static vector<string> categories;
     static map<int,bool> valid;
@@ -149,11 +142,10 @@ public:
     static void displayTrendingNews();
     static bool displayAllNews(string,int,string);
     //static void displayNewsForUser();
-   
-
-    static void displayCommentsOnUserChoice();
-
     void displayNewsPost() const;
-    
-    void addComment();
+
+    static void commentMenu();
+    static void displayComments();
+    static void addComment();
+    static void removeComment(int index);
 };

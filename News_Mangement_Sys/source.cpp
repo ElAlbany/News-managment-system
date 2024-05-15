@@ -198,7 +198,8 @@ int main() {
                 ob.spamNewsMenu();
             }
             else if (choice3 == 8) { // comment
-                News::displayAllNews("Date", 0, "Details");
+                News::commentMenu();
+
             }
             else if (choice3 == 9) { // add to interested categories
                User::AddCategoryToInterested();

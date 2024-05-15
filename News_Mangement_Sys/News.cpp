@@ -18,7 +18,7 @@ using namespace std;
 vector<News> News::news;
 vector<string> News::categories;
 map<int,bool> News::valid;
-map<int, vector<Comment>> News::saveComments;
+
 
 // chaining constructor
 News::News(string title, string description, string category, float rate, Date date) {
@@ -361,10 +361,10 @@ void News::displayNewsPost() const {
 }
 
 //////////////////////////////////////////////////Comment class/////////////////////////////////////////////////////////
-Comment::Comment(const string& _user_name, const string& _body, const Date& _date) {
+Comment::Comment(const string& _user_name, const string& _body) {
     this-> commentUserName = _user_name;
     this->commentBody = _body;
-    this->commentDate = _date;
+  
 }
 
 void Comment::setCommentBody(const string& new_body) {
@@ -383,51 +383,118 @@ string Comment::getBody() const {
     return this->commentBody;
 }
 
-Date Comment::getDate() const {
-    return this->commentDate;
-}
 
-void News::addComment()
-{
-    string comment;
-    getline(cin >> ws, comment);
-    comments.push_back(Comment(User::currentUsername, comment, Date::getCurrentDate('/')));
-}
-void News::displayCommentsOnUserChoice()
-{
-    cout << "\t\tEnter the post for which you want the comments (other number to continue..): \n";
-    for (auto p : saveComments) {
-        cout << "Post (" << p.first << ')' << '\n';
-    }
 
-again:
-    cout << "-> "; 
-    string s;
-    cin.ignore();
-    getline(cin, s);
-    int choice = (s[0] - '0'); // so to prevent infinite loop on invalid inputs
-    if (s.size() == 1 and saveComments.find(choice) != saveComments.end()) { // if post number exist in the map
-
-        if (saveComments[choice].empty()) cout << "[no comments]\n";
-        else
-        {
-            cout << "--------------Comments----------------------------\n";
-            for (int i = 0; i < saveComments[choice].size(); i++) {
-                saveComments[choice][i].display();
-            }
-            cout << "--------------------------------------------------\n";
-        }
-        
+ void News::addComment()
+{  
+    again:
+    int choice;
+    cout << "enter the number of news which you want to add comment or -1 to skip\n";
+    cin >> choice;
+    if (choice == -1)
+        return;
+    if (choice <= 0 || choice > News::news.size() || News::valid[choice] == false)
+    {
+        cout << "you have entered invalid number , please enter valid number \n";
         goto again;
     }
-    else goto done;
+    string comment;
+    cin.ignore();
+    getline(cin >> ws, comment);
+    News::news[choice-1].comments.push_back(Comment(User::currentUsername, comment));
+}
+void News::displayComments()
+{
+    again:
+    cout << "enter number of news to display its comments  or -1 to skip\n";
+    int num;
+    cin >> num;
 
-done: {saveComments.clear(); }
-    
- 
+    if (num == -1)
+    {
+        return;
+    }
+    if (News::news[num - 1].comments.size() == 0)
+    {
+        cout << "there is no comments yet \n";
+        return;
+    }
+    if (num <= 0 || num > News::news.size() || News::valid[num] == false)
+    {
+        cout << "you have entered invalid number , please enter valid number \n";
+        goto again;
+    }
+    for (int i = 0; i < News::news[num - 1].comments.size(); i++)
+    {
+        cout << "[" << i + 1 << "]";
+        News::news[num - 1].comments[i].display();
+        //cout << "[" << i + 1 << "]" << comments[i].getUserName() << " : " << comments[i].getBody() << "\n";
+    }
+    News::removeComment(num-1);
+    system("pause");
 }
 
+void News::commentMenu()
+{
+    News::displayAllNews("Date", 0, "Details");
+    again:
+    cout << "[1] add comment\n";
+    cout << "[2] remove comment\n";
+    cout << "[3] display comments\n";
+    cout << "[4] return \n";
+    int choice;
+    cin >> choice;
+    if (choice == 1)
+        News::addComment();
+    else if (choice == 2)
+    {
+      //News::removeComment();
+    }
+    else if (choice == 3)
+    {
+        News::displayComments();
+    }
+    else if (choice == 4)
+        return;
+    else
+    {
+        cout << "you have entered invalid choice please try again\n";
+        goto again;
+    }
+}
 void Comment::display() {
-    cout << "| [User : " << getUserName() << " - " << getDate() << "]" << "\n|----> " << getBody() << "\n|\n";
+    cout << "| [User : " << getUserName() << "\n|----> " << getBody() << "\n|\n";
+}
+
+void News::removeComment(int index)
+{ 
+    cout << "if you want to remove comment belongs to if exist enter number or -1 to skip \n";
+    again:
+    int num2;
+    cin >> num2;
+    if (num2 == -1)
+    {
+        return;
+    }
+    if (num2 <= 0 || num2 > News::news[index].comments.size())
+    {
+        cout << "invalid number , please enter valid number or -1 to skip\n";
+        goto again;
+    }
+    if (News::news[index].comments[num2-1].getUserName() != User::currentUsername)
+    {
+        cout << "you cant remove the comment, try again or -1 to skip \n";
+        goto again;
+
+    }
+    else
+    {   
+        //auto  it = News::news[index].comments;
+      /*  if (News::news[index].comments.size() == 1)
+            News::news[index].comments.clear();
+        else*/
+        News::news[index].comments.erase(News::news[index].comments.begin() + num2 - 1);
+    }
+    system("pause");
 }
 //////////////////////////////////////////////////Comment class/////////////////////////////////////////////////////////
