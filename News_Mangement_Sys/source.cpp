@@ -13,11 +13,14 @@ using namespace std;
 
 int main() {
 
+    // read from database (files) and style the console background and set width
     Style::setupConsole();
 
     int admin;
     int registered = 5;
-    while (true) // main program
+
+    /////////////////////////// MAIN PROGRAM ///////////////////////////
+    while (true) 
     {
         if (registered == -1) {
             cout << "username already exists" << endl
@@ -31,43 +34,45 @@ int main() {
         }
         string username, password;
         bool adminExist = false; // to chech weather the account is admin
-        int UserIndex = -1;         // to check weather the account is user and if is not -1 then we have the index to use it in other operations
+        int UserIndex = -1;      // to check weather the account is user and if is not -1 then we have the index to use it in other operations
         int choice;
 
         
     l:
+        // add a background and center align the text.
         system("CLS");
         Style::styleText(" Enter one of the shown operations below ");
         cout << "[1] log in \n\n[2] sign up \n\n[3] exit \n\n";
 
-        cin >> choice;
-        system("CLS");
-        if (choice == 3) {
+        cin >> choice; 
+        if (choice == 3) { // exit
             Database::write();
             exit(1);
         }
         else if (choice == 2) // sign up
         {
+            system("CLS");
             registered = User::Register();
             continue;
         }
         else if (choice == 1) // log in
         {
+            system("CLS");
             admin = User::LogIn();
             if (admin == -1) {
                 continue;
             }
         }
-        else {
-            system("CLS"); 
+        else { // invalid
             cout << "invalid operation\n";
+            system("pause");
             goto l;
         }
         system("CLS");
 
 
-
-        while (admin == 1) // admin
+        ////////////////////////////////// ADMIN'S MAIN MENU //////////////////////////////////
+        while (admin == 1) 
         {
             system("ClS");
             User::adminMenu();
@@ -75,7 +80,7 @@ int main() {
             cin >> choice2;
             system("ClS");
             Style::styleText(" Admin's Main Menu ");
-            if (choice2 == 1) //  add new category
+            if (choice2 == 1) // add new category
             {
 
                 User::addCategory();
@@ -92,25 +97,25 @@ int main() {
                
 
             }
-            else if (choice2 == 4) //  update news
+            else if (choice2 == 4) // update news
             {
               
                 News::updateMenu();
             }
-            else if (choice2 == 5) //   display an article rate
+            else if (choice2 == 5) // display an article rate
             {
 
                 News::displayAllNews("Date", 1, "NoDetails");
                 User::getAverageRateByTitle();
 
             }
-            else if (choice2 == 6) //display all news
+            else if (choice2 == 6) // display all news
             {
                 News::displayAllNews("Date",1,"NoDetails");
                 system("pause");
 
             }
-            else if (choice2 == 7) //display details
+            else if (choice2 == 7) // display details
             {
                 News::displayAllNews("Date",1,"NoDetails");
                 cout << "\nenter number to see its details : \n";
@@ -136,8 +141,8 @@ int main() {
             }
             system("CLS");
         }
-
-        while (admin == 0) // user
+        ////////////////////////////////// USER'S MAIN MENU //////////////////////////////////
+        while (admin == 0) 
         {
             system("ClS");
             User::userMenu();
@@ -178,11 +183,11 @@ int main() {
                 cin >> cat;
                 News::displayNewsByCategoryName(cat);
             }
-            else if (choice3 == 4) //  rate news
+            else if (choice3 == 4) // rate news
             {
                 News::rateNews(News::news, User::currentUsername);
             }
-            else if (choice3 == 5) //   bookmarking
+            else if (choice3 == 5) // bookmarking
             {
                 User::bookmarkingMenu();
             }
@@ -214,7 +219,7 @@ int main() {
                 admin = -1;
                 break;
             }
-            else {
+            else { // invalid
                 cout << "invalid operation , please select only one of the operations below \n";
                 system("pause");
                 continue;

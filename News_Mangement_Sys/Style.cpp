@@ -18,7 +18,7 @@ enum Color {
 };
 
 void Style::styleText(string str) {
-    int spaces = (80 - str.length() / 2) / 1.5;
+    int spaces = (85 - str.length() / 2) / 1.5;
 
     for (int i = 0; i < spaces; i++) {
         cout << " ";
@@ -41,23 +41,18 @@ void Style::styleText(string str) {
 }
 
 void Style::setupConsole() {
-    HWND consoleWindow = GetConsoleWindow();  // Get a handle to the console window
+    HWND consoleWindow = GetConsoleWindow();  
 
-    // Set the console window size
-    SMALL_RECT windowSize = { 90, 90, 0, 0 };  // Change the numbers to adjust the size
+    SMALL_RECT windowSize = { 100, 100, 0, 0 };  
     SetConsoleWindowInfo(GetStdHandle(STD_OUTPUT_HANDLE), TRUE, &windowSize);
 
-    // Set the console buffer size to be the same as the window size
-    COORD bufferSize = { 10, 10 };  // Change the numbers to adjust the size
-    SetConsoleScreenBufferSize(GetStdHandle(STD_OUTPUT_HANDLE), bufferSize);
+    //COORD bufferSize = { 10, 10 };  // Change the numbers to adjust the size
+    //SetConsoleScreenBufferSize(GetStdHandle(STD_OUTPUT_HANDLE), bufferSize);
 
-    // Get the current console window style
     LONG style = GetWindowLong(consoleWindow, GWL_STYLE);
 
-    // Remove the sizing border (WS_SIZEBOX), the maximize button (WS_MAXIMIZEBOX), and the vertical scroll bar (WS_VSCROLL)
-    style &= ~(WS_SIZEBOX | WS_MAXIMIZEBOX | WS_VSCROLL);
+    style &= ~(WS_MAXIMIZEBOX | WS_VSCROLL);
 
-    // Apply the new style
     SetWindowLong(consoleWindow, GWL_STYLE, style);
 
     system("color f0");

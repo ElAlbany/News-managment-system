@@ -91,8 +91,7 @@ void User::removeNews() {
 }
 void User::postNews() {
     string title, description,category ,date;
-    cout << "fulfill required information to add the article into system \n";
-    cout << "\n";
+    cout << "fulfill required information to add the article into the system : \n\n";
     cout << "Enter title : ";
     cin.ignore();
     getline(cin, title);
@@ -102,26 +101,17 @@ void User::postNews() {
     getline(cin, category);
     cout << "enter date(dd/mm/year) : ";
     cin >> date;
-    if (date[1] == '/' || date[2] == '/') {
-        reverse(date.begin(), date.end());
-        char tmp;
-        tmp = date[0];
-        date[0] = date[3];
-        date[3] = tmp;
-        tmp = date[1];
-        date[1] = date[2];
-        date[2] = tmp;
-    }
+
+    Utility::dateHandler(date);
     News news1(title , description, Utility::toLower(category),0.0, Date::fromString(date));
     addCategoryAuto(Utility::toLower(category));
     User::emailInterestedUsers(Utility::toLower(category));
-    sort(News::news.begin(), News::news.end(), News::sortNewsByDate);
+
     cout << "article posted successfuly\n";
     system("pause");
 }
 void User::getAverageRateByTitle() {
-    bool is_emp = News::displayAllNews("Date",1,"NoDetails");
-    if (is_emp == true)
+    if (News::news.size() == 0)
     {
         int num;
         do {

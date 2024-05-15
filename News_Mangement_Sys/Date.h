@@ -52,7 +52,7 @@ public:
 		return (os << d.mday << '/' << d.month << '/' << d.year);
 	}
 
-	// Converts date to string
+	// Converts date to string of format (yyyy/mm/dd)
 	std::string toString() const {
 		std::ostringstream oss;
 		oss << std::setw(4) << std::setfill('0') << year << "/"
