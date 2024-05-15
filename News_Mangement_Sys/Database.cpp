@@ -25,18 +25,31 @@ void Database::write()
         User& user = pair.second;
         userFile << user.Username << ","
             << user.Password << ","
-            << user.Email << ","
-            << user.spamCount << ",";
-
-        // Saving spam news for this user
-        for (auto& newsTitle : user.spamNews) {
-            userFile << newsTitle << ";";
-        }
-        userFile << "\n"; // end of line for one user
+            << user.Email << "\n";
+          
     }
     userFile.close();
 
-    /////////////////////////////////////////////////////
+    ////////////////////////////spam////////////////////////////
+
+    // Saving spam
+    ofstream spam("spam.txt");
+    if (!spam.is_open()) {
+        cerr << "Error opening spam.txt for writing.\n";
+        return;
+    }
+    spam << User::spamNews.size() << "\n";
+    for (auto& user : User::spamNews) {
+        spam << user.first << "\n";
+        spam << user.second.size() << "\n";
+        for (const string& Spam : user.second) {
+            spam << Spam << "\n";
+        }
+    }
+    spam.close();
+
+
+    ////////////////////////////bookmark////////////////////////////
 
 
     // Saving bookmarks
@@ -45,12 +58,13 @@ void Database::write()
         cerr << "Error opening bookmarks.txt for writing.\n";
         return;
     }
-    for (const auto& pair : User::bookmarks) {
-        bookmarkFile << pair.first; // Username
-        for (const auto& site : pair.second) {
-            bookmarkFile << " " << site;
+    bookmarkFile << User::bookmarks.size() << "\n";
+    for (auto& user : User::bookmarks) {
+        bookmarkFile << user.first << "\n";
+        bookmarkFile << user.second.size() << "\n";
+        for (const string& bookmark : user.second) {
+            bookmarkFile << bookmark << "\n";
         }
-        bookmarkFile << "\n";
     }
     bookmarkFile.close();
 
@@ -105,7 +119,7 @@ void Database::write()
         // Save comments
         outFile << news.comments.size() << "\n";
         for (const Comment& comment : news.comments) {
-            outFile << comment.getUserName() << "\n" << comment.getBody() <<  "\n";
+            outFile << comment.getUserName() << "\n" << comment.getBody() << "\n";
         }
     }
     outFile.close();
@@ -134,36 +148,49 @@ void Database::read()
     string line;
     while (getline(inFile, line)) {
         stringstream ss(line);
-        string username, password, email, spamCountStr, spamNewsStr;
+        string username, password, email ;
         getline(ss, username, ',');
         getline(ss, password, ',');
-        getline(ss, email, ',');
-       
-        getline(ss, spamCountStr, ',');
-        getline(ss, spamNewsStr);
+        getline(ss, email, '\n');
 
         User user;
         user.Username = username;
         user.Password = password;
         user.Email = email;
-        user.spamCount = stoi(spamCountStr);
-
-        // Extract spam news
-        stringstream newsStream(spamNewsStr);
-        string newsTitle;
-        while (getline(newsStream, newsTitle, ';')) {
-            if (!newsTitle.empty()) {  // handle the last trailing semicolon
-                user.spamNews.insert(newsTitle);
-            }
-        }
-
+       
         User::users[username] = user;
     }
     inFile.close();
 
 
 
-    ////////////////////////////////////////////////////
+    ///////////////////////////spam///////////////////////////
+
+    User::spamNews.clear();
+    // Loading spam
+    ifstream spam("spam.txt");
+    if (!spam.is_open()) {
+        cerr << "Error opening spam.txt for reading.\n";
+        return;
+    }
+    size_t spamSize;
+    spam >> spamSize;
+    spam.ignore();
+    for (int i = 0; i < spamSize; i++) {
+        string username;
+        getline(spam, line);
+        username = line;
+        int userSpamSize;
+        spam >> userSpamSize;
+        spam.ignore();
+        for (int j = 0; j < userSpamSize; j++) {
+            getline(spam, line);
+            User::spamNews[username].insert(line);
+        }
+    }
+    spam.close();
+
+    ///////////////////////////bookmark///////////////////////////
 
     User::bookmarks.clear();
     // Loading bookmarks
@@ -172,13 +199,19 @@ void Database::read()
         cerr << "Error opening bookmarks.txt for reading.\n";
         return;
     }
-    while (std::getline(bookmarkFile, line)) {
-        istringstream iss(line);
+    size_t bookmarkSize;
+    bookmarkFile >> bookmarkSize;
+    bookmarkFile.ignore();
+    for (int i = 0; i < bookmarkSize; i++) {
         string username;
-        iss >> username;
-        string site;
-        while (iss >> site) {
-            User::bookmarks[username].insert(site);
+        getline(bookmarkFile, line);
+        username = line;
+        int userBookmarksSize;
+        bookmarkFile >> userBookmarksSize;
+        bookmarkFile.ignore();
+        for (int j = 0; j < userBookmarksSize; j++) {
+            getline(bookmarkFile, line);
+            User::bookmarks[username].insert(line);
         }
     }
     bookmarkFile.close();
@@ -242,9 +275,9 @@ void Database::read()
             string username;
             int userRate;
             ss >> username >> userRate;
-            News::news.back().allRate.insert({username, userRate});
+            News::news.back().allRate.insert({ username, userRate });
         }
- 
+
         // Read comments
         size_t commentsCount;
         innFile >> commentsCount;
@@ -270,7 +303,7 @@ void Database::read()
     while (getline(innnFile, category)) {
         News::categories.push_back(category);
     }
-    
+
     //Utility::DM("database", "news read done"); // debug message
     innnFile.close();
 }

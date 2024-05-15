@@ -170,7 +170,7 @@ int main() {
             }
             else if (choice3 == 4) // rate news
             {
-                News::rateNews(News::news, User::currentUsername);
+                News::rateNews(News::valid, User::currentUsername);
             }
             else if (choice3 == 5) // bookmarking
             {

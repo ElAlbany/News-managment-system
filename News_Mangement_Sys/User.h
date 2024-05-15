@@ -2,10 +2,10 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include<unordered_set>
-#include<unordered_map>
-#include"News.h"
-#include<set>
+#include <unordered_set>
+#include <unordered_map>
+#include "News.h"
+#include <set>
 
 using namespace std;
 
@@ -14,17 +14,17 @@ using namespace std;
 class User {
 
 
-public: 
+public:
     string Username, Password, Email;
     int LoginAtempts;
     static map<string, User> users;
     static string currentUsername, currentPassword;
     static unordered_map<string, unordered_set<string>> bookmarks;
     static unordered_map<string, unordered_set<string>> interestedCategories;
+    static unordered_map<string, unordered_set<string>> spamNews;
 
-    int spamCount;
-    set<string> spamNews;
-   
+
+
     // Constructors
     User(string username, string password, string email);
     User();
@@ -41,7 +41,7 @@ public:
     static bool is_email_valid(string email);
     int ForgetPassword(string username);
     static string GenRandomPassword();
-    
+
     // Spam Functionality
     void spamNewsFunc();
     void spamNewsMenu();

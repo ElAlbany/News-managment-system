@@ -49,6 +49,14 @@ void News::calculateAverageRate() {
         totalRatings += it.second;
     }
     this->rate = (float)totalRatings / numRatings;
+    for (int i = 0; i < news.size(); i++) {
+        if (news[i].getTitle() == this->title) {
+            news[i].rate = this->rate;
+            if (news[i].getRate() != 0 && news[i].getRate() < 2) {
+                valid.erase(valid.begin() + i);
+            }
+        }
+    }
 }
 
 void News::rateNews(vector<News>& newsRef, string userName) {
