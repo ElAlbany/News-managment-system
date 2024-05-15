@@ -1,7 +1,7 @@
 ﻿  News.cpp
 C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\News.cpp(43,20): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\News.cpp(181,11): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\News.cpp(202,51): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\News.cpp(184,11): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\News.cpp(205,51): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
   News_Mangement_Sys.vcxproj -> C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\x64\Debug\News_Mangement_Sys.exe
   'pwsh.exe' is not recognized as an internal or external command,
   operable program or batch file.

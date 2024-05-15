@@ -5,7 +5,7 @@
 
 using namespace std;
 
-enum Color {
+enum Color { // Background Colors in hexadecimal
     defualt = 0x000f,
     GREENb_WHITEf = 0x002f,
     CYANb_WHITEf = 0x003f,
@@ -41,19 +41,17 @@ void Style::styleText(string str) {
 }
 
 void Style::setupConsole() {
-    HWND consoleWindow = GetConsoleWindow();  
 
-    SMALL_RECT windowSize = { 100, 100, 0, 0 };  
+    HWND consoleWindow = GetConsoleWindow();  // get console window handle
+
+    SMALL_RECT windowSize = { 100, 100, 0, 0 };  // set console window size
     SetConsoleWindowInfo(GetStdHandle(STD_OUTPUT_HANDLE), TRUE, &windowSize);
 
-    //COORD bufferSize = { 10, 10 };  // Change the numbers to adjust the size
-    //SetConsoleScreenBufferSize(GetStdHandle(STD_OUTPUT_HANDLE), bufferSize);
+    LONG style = GetWindowLong(consoleWindow, GWL_STYLE); // gets the console window style from the handle
 
-    LONG style = GetWindowLong(consoleWindow, GWL_STYLE);
+    style &= ~(WS_MAXIMIZEBOX | WS_VSCROLL); // disable maxmize button 
 
-    style &= ~(WS_MAXIMIZEBOX | WS_VSCROLL);
-
-    SetWindowLong(consoleWindow, GWL_STYLE, style);
+    SetWindowLong(consoleWindow, GWL_STYLE, style); // set the new style to the console window
 
     system("color f0");
 

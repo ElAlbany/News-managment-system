@@ -23,12 +23,12 @@ int main() {
     while (true) 
     {
         if (registered == -1) {
-            cout << "username already exists" << endl
+            cout << "Username Already Exists" << endl
                 << endl;
             registered = 5;
         }
         else if (registered == 0) {
-            cout << "registered successfully" << endl
+            cout << "Registered Successfully" << endl
                 << endl;
             registered = 5;
         }
@@ -38,12 +38,13 @@ int main() {
         int choice;
 
         
-    l:
         // add a background and center align the text.
         system("CLS");
-        Style::styleText(" Enter one of the shown operations below ");
-        cout << "[1] log in \n\n[2] sign up \n\n[3] exit \n\n";
+        Style::styleText(" Enter One of The Shown Operations Below ");
+        cout << "[1] Log in \n\n[2] Sign up \n\n[3] Exit \n\n";
 
+        cout << "Choice : ";
+    l:
         cin >> choice; 
         if (choice == 3) { // exit
             Database::write();
@@ -64,7 +65,7 @@ int main() {
             }
         }
         else { // invalid
-            cout << "invalid operation\n";
+            cout << "Invalid Operation, Please Enter a Vaild Choice : ";
             system("pause");
             goto l;
         }
@@ -118,11 +119,12 @@ int main() {
             else if (choice2 == 7) // display details
             {
                 News::displayAllNews("Date",1,"NoDetails");
-                cout << "\nenter number to see its details : \n";
-                int choice3; cin >> choice3;
+                cout << "\nEnter Number to See Its Details : ";
+                int choice3;
+                cin >> choice3;
                 if (choice3 > News::news.size() || choice3 <= 0)
                 {
-                    cout << "you have entered invalid number\n";
+                    cout << "You Have Entered Invalid Number\n";
                     continue;
                 }
                 News::news[choice3 - 1].displayPost();
@@ -135,7 +137,7 @@ int main() {
                 break;
             }
             else {
-                cout << "invalid operation , please select only one of the operations below \n";
+                cout << "Invalid Operation, Please Select Only One of The Operations Below \n";
                 system("pause");
                 continue;
             }
@@ -152,24 +154,7 @@ int main() {
             Style::styleText(" User's Main Menu ");
             if (choice3 == 1) // search news
             {
-                string key;
-                cout << "[Search for]-> ";
-                cin.ignore();
-                getline(cin, key);
-                int i = 1;
-                auto search_result = News::serachNews(key);
-                if (search_result.empty()) { 
-                    cout << "NO NEWS FOUND!\n";
-                }
-                else {
-                    cout << "\t--------------SEARCH RESULt-----------\n";
-                    for (auto news_post : search_result) {
-                        cout << '[' << i++ << ']' << endl;
-                        news_post.displayPost();
-                    }
-
-                }
-                system("pause");
+                User::search();
             }
             else if (choice3 == 2) // display latest news
             {
@@ -178,10 +163,10 @@ int main() {
             }
             else if (choice3 == 3) // search by category
             {
-                cout << "enter category you want to see its articles \n";
-                string cat;
-                cin >> cat;
-                News::displayNewsByCategoryName(cat);
+                cout << "Enter The Category You Want to See Its Articles : ";
+                string category;
+                cin >> category;
+                News::displayNewsByCategoryName(category);
             }
             else if (choice3 == 4) // rate news
             {
@@ -220,7 +205,7 @@ int main() {
                 break;
             }
             else { // invalid
-                cout << "invalid operation , please select only one of the operations below \n";
+                cout << "Invalid Operation, Please Select Only One of The Operations Below \n";
                 system("pause");
                 continue;
             }

@@ -57,9 +57,9 @@ void News::rateNews(vector<News>& newsRef, string userName) {
         cout << "Sorry There Aren't any News Right Now\n";
         return;
     }
-    cout << "Here Are All The articles :\n";
+    cout << "Here Are All The articles :\n\n";
     for (int i = 0; i < newsRef.size(); i++) {
-        cout << "[" << i + 1 << "]" << newsRef[i].title <<"\n";
+        cout << "[" << i + 1 << "] " << newsRef[i].title <<"\n";
     }
     int index;
     cout << "Enter The Article Number To Rate It ( Or Enter -1 to Skip) : ";
@@ -82,7 +82,8 @@ again:
     newsRef[index].allRate.erase(userName);
     newsRef[index].allRate.emplace(pair<string, int>(userName, userRating));
     newsRef[index].calculateAverageRate();
-    cout << "Your rating has been added successfully." << endl;
+    cout << "Your rating has been added successfully";
+    system("pause");
 }
 
 void News::displayNewsByCategoryName(string categoryName) {
@@ -99,16 +100,18 @@ void News::displayNewsByCategoryName(string categoryName) {
             break;
         }
     }
+    int counter = 1;
     if (is_found) {
-        cout << "\nhere are all the " << categoryName << " News : \n\n";
+        cout << "\nHere Are All The " << categoryName << " News : \n\n";
         for (auto it : news) {
             if (it.category == categoryName) {
+                cout << "[" << counter++ << "] ";
                 it.displayPost();
             }
         }
     }
     else {
-        cout << "sorry this category doesn't exist\n";
+        cout << "Sorry This Category Doesn't Exist\n";
     }
     system("pause");
 }
@@ -137,7 +140,7 @@ Date News::getDate() const {
 void News::displayAllNews(string sortedBy, int user, string details) {
     if (News::news.size() == 0)
     {
-        cout << "there are no articles right now \n";
+        cout << "There Are No Articles Right Now \n";
         system("pause");
     }
     if (sortedBy == "Date") {
@@ -146,7 +149,7 @@ void News::displayAllNews(string sortedBy, int user, string details) {
     else {
         sort(News::news.begin(), News::news.end(), News::sortNewsByRating);
     }
-    cout << "here are all the articles :\n\n";
+    cout << "Here Are All The Articles :\n\n";
     for (int i = 0; i < News::news.size(); i++)
     {
         if (user == 0) {
@@ -235,20 +238,20 @@ void News::displayPost() {
     cout << "Date: " << this->date << endl;
     cout << "Category: " << this->category << endl;
     cout << "Rate: " << this->rate << endl;
-    cout << "========================================================================================================================\n\n";
+    cout << "========================================================================================================================\n";
 }
 
 void News::displayCategories()
 {
     if (News::categories.size() == 0) {
-        cout << "There are No Categories Right Now \n";
+        cout << "\nThere are No Categories Right Now \n";
         system("pause");
         return;
     }
-    cout << "Here Are All The Categories :\n\n";
+    cout << "\nHere Are All The Categories :\n\n";
     for (int i = 0; i < News::categories.size(); i++)
     {
-        cout << "[" << i + 1 << "]" << News::categories[i] << "\n";
+        cout << "[" << i + 1 << "] " << News::categories[i] << "\n";
     }
 
 }
@@ -259,30 +262,31 @@ void News::updateMenu()
 {   
     if (News::news.size() == 0)
     {
-        cout << "there is no articles right now \n";
+        cout << "There Are No Articles Right Now \n";
         return;
     }
     News::displayAllNews("Date",1,"Details");
-    cout << "enter number to edit in information or -1 to skip\n";
+    cout << "Enter Number To Edit in Article Information or -1 to Skip : ";
     int num;
+again:
     cin >> num;
     if (num == -1) {
         return;
     }
     if (num > News::news.size() || num <= 0)
     {
-        cout << "you have entered invalid number \n";
-        return;
+        cout << "You Have Entered an Invalid Number, Please Enter a Valid One : ";
+        goto again;
     }
 
-    cout << "enter one of the operations below or -1 to skip\n";
-    cout << "[1]title\n";
-    cout << "[2]description\n";
-    cout << "[3]category\n";
-    cout << "[4]date\n";
+    cout << "Enter One of The Operations Below or -1 to Skip : \n\n";
+    cout << "[1] Title\n\n";
+    cout << "[2] Description\n\n";
+    cout << "[3] Category\n\n";
+    cout << "[4] Date\n\n";
     int choice;
-again:
-    cout << "Number : ";
+again1:
+    cout << "Choice : ";
     cin >> choice;
     if (choice == -1)
         return;
@@ -321,8 +325,8 @@ again:
         system("pause");
     }
     else {
-        cout << "you have entered invalid choice please try again\n";
-        goto again;
+        cout << "You Have Entered Invalid Choice Please Try Again\n";
+        goto again1;
     }
 
 }
@@ -344,7 +348,7 @@ again:
     cin >> choice;
     if (choice > News::categories.size() || choice <= 0)
     {
-        cout << "you have entered invalid number please enter a vaild one\n";
+        cout << "You Have Entered Invalid Number Please Enter a Vaild One\n";
         goto again;
     }
     this->category = News::categories[choice - 1];
@@ -382,11 +386,12 @@ string Comment::getBody() const {
 void News::commentMenu()
 {
     News::displayAllNews("Date", 0, "Details");
+    cout << "\n[1] Add Comment\n\n";
+    cout << "[2] Display Comments\n\n";
+    cout << "[3] Return \n\n";
 again:
-    cout << "[1] add comment\n";
-    cout << "[2] display comments\n";
-    cout << "[3] return \n";
     int choice;
+    cout << "\nChoice : ";
     cin >> choice;
     if (choice == 1)
         News::addComment();
@@ -400,15 +405,15 @@ again:
     }
     else
     {
-        cout << "you have entered invalid choice please try again\n";
+        cout << "You Have Entered Invalid Choice Please Try Again\n\n";
         goto again;
     }
 }
 
 void News::removeComment(int index)
 { 
-    cout << "if you want to remove one of your comments enter it's number or -1 to skip\n";
-    again:
+    cout << "If You Want to Remove One of Your Comments Enter It's Number or -1 to Skip : ";
+again:
     int commentNum;
     cin >> commentNum;
     if (commentNum == -1)
@@ -417,44 +422,46 @@ void News::removeComment(int index)
     }
     if (commentNum <= 0 || commentNum > News::news[index].comments.size())
     {
-        cout << "invalid number , please enter valid number or -1 to skip\n";
+        cout << "Invalid Number, Please Enter Valid Number or -1 to Skip : ";
         goto again;
     }
     if (News::news[index].comments[commentNum-1].getUserName() != User::currentUsername)
     {
-        cout << "you can't remove the comment, try again or enter -1 to skip \n";
+        cout << "You Can't Remove The Comment, Try Again or Enter -1 to Skip : ";
         goto again;
     }
     else
     {   
         News::news[index].comments.erase(News::news[index].comments.begin() + commentNum - 1);
+        cout << "Comment Removed Successfully\n";
     }
 }
 
 void News::addComment()
 {
-again:
     int choice;
-    cout << "enter the number of the article you want to add a comment to or -1 to skip\n";
+    cout << "Enter The Number of The Article You Want to Add a Comment to or -1 to Skip : ";
+again:
     cin >> choice;
     if (choice == -1)
         return;
     if (choice <= 0 || choice > News::news.size() || News::valid[choice] == false)
     {
-        cout << "you have entered an invalid number, please enter a valid one \n";
+        cout << "You Have Entered an Invalid Number, Please Enter a Valid One : ";
         goto again;
     }
     string comment;
+    cout << "Enter Your Comment : ";
     cin.ignore();
     getline(cin >> ws, comment);
     News::news[choice - 1].comments.push_back(Comment(User::currentUsername, comment));
-    cout << "comment added successfully\n";
+    cout << "Comment Added Successfully\n";
     system("pause");
 }
 void News::displayComments()
 {
+    cout << "Enter Number of an Article to Display Its Comments or -1 to Skip : ";
 again:
-    cout << "enter number of an article to display its comments  or -1 to skip\n";
     int num;
     cin >> num;
 
@@ -464,18 +471,18 @@ again:
     }
     if (News::news[num - 1].comments.size() == 0)
     {
-        cout << "there are no comments for this article\n";
+        cout << "There Are No Comments For This Article\n";
         system("pause");
         return;
     }
     if (num <= 0 || num > News::news.size() || News::valid[num] == false)
     {
-        cout << "you have entered invalid number , please enter valid number \n";
+        cout << "You Have Entered Invalid Number, Please Enter Valid Number \n";
         goto again;
     }
     for (int i = 0; i < News::news[num - 1].comments.size(); i++)
     {
-        cout << "[" << i + 1 << "]";
+        cout << "\n[" << i + 1 << "]";
         News::news[num - 1].comments[i].display();
     }
     News::removeComment(num - 1);
