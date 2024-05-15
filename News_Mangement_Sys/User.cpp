@@ -321,7 +321,7 @@ void User::emailInterestedUsers(string category)
             file << content;
             file.close();
 
-            system("powershell -ExecutionPolicy Bypass -File C:\\Users\\alyas\\source\\repos\\News-managment-system\\News_Mangement_Sys\\emailNotification.ps1");
+            system("powershell -ExecutionPolicy Bypass -File emailNotification.ps1");
 
             string newContent = "";
             string::size_type pos;
@@ -483,7 +483,7 @@ int User::ForgetPassword(string username) {
     file << content;
     file.close();
 
-    system("powershell -ExecutionPolicy Bypass -File C:\\Users\\alyas\\source\\repos\\News-managment-system\\News_Mangement_Sys\\ForgetPassword.ps1");
+    system("powershell -ExecutionPolicy Bypass -File ForgetPassword.ps1");
 
     string newContent = "";
     string::size_type pos;
