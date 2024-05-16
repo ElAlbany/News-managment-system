@@ -527,6 +527,9 @@ void News::displayComments()
 again:
     int num;
     cin >> num;
+    cin.fail();
+    cin.clear();
+    cin.ignore(256, '\n');
 
     if (num == -1)
     {
