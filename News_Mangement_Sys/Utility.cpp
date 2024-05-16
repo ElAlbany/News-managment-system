@@ -129,13 +129,7 @@ vector<string> Utility::getKeyWords(string key) {
 	vector<string> result;
 	string s;
 	for (auto c : key) {
-		if (isalpha(c)) { // if it is an alphabet char
-			s.push_back(c);
-		}
-		else {
-			if (!s.empty())result.push_back(s);
-			s.clear();
-		}
+		s.push_back(c);
 	}
 	if (!s.empty()) result.push_back(s);
 	return result;

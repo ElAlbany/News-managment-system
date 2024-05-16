@@ -49,19 +49,11 @@ void News::calculateAverageRate() {
         totalRatings += it.second;
     }
     this->rate = (float)totalRatings / numRatings;
-    for (int i = 0; i < news.size(); i++) {
-        if (news[i].getTitle() == this->title) {
-            news[i].rate = this->rate;
-            if (news[i].getRate() != 0 && news[i].getRate() < 2) {
-                valid.erase(valid.begin() + i);
-            }
-        }
-    }
 }
 
 void News::rateNews(vector<News>& newsRef, string userName) {
 
-    if (news.empty()) {
+    if (newsRef.empty()) {
         cout << "Sorry There Aren't any News Right Now\n";
         return;
     }
@@ -90,18 +82,29 @@ again:
     newsRef[index].allRate.erase(userName);
     newsRef[index].allRate.emplace(pair<string, int>(userName, userRating));
     newsRef[index].calculateAverageRate();
+    for (int i = 0; i < news.size(); i++) {
+        if (news[i].getTitle().compare(newsRef[index].getTitle()) == 0) {
+            news[i].allRate.erase(userName);
+            news[i].allRate.emplace(pair<string, int>(userName, userRating));
+            news[i].calculateAverageRate();
+            newsRef[index].rate = news[i].rate;
+            if (newsRef[index].rate != 0 && newsRef[index].rate < 2) {
+                newsRef.erase(newsRef.begin() + index);
+            }
+        }
+    }
     cout << "Your rating has been added successfully";
     system("pause");
 }
 
 void News::displayNewsByCategoryName(string categoryName) {
-    if (news.empty()) {
+    if (valid.empty()) {
         cout << "Sorry There Aren't any Articles Right Now\n";
         return;
     }
     bool is_found = false;
     transform(categoryName.begin(), categoryName.end(), categoryName.begin(), ::tolower);
-    for (auto it : news) {
+    for (auto it : valid) {
         transform(it.category.begin(), it.category.end(), it.category.begin(), ::tolower);
         if (it.category == categoryName) {
             is_found = true;
@@ -111,8 +114,8 @@ void News::displayNewsByCategoryName(string categoryName) {
     int counter = 1;
     if (is_found) {
         cout << "\nHere Are All The " << categoryName << " News : \n\n";
-        for (auto it : news) {
-            if (it.category == categoryName) {
+        for (auto it : valid) {
+            if (Utility::toLower(it.category) == Utility::toLower(categoryName)) {
                 cout << "[" << counter++ << "] ";
                 it.displayPost();
             }
@@ -191,7 +194,7 @@ void News::displayAllNews(string sortedBy, int user, string details) {
 
 vector<News> News::serachNews(string description_key) { // search by description and title
 
-    int N = news.size();
+    int N = valid.size();
     vector<string> keywords = Utility::getKeyWords(description_key); // get all keywords in the search text
     for (auto& word : keywords) {
         word = Utility::toLower(word);
@@ -200,16 +203,23 @@ vector<News> News::serachNews(string description_key) { // search by description
     vector<pair<News, int>> searching_result;
     vector<bool>taken(N + 7, 0);
     unordered_map<int, int> loc;
+    int year, month, day;
 
     for (int i = 0; i < N; i++) {
 
-        auto news_post = news[i];
+        auto news_post = valid[i];
         string lowerDescription = Utility::toLower(news_post.getDescription());
         string lowerTitle = Utility::toLower(news_post.getTitle());
+        string date = news_post.getDate().fullDate('/');
+        Utility::getDateOrder(date,year,month,day);
+        string reverseDate = Utility::toString(day) + '/' + Utility::toString(month) + '/' + Utility::toString(year);;
         for (auto word : keywords) {
             if (lowerDescription.find(word) != string::npos || // search in title and description
                 lowerTitle.find(word) != string::npos ||
-                lowerTitle == word) {
+                date.find(word) != string::npos ||
+                date.compare(word) == 0 || 
+                reverseDate.compare(word) == 0 ||
+                reverseDate.find(word) != string::npos){
 
                 if (!taken[i]) {  // if taken i don't need to take it again (no dublicate posts)
                     loc[i] = searching_result.size(); // saving the index of the current pushed post to be used later
@@ -248,7 +258,7 @@ void News::displayPost() {
     cout << "Date: " << this->date << endl;
     cout << "Category: " << this->category << endl;
     cout << "Rate: " << this->rate << endl;
-    cout << "========================================================================================================================\n";
+    cout << "======================================================================================================================\n";
 }
 
 void News::displayCategories()
@@ -430,19 +440,24 @@ again:
     {
         return;
     }
-    if (commentNum <= 0 || commentNum > News::news[index].comments.size())
+    if (commentNum <= 0 || commentNum > News::valid[index].comments.size())
     {
         cout << "Invalid Number, Please Enter Valid Number or -1 to Skip : ";
         goto again;
     }
-    if (News::news[index].comments[commentNum-1].getUserName() != User::currentUsername)
+    if (News::valid[index].comments[commentNum-1].getUserName() != User::currentUsername)
     {
         cout << "You Can't Remove The Comment, Try Again or Enter -1 to Skip : ";
         goto again;
     }
     else
     {   
-        News::news[index].comments.erase(News::news[index].comments.begin() + commentNum - 1);
+        News::valid[index].comments.erase(News::valid[index].comments.begin() + commentNum - 1);
+        for (int i = 0; i < News::news.size(); i++) {
+            if (News::news[i].getTitle().compare(News::valid[index].getTitle()) == 0) {
+                News::news[i].comments.erase(News::news[i].comments.begin() + commentNum - 1);
+            }
+        }
         cout << "Comment Removed Successfully\n";
     }
 }
@@ -464,7 +479,12 @@ again:
     cout << "Enter Your Comment : ";
     cin.ignore();
     getline(cin >> ws, comment);
-    News::news[choice - 1].comments.push_back(Comment(User::currentUsername, comment));
+    News::valid[choice - 1].comments.push_back(Comment(User::currentUsername, comment));
+    for (int i = 0; i < News::news.size(); i++) {
+        if (News::valid[choice - 1].getTitle().compare(News::news[i].getTitle()) == 0) {
+            News::news[i].comments.push_back(Comment(User::currentUsername, comment));
+        }
+    }
     cout << "Comment Added Successfully\n";
     system("pause");
 }
@@ -479,7 +499,7 @@ again:
     {
         return;
     }
-    if (News::news[num - 1].comments.size() == 0)
+    if (News::valid[num - 1].comments.size() == 0)
     {
         cout << "There Are No Comments For This Article\n";
         system("pause");
@@ -490,10 +510,10 @@ again:
         cout << "You Have Entered Invalid Number, Please Enter Valid Number \n";
         goto again;
     }
-    for (int i = 0; i < News::news[num - 1].comments.size(); i++)
+    for (int i = 0; i < News::valid[num - 1].comments.size(); i++)
     {
         cout << "\n[" << i + 1 << "]";
-        News::news[num - 1].comments[i].display();
+        News::valid[num - 1].comments[i].display();
     }
     News::removeComment(num - 1);
     system("pause");

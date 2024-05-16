@@ -1,38 +1,3 @@
-first
-fdshtrjrwscvsg
-2024/5/3
-NO_CATEGORY_SPECIFIED
-3
-0
-0
-omoasasaos
-soirsr
-2024/3/13
-sport
-0
-0
-0
-asonasnonas
-asasjasasjas
-2024/3/3
-politics
-0
-0
-0
-asknasnnasnas
-snasaonssao
-2024/2/1
-health
-0
-0
-0
-asnoasnoasonasnoasoasnasnoasno
-saisiasnas
-2024/1/11
-politics
-0
-0
-0
 How A New Documentary Captures The Complexity Of Being A Child Of Immigrants
 In "Mija," director Isabel Castro combined music documentaries with the style of "Euphoria" and "Clueless" to tell a more nuanced immigration story.
 2022/9/22
@@ -47,10 +12,10 @@ TECH
 0
 0
 0
-Golden Globes Returning To NBC In January After Year Off-Air
-For the past 18 months, Hollywood has effectively boycotted the Globes after reports that the HFPAs 87 members of non-American journalists included no Black members.
+'Reboot' Is A Clever And Not Too Navel-Gazey Look Inside TV Reboots
+Starring Keegan-Michael Key, Judy Greer and Johnny Knoxville, the Hulu show follows the revival of a fictional early 2000s sitcom.
 2022/9/20
-ENTERTAINMENT
+CULTURE & ARTS
 0
 0
 0
@@ -61,10 +26,17 @@ SPORTS
 0
 0
 0
-'Reboot' Is A Clever And Not Too Navel-Gazey Look Inside TV Reboots
-Starring Keegan-Michael Key, Judy Greer and Johnny Knoxville, the Hulu show follows the revival of a fictional early 2000s sitcom.
+Golden Globes Returning To NBC In January After Year Off-Air
+For the past 18 months, Hollywood has effectively boycotted the Globes after reports that the HFPAs 87 members of non-American journalists included no Black members.
 2022/9/20
-CULTURE & ARTS
+ENTERTAINMENT
+0
+0
+0
+Biden Says U.S. Forces Would Defend Taiwan If China Invaded
+President issues vow as tensions with China rise.
+2022/9/19
+POLITICS
 0
 0
 0
@@ -82,10 +54,10 @@ SPORTS
 0
 0
 0
-Biden Says U.S. Forces Would Defend Taiwan If China Invaded
-President issues vow as tensions with China rise.
-2022/9/19
-POLITICS
+James Cameron Says He 'Clashed' With Studio Before 'Avatar' Release
+The "Avatar" director said aspects of his 2009 movie are "still competitive with everything thats out there these days."
+2022/9/18
+ENTERTAINMENT
 0
 0
 0
@@ -96,16 +68,16 @@ POLITICS
 0
 0
 0
-James Cameron Says He 'Clashed' With Studio Before 'Avatar' Release
-The "Avatar" director said aspects of his 2009 movie are "still competitive with everything thats out there these days."
-2022/9/18
-ENTERTAINMENT
-0
-0
-0
 First Public Global Database Of Fossil Fuels Launches
 On Monday, the worlds first public database of fossil fuel production, reserves and emissions launches.
 2022/9/18
+ENVIRONMENT
+0
+0
+0
+Puerto Rico Braces For Landslides And Severe Flooding As Tropical Storm Fiona Approaches
+Puerto Rico was under a hurricane watch Saturday as the storm barreled towards the U.S. territory.
+2022/9/17
 ENVIRONMENT
 0
 0
@@ -124,20 +96,6 @@ ENVIRONMENT
 0
 0
 0
-Puerto Rico Braces For Landslides And Severe Flooding As Tropical Storm Fiona Approaches
-Puerto Rico was under a hurricane watch Saturday as the storm barreled towards the U.S. territory.
-2022/9/17
-ENVIRONMENT
-0
-0
-0
-Bill To Help Afghans Who Escaped Taliban Faces Long Odds In The Senate
-Republican outrage over the shoddy U.S. withdrawal from Afghanistan hasn't spurred support for resettling refugees.
-2022/9/16
-POLITICS
-0
-0
-0
 Amazon Greenlights 'Blade Runner 2099' Limited Series Produced By Ridley Scott
 The director of the original 1982 film joins a writer of the 2017 sequel for the newest installment in the sci-fi franchise.
 2022/9/16
@@ -149,6 +107,13 @@ ENTERTAINMENT
 The Phantom of the Opera" Broadways longest-running show " is scheduled to close in February 2023, a victim of post-pandemic softening in theater attendance in New York.
 2022/9/16
 ENTERTAINMENT
+0
+0
+0
+Bill To Help Afghans Who Escaped Taliban Faces Long Odds In The Senate
+Republican outrage over the shoddy U.S. withdrawal from Afghanistan hasn't spurred support for resettling refugees.
+2022/9/16
+POLITICS
 0
 0
 0
@@ -187,6 +152,13 @@ CULTURE & ARTS
 0
 0
 0
+Cardi B Donates $100,000 To Her Old Middle School In The Bronx
+The Grammy-winning rapper surprised star-struck children at the Alexander Macomb School in Morris Heights to make the announcement.
+2022/9/14
+ENTERTAINMENT
+0
+0
+0
 Emmy Awards Viewership Dips To A Record-Low As Its Audience Continues To Drop
 The television awards ceremony lost roughly 1.5 million viewers compared to its 2021 program.
 2022/9/14
@@ -208,13 +180,6 @@ TECH
 0
 0
 0
-Cardi B Donates $100,000 To Her Old Middle School In The Bronx
-The Grammy-winning rapper surprised star-struck children at the Alexander Macomb School in Morris Heights to make the announcement.
-2022/9/14
-ENTERTAINMENT
-0
-0
-0
 Jean-Luc Godard, Pioneering French Filmmaker, Dies
 The director was best known for the groundbreaking movie "Breathless."
 2022/9/13
@@ -225,6 +190,13 @@ ENTERTAINMENT
 Joe Biden Urges National Unity In Speech On Renewed Cancer Moonshot
 "Cancer does not discriminate red and blue," the president said Monday. "Beating cancer is something we can do together."
 2022/9/13
+POLITICS
+0
+0
+0
+In A Nod To JFK, Joe Biden Pushing 'Moonshot' To Fight Cancer
+Biden plans to draw attention to a new federally backed study that seeks to validate using blood tests to screen against multiple cancers.
+2022/9/12
 POLITICS
 0
 0
@@ -243,15 +215,8 @@ SPORTS
 0
 0
 0
-How Ani Liu Is Brilliantly Disguising Her Art As Science
-The research-based artist has found dynamic ways to confront conversations about female empowerment, motherhood and labor in her artwork.
-2022/9/12
-CULTURE & ARTS
-0
-0
-0
-In A Nod To JFK, Joe Biden Pushing 'Moonshot' To Fight Cancer
-Biden plans to draw attention to a new federally backed study that seeks to validate using blood tests to screen against multiple cancers.
+Sen. Tim Scott Downplays Electability Concerns Over Struggling Senate GOP Candidates
+"Who we have on the field is who we're gonna play, Scott told "Fox News Sunday."
 2022/9/12
 POLITICS
 0
@@ -264,16 +229,9 @@ POLITICS
 0
 0
 0
-Sen. Tim Scott Downplays Electability Concerns Over Struggling Senate GOP Candidates
-"Who we have on the field is who we're gonna play, Scott told "Fox News Sunday."
+How Ani Liu Is Brilliantly Disguising Her Art As Science
+The research-based artist has found dynamic ways to confront conversations about female empowerment, motherhood and labor in her artwork.
 2022/9/12
-POLITICS
-0
-0
-0
-'Sidney' Tackles The Not-So-Comfortable Conversations About A Black Cinema Icon
-It's not about sensationalizing or even tarnishing the reputation of Sidney Poitier. Rather, the new documentary honors his humanity " every facet of it.
-2022/9/11
 CULTURE & ARTS
 0
 0
@@ -292,6 +250,20 @@ SPORTS
 0
 0
 0
+'Sidney' Tackles The Not-So-Comfortable Conversations About A Black Cinema Icon
+It's not about sensationalizing or even tarnishing the reputation of Sidney Poitier. Rather, the new documentary honors his humanity " every facet of it.
+2022/9/11
+CULTURE & ARTS
+0
+0
+0
+Severe Winds Batter Southern California As Heat Wave Breaks
+After a 10-day heat wave that nearly overwhelmed the electrical grid, Southern California got cooler weather but also a ferocious tropical storm.
+2022/9/10
+ENVIRONMENT
+0
+0
+0
 US, Trump Team Propose Names For Arbiter In Mar-A-Lago Probe
 The Justice Department proposed two retired judges for the role. Trumps team proposed a retired judge and a lawyer.
 2022/9/10
@@ -306,20 +278,6 @@ ENTERTAINMENT
 0
 0
 0
-Severe Winds Batter Southern California As Heat Wave Breaks
-After a 10-day heat wave that nearly overwhelmed the electrical grid, Southern California got cooler weather but also a ferocious tropical storm.
-2022/9/10
-ENVIRONMENT
-0
-0
-0
-Ex-Employee Testifies He Now Doubts R. Kelly Abuse Denials
-Derrell McDavid's testimony could be a major blow to the R&B singer's hope of acquittal.
-2022/9/9
-ENTERTAINMENT
-0
-0
-0
 JoJo Siwa To Receive Prestigious GLSEN Honor For Her LGBTQ Advocacy Work
 The 19-year-old singer, dancer and YouTube icon will receive the 2022 Gamechanger Award for her focus on anti-bullying efforts.
 2022/9/9
@@ -329,6 +287,13 @@ ENTERTAINMENT
 0
 Watch Harry Styles Pay Tribute To Queen Elizabeth II At NYC Concert
 Please join me in a round of applause for 70 years of service, the pop star told the crowd after he paused his Madison Square Garden performance.
+2022/9/9
+ENTERTAINMENT
+0
+0
+0
+Ex-Employee Testifies He Now Doubts R. Kelly Abuse Denials
+Derrell McDavid's testimony could be a major blow to the R&B singer's hope of acquittal.
 2022/9/9
 ENTERTAINMENT
 0
@@ -348,15 +313,15 @@ ENTERTAINMENT
 0
 0
 0
-Portland Residents With Disabilities Sue Over City's Blocked Sidewalks
-The lawsuit says allowing homeless people's tents to block city sidewalks makes it difficult for people using wheelchairs, walkers or canes to use them.
+Politician's DNA Connected To Las Vegas Journalists Murder, Police Say
+Clark County Public Administrator Robert Telles was arrested in the fatal stabbing of Jeff German, who had been investigating his office.
 2022/9/8
 POLITICS
 0
 0
 0
-Politician's DNA Connected To Las Vegas Journalists Murder, Police Say
-Clark County Public Administrator Robert Telles was arrested in the fatal stabbing of Jeff German, who had been investigating his office.
+Portland Residents With Disabilities Sue Over City's Blocked Sidewalks
+The lawsuit says allowing homeless people's tents to block city sidewalks makes it difficult for people using wheelchairs, walkers or canes to use them.
 2022/9/8
 POLITICS
 0
@@ -369,10 +334,10 @@ EDUCATION
 0
 0
 0
-The Unemployment Insurance System Is Not Ready For The Next Recession
-States are cutting back, and Congress is unlikely to step in even after the pandemic exposed the unemployment system's shortcomings.
+Muslims Only Make Up 1% Of Characters On TV, Study Finds
+In most of the 200 scripted shows that researchers analyzed, Muslim characters were typically violent, dehumanized or disparaged " if they existed at all.
 2022/9/7
-POLITICS
+ENTERTAINMENT
 0
 0
 0
@@ -383,10 +348,10 @@ SPORTS
 0
 0
 0
-Muslims Only Make Up 1% Of Characters On TV, Study Finds
-In most of the 200 scripted shows that researchers analyzed, Muslim characters were typically violent, dehumanized or disparaged " if they existed at all.
+The Unemployment Insurance System Is Not Ready For The Next Recession
+States are cutting back, and Congress is unlikely to step in even after the pandemic exposed the unemployment system's shortcomings.
 2022/9/7
-ENTERTAINMENT
+POLITICS
 0
 0
 0
@@ -394,13 +359,6 @@ Kody Clemens Strikes Out MVP Shohei Ohtani, Trails Dad Roger By 4,671 Ks
 The Detroit Tigers' rookie utility player got pressed into relief-pitching duty in a 10-0 loss to the Angels.
 2022/9/6
 SPORTS
-0
-0
-0
-Harry Styles Say He Feels Like He Has 'No Idea What I'm Doing' When Acting
-The "As It Was" singer said he also doesn't see many parallels between music and acting.
-2022/9/5
-ENTERTAINMENT
 0
 0
 0
@@ -415,6 +373,13 @@ Uvalde Fourth Graders Waited An Hour With Wounded Teacher
 When Elsa Avila looks at the scar that runs down her torso, she can't help remember May 24, when a gunman stormed her fourth grade wing at Robb Elementary in Uvalde, Texas, killing 19 children and two teachers and leaving her and others wounded.
 2022/9/5
 POLITICS
+0
+0
+0
+Harry Styles Say He Feels Like He Has 'No Idea What I'm Doing' When Acting
+The "As It Was" singer said he also doesn't see many parallels between music and acting.
+2022/9/5
+ENTERTAINMENT
 0
 0
 0
@@ -460,13 +425,6 @@ ENVIRONMENT
 0
 0
 0
-Fox & Friends Host Questions Why Trump Kept Classified Documents At Mar-A-Lago
-"These are the biggest secrets in the world," Steve Doocy said in response to the ex-president keeping top secret documents at his private residence.
-2022/8/31
-POLITICS
-0
-0
-0
 Republicans Ignore Trump's Hoarding Of Classified Documents
 The GOP is continuing to contort itself in defense of Donald Trump, despite new information relating to classified documents held at his Florida estate.
 2022/8/31
@@ -495,10 +453,10 @@ CULTURE & ARTS
 0
 0
 0
-Secret Service Official And Ex-Trump Aide Tony Ornato Retires Amid Jan. 6 Probe
-HBO will release a six-part follow up to the series beginning in October about the infamous sex cult led by Keith Raniere.
-2022/8/30
-ENTERTAINMENT
+Fox & Friends Host Questions Why Trump Kept Classified Documents At Mar-A-Lago
+"These are the biggest secrets in the world," Steve Doocy said in response to the ex-president keeping top secret documents at his private residence.
+2022/8/31
+POLITICS
 0
 0
 0
@@ -509,10 +467,45 @@ POLITICS
 0
 0
 0
+Secret Service Official And Ex-Trump Aide Tony Ornato Retires Amid Jan. 6 Probe
+HBO will release a six-part follow up to the series beginning in October about the infamous sex cult led by Keith Raniere.
+2022/8/30
+ENTERTAINMENT
+0
+0
+0
 'Safety Is Always First': NASA Reschedules Artemis Moon Mission To Saturday
 We're going to play all nine innings here, the Artemis mission manager said after the first launch was scrubbed.
 2022/8/30
 SCIENCE
+0
+0
+0
+House Members Are Using A Controversial Tool To Keep Campaigning. Has It Gone Too Far?
+House members are only supposed to use proxy voting when they cannot be present due to COVID-19. But that's not stopping representatives from voting remotely on the campaign trail.
+2022/8/29
+POLITICS
+0
+0
+0
+Johnny Depp Makes Surprise Appearance As Moon Person At MTV VMAs
+The actor made his first on-camera appearance since the defamation verdict against ex-wife Amber Heard in June.
+2022/8/29
+ENTERTAINMENT
+0
+0
+0
+And The Award For Most Enthusiastic VMAs Guest Goes To Taylor Swift
+The singer channeled her inner Barb, danced along to Lizzo and fangirled over Blackpink.
+2022/8/29
+ENTERTAINMENT
+0
+0
+0
+Yung Gravy Brings Addison Rae's Mom As His VMAs Date, Calls Her A Certain 4-Letter Word
+The TikTok star's mom Sheri Easterling and the Betty rapper made their romance public " but her ex, Monty Lopez, is not happy about it.
+2022/8/29
+ENTERTAINMENT
 0
 0
 0
@@ -530,43 +523,15 @@ ENTERTAINMENT
 0
 0
 0
-And The Award For Most Enthusiastic VMAs Guest Goes To Taylor Swift
-The singer channeled her inner Barb, danced along to Lizzo and fangirled over Blackpink.
-2022/8/29
-ENTERTAINMENT
-0
-0
-0
-Johnny Depp Makes Surprise Appearance As Moon Person At MTV VMAs
-The actor made his first on-camera appearance since the defamation verdict against ex-wife Amber Heard in June.
-2022/8/29
-ENTERTAINMENT
-0
-0
-0
-House Members Are Using A Controversial Tool To Keep Campaigning. Has It Gone Too Far?
-House members are only supposed to use proxy voting when they cannot be present due to COVID-19. But that's not stopping representatives from voting remotely on the campaign trail.
-2022/8/29
-POLITICS
-0
-0
-0
-Yung Gravy Brings Addison Rae's Mom As His VMAs Date, Calls Her A Certain 4-Letter Word
-The TikTok star's mom Sheri Easterling and the Betty rapper made their romance public " but her ex, Monty Lopez, is not happy about it.
-2022/8/29
+2022 MTV VMAs Red Carpet: All The Wildest Looks You Need To See
+Celebrities showed up and showed out at the awards Sunday night in New Jersey.
+2022/8/28
 ENTERTAINMENT
 0
 0
 0
 Arcade Fire Singer Win Butler Accused Of Sexual Misconduct By Several People: Report
 Butler told Pitchfork he had "consensual relationships" outside his marriage, but he disputed details of the allegations.
-2022/8/28
-ENTERTAINMENT
-0
-0
-0
-2022 MTV VMAs Red Carpet: All The Wildest Looks You Need To See
-Celebrities showed up and showed out at the awards Sunday night in New Jersey.
 2022/8/28
 ENTERTAINMENT
 0
@@ -593,15 +558,15 @@ POLITICS
 0
 0
 0
-Jared Kushner Blasts 'Nasty Troll' Chrissy Teigen For Attacks On Ivanka
-Who's nasty??
+Trump Attorneys File Do-Over Motion Regarding Mar-A-Lago Search
+The former president's legal team followed a judge's order to polish a filing about the FBI seizure of government documents from his estate.
 2022/8/27
 POLITICS
 0
 0
 0
-Trump Attorneys File Do-Over Motion Regarding Mar-A-Lago Search
-The former president's legal team followed a judge's order to polish a filing about the FBI seizure of government documents from his estate.
+Jared Kushner Blasts 'Nasty Troll' Chrissy Teigen For Attacks On Ivanka
+Who's nasty??
 2022/8/27
 POLITICS
 0
@@ -628,13 +593,6 @@ ENTERTAINMENT
 0
 0
 0
-Judge Temporarily Blocks North Dakota Trigger Law Banning Abortion
-The ban was set to take effect Friday, about two months after the Supreme Court overturned Roe v. Wade.
-2022/8/25
-POLITICS
-0
-0
-0
 Gov. Brian Kemp Fights Subpoena In Georgia Election Probe
 The judge is presiding over a special grand jury that ??s investigating possible illegal attempts to influence the 2020 election in Georgia.
 2022/8/25
@@ -642,16 +600,9 @@ POLITICS
 0
 0
 0
-Markwayne Mullin Wins Oklahoma Republican Primary To Succeed GOP Sen. Jim Inhofe
-The five-term House member is known as a staunch President Biden critic and loyal Donald Trump supporter.
-2022/8/24
-POLITICS
-0
-0
-0
-Dan Goldman, Narrowly Leading In New York Democratic Primary, Declares Victory
-But the congressional race has not been officially called, and rival Yuh-Line Niou declined to concede.
-2022/8/24
+Judge Temporarily Blocks North Dakota Trigger Law Banning Abortion
+The ban was set to take effect Friday, about two months after the Supreme Court overturned Roe v. Wade.
+2022/8/25
 POLITICS
 0
 0
@@ -672,6 +623,20 @@ POLITICS
 0
 Charlie Crist Wins Chance To Take On Florida Gov. Ron DeSantis And His $132 Million
 Crist is making his second run for governor as a Democrat after having served one term in the job as a Republican more than a decade ago.
+2022/8/24
+POLITICS
+0
+0
+0
+Markwayne Mullin Wins Oklahoma Republican Primary To Succeed GOP Sen. Jim Inhofe
+The five-term House member is known as a staunch President Biden critic and loyal Donald Trump supporter.
+2022/8/24
+POLITICS
+0
+0
+0
+Dan Goldman, Narrowly Leading In New York Democratic Primary, Declares Victory
+But the congressional race has not been officially called, and rival Yuh-Line Niou declined to concede.
 2022/8/24
 POLITICS
 0
@@ -698,13 +663,6 @@ POLITICS
 0
 0
 0
-Rusty Bowers Rips 'Fascism' Of GOP And Trump's Strong-Arm Tactics To Trash Vote
-"I haven't been hanged yet," the Arizona GOP leader told The Guardian in a powerful interview. "But holy moly, this is just crazy. The place has lost its mind.
-2022/8/23
-POLITICS
-0
-0
-0
 Jerry Allison, Buddy Holly's Drummer, Dead At 82
 The Rock & Roll Hall of Fame member also co-wrote classic songs like That  Be the Day and Peggy Sue.
 2022/8/23
@@ -712,9 +670,9 @@ ENTERTAINMENT
 0
 0
 0
-This Is The Bittersweet Part Of Democrats' Sweet Legislative Victory
-Democrats were on the cusp of transforming paid leave, child care and home care. Now they're figuring out where they came up short " and when they might get the opportunity to try again.
-2022/8/22
+Rusty Bowers Rips 'Fascism' Of GOP And Trump's Strong-Arm Tactics To Trash Vote
+"I haven't been hanged yet," the Arizona GOP leader told The Guardian in a powerful interview. "But holy moly, this is just crazy. The place has lost its mind.
+2022/8/23
 POLITICS
 0
 0
@@ -733,10 +691,10 @@ POLITICS
 0
 0
 0
-Dragon Ball Super Bests Beast At Box Office With $20.1M
-Idris Elba may go head-to-head with a lion in Beast, but the action flick was no match for the latest Dragon Ball movie.
-2022/8/21
-ENTERTAINMENT
+This Is The Bittersweet Part Of Democrats' Sweet Legislative Victory
+Democrats were on the cusp of transforming paid leave, child care and home care. Now they're figuring out where they came up short " and when they might get the opportunity to try again.
+2022/8/22
+POLITICS
 0
 0
 0
@@ -747,17 +705,17 @@ EDUCATION
 0
 0
 0
-Leon Vitali, Stanley Kubrick's Right-Hand Man, Dies At 74
-Leon Vitali, the Barry Lyndon actor who became one of Stanley Kubrick's closest associates, has died.
+Dragon Ball Super Bests Beast At Box Office With $20.1M
+Idris Elba may go head-to-head with a lion in Beast, but the action flick was no match for the latest Dragon Ball movie.
 2022/8/21
 ENTERTAINMENT
 0
 0
 0
-Mike Pence Says He Did Not Take Classified Documents When He Left Office
-The former vice president made the disclosure after FBI agents seized classified and top secret documents from Donald Trump's Florida home.
-2022/8/20
-POLITICS
+Leon Vitali, Stanley Kubrick's Right-Hand Man, Dies At 74
+Leon Vitali, the Barry Lyndon actor who became one of Stanley Kubrick's closest associates, has died.
+2022/8/21
+ENTERTAINMENT
 0
 0
 0
@@ -768,10 +726,17 @@ POLITICS
 0
 0
 0
-Vanessa Bryant Says Kobe Bryant Crash Photos Turned Grief To Horror
-Bryant's widow testified that she "lives in fear every day" that the photos of her husband's death will pop up on social media.
+Mike Pence Says He Did Not Take Classified Documents When He Left Office
+The former vice president made the disclosure after FBI agents seized classified and top secret documents from Donald Trump's Florida home.
+2022/8/20
+POLITICS
+0
+0
+0
+Rapper Young Thug Again Denied Bond In Racketeering And Gang Case
+Young Thug, along with rapper Gunna, are one of dozens of men charged in a Georgia racketeering and gang case.
 2022/8/19
-SPORTS
+ENTERTAINMENT
 0
 0
 0
@@ -782,10 +747,10 @@ POLITICS
 0
 0
 0
-Rapper Young Thug Again Denied Bond In Racketeering And Gang Case
-Young Thug, along with rapper Gunna, are one of dozens of men charged in a Georgia racketeering and gang case.
+Vanessa Bryant Says Kobe Bryant Crash Photos Turned Grief To Horror
+Bryant's widow testified that she "lives in fear every day" that the photos of her husband's death will pop up on social media.
 2022/8/19
-ENTERTAINMENT
+SPORTS
 0
 0
 0
@@ -803,6 +768,13 @@ POLITICS
 0
 0
 0
+"Benedict Cumberbatch receives star on Hollywood Walk of Fame, actor urges support for war-struck Ukraine"
+Benedict Cumberbatch was honoured with a star on the Hollywood Walk of Fame on Monday and the "Power of the Dog" star paid homage to his sister Tracy Peacock, who died of cancer last year. One of the most prominent actors today, Cumberbatch also voiced support for the people of the war-struck Ukraine on the occasion.
+2022/3/5
+POLITICS
+0
+0
+0
 "US warns Ukraine of full-scale Russian invasion in 48 hours"
 WASHINGTON: President Joe Biden's administration has informed Ukrainian President Volodymyr Zelenskyy of intelligence assessing that Russia is preparing to conduct a full-scale invasion of the neighbouring country within the next 48 hours, US intelligence officials have revealed to Newsweek."The...
 2022/3/5
@@ -810,8 +782,8 @@ POLITICS
 0
 0
 0
-"Benedict Cumberbatch receives star on Hollywood Walk of Fame, actor urges support for war-struck Ukraine"
-Benedict Cumberbatch was honoured with a star on the Hollywood Walk of Fame on Monday and the "Power of the Dog" star paid homage to his sister Tracy Peacock, who died of cancer last year. One of the most prominent actors today, Cumberbatch also voiced support for the people of the war-struck Ukraine on the occasion.
+"'Ukraine, you're not alone': Countries speak out at UN General Assembly"
+Diplomats from dozens of countries took the floor at the UN on Wednesday to deplore Russia's actions toward Ukraine and make eleventh hour pleas for diplomacy as fears of a new war in Europe grew.
 2022/3/5
 POLITICS
 0
@@ -866,20 +838,6 @@ POLITICS
 0
 0
 0
-"'Ukraine, you're not alone': Countries speak out at UN General Assembly"
-Diplomats from dozens of countries took the floor at the UN on Wednesday to deplore Russia's actions toward Ukraine and make eleventh hour pleas for diplomacy as fears of a new war in Europe grew.
-2022/3/5
-POLITICS
-0
-0
-0
-"Ukraine wants its foreign debt written off"
-Head of Ukraine  Accounts Chamber urged international financial organizations to scrap the country  debts amid alleged destruction Read Full Article at RT.com
-2022/3/3
-POLITICS
-0
-0
-0
 "Indian student crosses Ukraine border, waits for flight home"
 Shaken and anxious, Rahul Gupta recalls his experience over a WhatsApp call from Bucharest
 2022/3/3
@@ -908,6 +866,20 @@ POLITICS
 0
 0
 0
+"Ukraine wants its foreign debt written off"
+Head of Ukraine  Accounts Chamber urged international financial organizations to scrap the country  debts amid alleged destruction Read Full Article at RT.com
+2022/3/3
+POLITICS
+0
+0
+0
+"Farhan Akhtar reacts to Indian student's death during Russia-Ukraine war: 'Feel terrible'"
+Farhan Akhtar hoped that more students stranded in Ukraine may reach their homeland as soon as possible
+2022/3/2
+POLITICS
+0
+0
+0
 "Russians in Canada protest in support of Ukraine"
 Svetlana Koshkareva has burned her Russian passport. "It's the best visual message for everyone who is against the government, but still proud to be a Russian citizen," she said in a telephone interview Monday.
 2022/3/2
@@ -922,9 +894,9 @@ POLITICS
 0
 0
 0
-"Farhan Akhtar reacts to Indian student's death during Russia-Ukraine war: 'Feel terrible'"
-Farhan Akhtar hoped that more students stranded in Ukraine may reach their homeland as soon as possible
-2022/3/2
+"Billionaire investor Carl Icahn says Russia's invasion of Ukraine isn't as big a deal for markets as inflation"
+"This market possibly is overreacting to what's going on in Ukraine, but I don't think that's the problem we have," Icahn told Fox Business.
+2022/3/1
 POLITICS
 0
 0
@@ -936,8 +908,15 @@ POLITICS
 0
 0
 0
-"Billionaire investor Carl Icahn says Russia's invasion of Ukraine isn't as big a deal for markets as inflation"
-"This market possibly is overreacting to what's going on in Ukraine, but I don't think that's the problem we have," Icahn told Fox Business.
+"Independent Belarusian Filmmakers Condemn Russian Attack on Ukraine"
+A group of Belarusian filmmakers, many of whom fled their authoritarian homeland to Ukraine in 2020, have published an open letter condemning the Russian invasion of Ukraine and demanding Russian troops leave the territories of both Ukraine and Belarus. We are outraged that the Russian aggressor uses our territory for launching deadly missiles to Ukraine.
+2022/3/1
+POLITICS
+0
+0
+0
+"Russia, Ukraine to hold second round of talks on March 2, TASS reports"
+MOSCOW " The second round of Russia-Ukraine talks is planned for March 2, Russia's TASS news agency reported on Tuesday, quoting a source on the Russian side. After the first round of negotiations which took place on Monday and produced no tangible results, the sides had said they would meet again in the coming days.
 2022/3/1
 POLITICS
 0
@@ -964,8 +943,8 @@ POLITICS
 0
 0
 0
-"Ukraine updates, Day 6: We are sacrificing our lives for freedom, Zelenskyy gets standing ovation after speech to European parliament"
-Russia escalated shelling overnight of key cities in Ukraine as its troops on the ground move slowly in a large convoy toward the capital, Kyiv
+"Australia news LIVE: Russia-Ukraine war spills into seventh straight day of conflict as more explosions reported in Kyiv; NSW, Queensland floods worsen as Sydney braces for torrential rain"
+Heavy fighting continues in major cities, although they all remain under Ukrainian control on day six of the invasion. Follow our live coverage.
 2022/3/1
 POLITICS
 0
@@ -978,32 +957,12 @@ POLITICS
 0
 0
 0
-"Australia news LIVE: Russia-Ukraine war spills into seventh straight day of conflict as more explosions reported in Kyiv; NSW, Queensland floods worsen as Sydney braces for torrential rain"
-Heavy fighting continues in major cities, although they all remain under Ukrainian control on day six of the invasion. Follow our live coverage.
+"Ukraine updates, Day 6: We are sacrificing our lives for freedom, Zelenskyy gets standing ovation after speech to European parliament"
+Russia escalated shelling overnight of key cities in Ukraine as its troops on the ground move slowly in a large convoy toward the capital, Kyiv
 2022/3/1
 POLITICS
-0
-0
-0
-"Independent Belarusian Filmmakers Condemn Russian Attack on Ukraine"
-A group of Belarusian filmmakers, many of whom fled their authoritarian homeland to Ukraine in 2020, have published an open letter condemning the Russian invasion of Ukraine and demanding Russian troops leave the territories of both Ukraine and Belarus. We are outraged that the Russian aggressor uses our territory for launching deadly missiles to Ukraine.
-2022/3/1
-POLITICS
-0
-0
-0
-"Russia, Ukraine to hold second round of talks on March 2, TASS reports"
-MOSCOW " The second round of Russia-Ukraine talks is planned for March 2, Russia's TASS news agency reported on Tuesday, quoting a source on the Russian side. After the first round of negotiations which took place on Monday and produced no tangible results, the sides had said they would meet again in the coming days.
-2022/3/1
-POLITICS
-4.5
-2
-Ali 5
-zaid 4
 3
-zaid
-comment from zaid
-zaid
-a7la comment 
-Buzz
-comment from buzz
+2
+a 1
+zaid 5
+0

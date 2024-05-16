@@ -13,9 +13,10 @@ using namespace std;
 /////////////////////////////////////// User Class ///////////////////////////////////////
 class User {
 
+    string Username, Password, Email;
 
 public:
-    string Username, Password, Email;
+   
     int LoginAtempts;
     static map<string, User> users;
     static string currentUsername, currentPassword;
@@ -32,6 +33,13 @@ public:
     //Getters
     string getPassword();
     string getUsername();
+    string getEmail();
+
+    //Setters
+    void setPassword(string usern);
+    void setUsername(string passw);
+    void setEmail(string em);
+
 
     // Menu
     static void adminMenu();

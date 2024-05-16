@@ -33,13 +33,30 @@ User::User() {
 }
 
 
-// Getters
+// Getterss
 string User::getUsername() {
     return this->Username;
 }
 
 string User::getPassword() {
     return this->Password;
+}
+
+string User::getEmail() {
+    return this->Email;
+}
+
+//Setters
+void User::setUsername(string usern) {
+    this->Username = usern;
+}
+
+void User::setPassword(string passw) {
+    this->Password = passw;
+}
+
+void User::setEmail(string em) {
+    this->Email = em;
 }
 
 bool User::is_email_valid(string email) // regex to check if the email is vaild or not
@@ -170,12 +187,12 @@ void User::AddToBookmarks() {
         cout << "You Have Entered a Wrong Number \n";
         return;
     }
-    bool flag = User::IsInBookmarks(News::news[num - 1].getTitle());
+    bool flag = User::IsInBookmarks(News::valid[num - 1].getTitle());
     if (flag) {
         cout << "Bookmark Already Exists\n";
         return;
     }
-    User::bookmarks[User::currentUsername].insert(News::news[num - 1].getTitle());
+    User::bookmarks[User::currentUsername].insert(News::valid[num - 1].getTitle());
     cout << "Bookmark Added Successfully\n";
 }
 bool User::IsInBookmarks(string title) {
@@ -415,15 +432,6 @@ void User::search()
     system("pause");
 }
 
-//News User::searchByTitle(string title)
-//{
-//    for (auto& it : News::news) {
-//        if (title.compare(it.getTitle()) == 0) {
-//            return it;
-//        }
-//    }
-//}
-
 int User::LogIn() {
     string username, password;
     bool LoggedIn = false;
@@ -658,11 +666,11 @@ again:
     }
     else
     {
-        User::spamNews[User::currentUsername].insert(News::news[choice4 - 1].getTitle());
+        User::spamNews[User::currentUsername].insert(News::valid[choice4 - 1].getTitle());
         auto it = News::valid.begin();
         advance(it, choice4 - 1);
+        User::bookmarks[User::currentUsername].erase(News::valid[choice4 - 1].getTitle());
         News::valid.erase(it);
-        User::bookmarks[User::currentUsername].erase(News::news[choice4 - 1].getTitle());
         cout << "Article Added To Your Spam Successfuly\n";
         system("pause");
     }
@@ -703,7 +711,8 @@ void User::removeSpamNews()
             string title = *it;
             User::spamNews[User::currentUsername].erase(it);
             for (int i = 0; i < News::news.size(); i++) {
-                if (News::news[i].getTitle() == title) {
+                if (News::news[i].getTitle().compare(title) == 0) {
+                    if(News::news[i].getRate() >= 2.0 || News::news[i].getRate() == 2.0)
                     News::valid.push_back(News::news[i]);
                 }
             }

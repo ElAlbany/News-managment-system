@@ -23,9 +23,9 @@ void Database::write()
     }
     for (auto& pair : User::users) {
         User& user = pair.second;
-        userFile << user.Username << ","
-            << user.Password << ","
-            << user.Email << "\n";
+        userFile << user.getUsername() << ","
+            << user.getPassword() << ","
+            << user.getEmail() << "\n";
           
     }
     userFile.close();
@@ -154,9 +154,9 @@ void Database::read()
         getline(ss, email, '\n');
 
         User user;
-        user.Username = username;
-        user.Password = password;
-        user.Email = email;
+        user.setUsername(username);
+        user.setPassword(password);
+        user.setEmail(email);
        
         User::users[username] = user;
     }
