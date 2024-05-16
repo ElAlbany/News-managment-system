@@ -1,7 +1,6 @@
 #include <iostream>
 #include <algorithm>
 #include <ctime>
-#include "UserRepository.h"
 #include "News.h"
 #include "Date.h"
 #include "User.h"
@@ -83,38 +82,29 @@ int main() {
             Style::styleText(" Admin's Main Menu ");
             if (choice2 == 1) // add new category
             {
-
                 User::addCategory();
             }
             else if (choice2 == 2) // add post
             {
                 User::postNews();
-               
             }
             else if (choice2 == 3) // remove news
             {
-
                 User::removeNews();
-               
-
             }
             else if (choice2 == 4) // update news
             {
-              
                 News::updateMenu();
             }
             else if (choice2 == 5) // display an article rate
             {
-
                 News::displayAllNews("Date", 1, "NoDetails");
                 User::getAverageRateByTitle();
-
             }
             else if (choice2 == 6) // display all news
             {
                 News::displayAllNews("Date",1,"NoDetails");
                 system("pause");
-
             }
             else if (choice2 == 7) // display details
             {
@@ -129,7 +119,6 @@ int main() {
                 }
                 News::news[choice3 - 1].displayPost();
                 system("pause");
-
             }
             else if (choice2 == 8) // log out
             {
@@ -170,7 +159,7 @@ int main() {
             }
             else if (choice3 == 4) // rate news
             {
-                News::rateNews(News::news, User::currentUsername);
+                News::rateNews(News::valid, User::currentUsername);
             }
             else if (choice3 == 5) // bookmarking
             {

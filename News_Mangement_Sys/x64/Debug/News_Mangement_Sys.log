@@ -1,21 +1,17 @@
 ﻿  Database.cpp
-  Date.cpp
-C:\Users\Legion\source\repos\News-managment-system-hossam\News_Mangement_Sys\Date.cpp(24,21): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   News.cpp
 C:\Users\Legion\source\repos\News-managment-system-hossam\News_Mangement_Sys\News.cpp(43,36): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Legion\source\repos\News-managment-system-hossam\News_Mangement_Sys\News.cpp(186,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Legion\source\repos\News-managment-system-hossam\News_Mangement_Sys\News.cpp(207,53): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-  source.cpp
-  Style.cpp
-C:\Users\Legion\source\repos\News-managment-system-hossam\News_Mangement_Sys\Style.cpp(21,16): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-  UserRepository.cpp
+C:\Users\Legion\source\repos\News-managment-system-hossam\News_Mangement_Sys\News.cpp(197,25): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Legion\source\repos\News-managment-system-hossam\News_Mangement_Sys\News.cpp(225,53): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
   User.cpp
-C:\Users\Legion\source\repos\News-managment-system-hossam\News_Mangement_Sys\User.cpp(720,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\Legion\source\repos\News-managment-system-hossam\News_Mangement_Sys\User.cpp(729,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   Utility.cpp
 C:\Users\Legion\source\repos\News-managment-system-hossam\News_Mangement_Sys\Utility.cpp(16,21): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\Legion\source\repos\News-managment-system-hossam\News_Mangement_Sys\Utility.cpp(20,10): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
 C:\Users\Legion\source\repos\News-managment-system-hossam\News_Mangement_Sys\Utility.cpp(56,20): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  source.cpp
   Generating Code...
+  LINK : C:\Users\Legion\source\repos\News-managment-system-hossam\News_Mangement_Sys\x64\Debug\News_Mangement_Sys.exe not found or not built by the last incremental link; performing full link
   News_Mangement_Sys.vcxproj -> C:\Users\Legion\source\repos\News-managment-system-hossam\News_Mangement_Sys\x64\Debug\News_Mangement_Sys.exe
   'pwsh.exe' is not recognized as an internal or external command,
   operable program or batch file.
