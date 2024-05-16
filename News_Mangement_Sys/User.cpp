@@ -68,8 +68,8 @@ bool User::is_email_valid(string email) // regex to check if the email is vaild 
 void User::addCategory() {
     cout << "Enter The Name of The Category You Want to Add : ";
     string category;
-    cin.ignore();
     getline(cin, category);
+    //cin.ignore();
     category = Utility::toLower(category);
     for (int i = 0; i < News::categories.size(); i++) {
         if (category == News::categories[i]) {
@@ -100,7 +100,10 @@ void User::removeNews() {
     cout << "\nPlease Select One of The Shown Above to Remove or Enter -1 to Skip : ";
     int num;
 again:
-    cin >> num;
+    cin >> num; 
+    cin.fail();
+    cin.clear();
+    cin.ignore(256, '\n');
     if (num == -1)
         return;
     if (num < 1 || num > News::news.size()) {
@@ -139,6 +142,9 @@ void User::getAverageRateByTitle() {
         do {
             cout << "\nEnter The Number of Article You Want to See Its Rate or -1 to Skip : ";
             cin >> num;
+            cin.fail();
+            cin.clear();
+            cin.ignore(256, '\n');
             if (num == -1)
                 return;
         } while (num<1 || num>News::news.size());
@@ -160,6 +166,9 @@ void User::bookmarkingMenu() {
     int choice;
 again:
     cin >> choice;
+    cin.fail();
+    cin.clear();
+    cin.ignore(256, '\n');
     if (choice == 1) {
         AddToBookmarks();
     }
@@ -183,6 +192,9 @@ void User::AddToBookmarks() {
     News::displayAllNews("Date", 0, "Details");
     cout << "Enter a Number : ";
     cin >> num;
+    cin.fail();
+    cin.clear();
+    cin.ignore(256, '\n');
     if (num < 1 || num > News::valid.size()) {
         cout << "You Have Entered a Wrong Number \n";
         return;
@@ -205,6 +217,9 @@ void User::RemoveFromBookmarks() {
         return;
     cout << "\nEnter Number to Remove : ";
     cin >> num;
+    cin.fail();
+    cin.clear();
+    cin.ignore(256, '\n');
     if (num < 1 || num > User::bookmarks[User::currentUsername].size()) {
         cout << "You Have Entered a Wrong Number \n";
         return;
@@ -237,6 +252,9 @@ void User::AddCategoryToInterested()
     cout << "\n\nChoice : ";
 again:
     cin >> category;
+    cin.fail();
+    cin.clear();
+    cin.ignore(256, '\n');
     if (category >= 1 && category <= (int)News::categories.size()) {
         if (find(interestedCategories[currentUsername].begin(), interestedCategories[currentUsername].end(), News::categories[category - 1]) != interestedCategories[currentUsername].end()) {
             cout << "Category Already Exists in Your Interested\n";
@@ -270,6 +288,9 @@ void User::RemoveCategoryFromInterested()
         cout << "Choice : ";
     again:
         cin >> category;
+        cin.fail();
+        cin.clear();
+        cin.ignore(256, '\n');
         if (category >= 1 && category <= (int)interestedCategories[currentUsername].size()) {
             auto it = interestedCategories[currentUsername].begin();
             advance(it, category - 1);
@@ -633,6 +654,9 @@ void User::spamNewsMenu()
     cout << "Choice : ";
 again:
     cin >> choice;
+    cin.fail();
+    cin.clear();
+    cin.ignore(256, '\n');
     if (choice == 4)
         return;
     else if (choice == 1)

@@ -38,13 +38,17 @@ int main() {
 
         
         // add a background and center align the text.
+        
+    l:
         system("CLS");
         Style::styleText(" Enter One of The Shown Operations Below ");
         cout << "[1] Log in \n\n[2] Sign up \n\n[3] Exit \n\n";
 
         cout << "Choice : ";
-    l:
         cin >> choice; 
+        cin.fail();
+        cin.clear();
+        cin.ignore(256, '\n');
         if (choice == 3) { // exit
             Database::write();
             exit(1);
@@ -77,7 +81,11 @@ int main() {
             system("ClS");
             User::adminMenu();
             int choice2;
+            cout << "Choice : ";
             cin >> choice2;
+            cin.fail();
+            cin.clear();
+            cin.ignore(256, '\n');
             system("ClS");
             Style::styleText(" Admin's Main Menu ");
             if (choice2 == 1) // add new category
@@ -112,6 +120,9 @@ int main() {
                 cout << "\nEnter Number to See Its Details : ";
                 int choice3;
                 cin >> choice3;
+                cin.fail();
+                cin.clear();
+                cin.ignore(256, '\n');
                 if (choice3 > News::news.size() || choice3 <= 0)
                 {
                     cout << "You Have Entered Invalid Number\n";
@@ -128,7 +139,7 @@ int main() {
             else {
                 cout << "Invalid Operation, Please Select Only One of The Operations Below \n";
                 system("pause");
-                continue;
+                goto l;
             }
             system("CLS");
         }
@@ -138,7 +149,11 @@ int main() {
             system("ClS");
             User::userMenu();
             int choice3;
+            cout << "Choice : ";
             cin >> choice3;
+            cin.fail();
+            cin.clear();
+            cin.ignore(256, '\n');
             system("ClS");
             Style::styleText(" User's Main Menu ");
             if (choice3 == 1) // search news
@@ -159,7 +174,7 @@ int main() {
             }
             else if (choice3 == 4) // rate news
             {
-                News::rateNews(News::valid, User::currentUsername);
+                News::rateNews(User::currentUsername);
             }
             else if (choice3 == 5) // bookmarking
             {

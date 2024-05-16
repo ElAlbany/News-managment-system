@@ -58,7 +58,7 @@ public:
     News(string title, string description);
 
     // Functions
-    static void rateNews(vector<News>& newsRef, string userName);
+    static void rateNews(string userName);
     static void updateMenu();
     void updateNewsTitle(string new_title);
     void updateNewsDescription(string new_description);

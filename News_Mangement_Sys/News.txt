@@ -2,8 +2,9 @@ How A New Documentary Captures The Complexity Of Being A Child Of Immigrants
 In "Mija," director Isabel Castro combined music documentaries with the style of "Euphoria" and "Clueless" to tell a more nuanced immigration story.
 2022/9/22
 CULTURE & ARTS
-0
-0
+4
+1
+a 4
 0
 Twitch Bans Gambling Sites After Streamer Scams Folks Out Of $200,000
 One man's claims that he scammed people on the platform caused several popular streamers to consider a Twitch boycott.
@@ -478,8 +479,9 @@ ENTERTAINMENT
 We're going to play all nine innings here, the Artemis mission manager said after the first launch was scrubbed.
 2022/8/30
 SCIENCE
-0
-0
+5
+1
+a 5
 0
 House Members Are Using A Controversial Tool To Keep Campaigning. Has It Gone Too Far?
 House members are only supposed to use proxy voting when they cannot be present due to COVID-19. But that's not stopping representatives from voting remotely on the campaign trail.
@@ -949,20 +951,31 @@ Heavy fighting continues in major cities, although they all remain under Ukraini
 POLITICS
 0
 0
-0
+1
+a
+NIGHBOUR
 "Oil prices soar as Ukraine conflict stokes supply concerns"
 U.S. West Texas Intermediate (WTI) April crude futures were up $4.14, or 4.33%, at $99.86 a barrel after hitting its highest level since July 2014 at $101.53.
 2022/3/1
 POLITICS
-0
-0
-0
+2
+3
+a 3
+as 1
+zaid 2
+3
+as
+fck U
+as
+asas
+a
+EZ GAME GG
 "Ukraine updates, Day 6: We are sacrificing our lives for freedom, Zelenskyy gets standing ovation after speech to European parliament"
 Russia escalated shelling overnight of key cities in Ukraine as its troops on the ground move slowly in a large convoy toward the capital, Kyiv
 2022/3/1
 POLITICS
-3
+1
 2
 a 1
-zaid 5
+zaid 1
 0

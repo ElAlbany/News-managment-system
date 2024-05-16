@@ -51,47 +51,51 @@ void News::calculateAverageRate() {
     this->rate = (float)totalRatings / numRatings;
 }
 
-void News::rateNews(vector<News>& newsRef, string userName) {
+void News::rateNews(string userName) {
 
-    if (newsRef.empty()) {
+    if (News::valid.empty()) {
         cout << "Sorry There Aren't any News Right Now\n";
         return;
     }
     cout << "Here Are All The articles :\n\n";
-    for (int i = 0; i < newsRef.size(); i++) {
-        cout << "[" << i + 1 << "] " << newsRef[i].title <<"\n";
+    for (int i = 0; i < News::valid.size(); i++) {
+        cout << "[" << i + 1 << "] " << News::valid[i].title <<"\n";
     }
     int index;
     cout << "Enter The Article Number To Rate It ( Or Enter -1 to Skip) : ";
 again:
     cin >> index;
-    if ((index <= 0 && index != -1) || index > newsRef.size()) {
+    cin.fail();
+    cin.clear();
+    cin.ignore(256, '\n');
+    if ((index <= 0 && index != -1) || index > News::valid.size()) {
         cout << "Please Enter a Vaild Article Number to Rate (or Rnter -1 to Skip) : ";
         goto again;
     }
     if (index == -1) {
         return;
     }
-    index--;
     short userRating;
     do {
         cout << "Enter Your Rating ( It Must Be Between 1 and 5 ) : ";
         cin >> userRating;
+        cin.fail();
+        cin.clear();
+        cin.ignore(256, '\n');
     } while (userRating < 1 || userRating > 5);
 
-    newsRef[index].allRate.erase(userName);
-    newsRef[index].allRate.emplace(pair<string, int>(userName, userRating));
-    newsRef[index].calculateAverageRate();
     for (int i = 0; i < news.size(); i++) {
-        if (news[i].getTitle().compare(newsRef[index].getTitle()) == 0) {
+        if (news[i].getTitle().compare(News::valid[index-1].getTitle()) == 0) {
             news[i].allRate.erase(userName);
             news[i].allRate.emplace(pair<string, int>(userName, userRating));
             news[i].calculateAverageRate();
-            newsRef[index].rate = news[i].rate;
-            if (newsRef[index].rate != 0 && newsRef[index].rate < 2) {
-                newsRef.erase(newsRef.begin() + index);
-            }
+            News::valid[index - 1].rate = news[i].rate;
         }
+    }
+    if (News::valid[index - 1].rate != 0 && News::valid[index - 1].rate < 2) {
+        auto it = News::valid.begin();
+        advance(it, index - 1);
+        News::valid.erase(it);
     }
     cout << "Your rating has been added successfully";
     system("pause");
@@ -103,21 +107,32 @@ void News::displayNewsByCategoryName(string categoryName) {
         return;
     }
     bool is_found = false;
-    transform(categoryName.begin(), categoryName.end(), categoryName.begin(), ::tolower);
-    for (auto it : valid) {
-        transform(it.category.begin(), it.category.end(), it.category.begin(), ::tolower);
-        if (it.category == categoryName) {
+    for (auto it : categories) {
+        if (Utility::toLower(it) == Utility::toLower(categoryName)) {
             is_found = true;
             break;
         }
     }
+    bool catNewsFound = false;
     int counter = 1;
     if (is_found) {
-        cout << "\nHere Are All The " << categoryName << " News : \n\n";
         for (auto it : valid) {
             if (Utility::toLower(it.category) == Utility::toLower(categoryName)) {
-                cout << "[" << counter++ << "] ";
-                it.displayPost();
+                catNewsFound = true;
+                break;
+            }
+        }
+        if (!catNewsFound) {
+            cout << "\nSorry There Are No News For This Category Right Meow\n";
+        }
+        else {
+            cout << "\nHere Are All The " << categoryName << " News : \n\n";
+            for (auto it : valid) {
+                if (Utility::toLower(it.category) == Utility::toLower(categoryName)) {
+                    catNewsFound = true;
+                    cout << "[" << counter++ << "] ";
+                    it.displayPost();
+                }
             }
         }
     }
@@ -214,7 +229,7 @@ vector<News> News::serachNews(string description_key) { // search by description
         Utility::getDateOrder(date,year,month,day);
         string reverseDate = Utility::toString(day) + '/' + Utility::toString(month) + '/' + Utility::toString(year);;
         for (auto word : keywords) {
-            if (lowerDescription.find(word) != string::npos || // search in title and description
+            if (lowerDescription.find(word) != string::npos || // search in title, description and date
                 lowerTitle.find(word) != string::npos ||
                 date.find(word) != string::npos ||
                 date.compare(word) == 0 || 
@@ -290,6 +305,9 @@ void News::updateMenu()
     int num;
 again:
     cin >> num;
+    cin.fail();
+    cin.clear();
+    cin.ignore(256, '\n');
     if (num == -1) {
         return;
     }
@@ -308,6 +326,9 @@ again:
 again1:
     cout << "Choice : ";
     cin >> choice;
+    cin.fail();
+    cin.clear();
+    cin.ignore(256, '\n');
     if (choice == -1)
         return;
     else if (choice == 1)
@@ -366,6 +387,9 @@ void News::updateNewsCategory() {
     int choice;
 again:
     cin >> choice;
+    cin.fail();
+    cin.clear();
+    cin.ignore(256, '\n');
     if (choice > News::categories.size() || choice <= 0)
     {
         cout << "You Have Entered Invalid Number Please Enter a Vaild One\n";
@@ -413,6 +437,9 @@ again:
     int choice;
     cout << "\nChoice : ";
     cin >> choice;
+    cin.fail();
+    cin.clear();
+    cin.ignore(256, '\n');
     if (choice == 1)
         News::addComment();
     else if (choice == 2)
@@ -436,6 +463,9 @@ void News::removeComment(int index)
 again:
     int commentNum;
     cin >> commentNum;
+    cin.fail();
+    cin.clear();
+    cin.ignore(256, '\n');
     if (commentNum == -1)
     {
         return;
@@ -468,6 +498,9 @@ void News::addComment()
     cout << "Enter The Number of The Article You Want to Add a Comment to or -1 to Skip : ";
 again:
     cin >> choice;
+    cin.fail();
+    cin.clear();
+    cin.ignore(256, '\n');
     if (choice == -1)
         return;
     if (choice <= 0 || choice > News::valid.size())
