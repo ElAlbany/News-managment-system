@@ -46,7 +46,8 @@ public:
     static void userMenu();
 
     // Forget Password Functionality
-    static bool is_email_valid(string email);
+    static bool is_password_valid(string& password);
+    static bool is_email_valid(string& email);
     int ForgetPassword(string username);
     static string GenRandomPassword();
 

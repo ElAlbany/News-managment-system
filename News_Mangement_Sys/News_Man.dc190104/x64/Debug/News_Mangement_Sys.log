@@ -1,17 +1,14 @@
-﻿  News.cpp
-C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\News.cpp(44,20): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\News.cpp(69,13): warning C4834: discarding return value of function with [[nodiscard]] attribute
-C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\News.cpp(83,17): warning C4834: discarding return value of function with [[nodiscard]] attribute
-C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\News.cpp(117,13): warning C4834: discarding return value of function with [[nodiscard]] attribute
-C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\News.cpp(229,11): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\News.cpp(257,51): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\News.cpp(331,13): warning C4834: discarding return value of function with [[nodiscard]] attribute
-C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\News.cpp(352,13): warning C4834: discarding return value of function with [[nodiscard]] attribute
-C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\News.cpp(413,13): warning C4834: discarding return value of function with [[nodiscard]] attribute
-C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\News.cpp(463,13): warning C4834: discarding return value of function with [[nodiscard]] attribute
-C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\News.cpp(489,13): warning C4834: discarding return value of function with [[nodiscard]] attribute
-C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\News.cpp(524,13): warning C4834: discarding return value of function with [[nodiscard]] attribute
-C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\News.cpp(553,13): warning C4834: discarding return value of function with [[nodiscard]] attribute
+﻿  User.cpp
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\User.cpp(108,13): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\User.cpp(148,21): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\User.cpp(178,13): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\User.cpp(210,13): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\User.cpp(235,13): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\User.cpp(267,13): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\User.cpp(306,13): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\User.cpp(342,17): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\User.cpp(713,13): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\User.cpp(815,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   News_Mangement_Sys.vcxproj -> C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\x64\Debug\News_Mangement_Sys.exe
   'pwsh.exe' is not recognized as an internal or external command,
   operable program or batch file.

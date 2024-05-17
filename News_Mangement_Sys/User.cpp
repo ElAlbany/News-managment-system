@@ -59,17 +59,21 @@ void User::setEmail(string em) {
     this->Email = em;
 }
 
-bool User::is_email_valid(string email) // regex to check if the email is vaild or not
+bool User::is_email_valid(string& email) // regex to check if the email is vaild or not
 {
     regex pattern("(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.(\\w+))+");
     return regex_match(email, pattern);
+}
+
+bool User::is_password_valid(string& password) {
+    regex pattern("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$");
+    return regex_match(password, pattern);
 }
 
 void User::addCategory() {
     cout << "Enter The Name of The Category You Want to Add : ";
     string category;
     getline(cin, category);
-    //cin.ignore();
     category = Utility::toLower(category);
     for (int i = 0; i < News::categories.size(); i++) {
         if (category == News::categories[i]) {
@@ -118,7 +122,6 @@ void User::postNews() {
     string title, description, category, date;
     cout << "Fulfill Required Information to Add The Article Into The System : \n\n";
     cout << "Enter Title : ";
-    cin.ignore();
     getline(cin, title);
     cout << "Enter Description : ";
     getline(cin, description);
@@ -448,7 +451,15 @@ int User::Register() {
     cout << "Enter Your Email : ";
     cin >> email;
     while (true) {
-        if (!is_email_valid(email)) {
+        if (username.size() < 3) {
+            cout << "\n\nUsername is Invalid, Please Enter a Valid Username : ";
+            cin >> username;
+        }
+        else if (!is_password_valid(password)) {
+            cout << "\n\nPassword is Invalid, Please Enter a Valid Password : ";
+            cin >> password;
+        }
+        else if (!is_email_valid(email)) {
             cout << "\n\nEmail is Invalid, Please Enter a Valid Email : ";
             cin >> email;
         }
@@ -483,7 +494,6 @@ void User::search()
 {
     string key;
     cout << "[Search for]-> ";
-    cin.ignore();
     getline(cin, key);
     int i = 1;
     auto search_result = News::serachNews(key);
