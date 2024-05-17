@@ -194,15 +194,9 @@ int main() {
 
             }
             else if (choice3 == 9) { // add to interested categories
-               User::AddCategoryToInterested();
+               User::InterestedCategoriesMenu();
             }
-            else if (choice3 == 10) { // remove from interested categories
-               User::RemoveCategoryFromInterested();
-            }
-            else if (choice3 == 11) { //display Interested Categories
-                User::displayInterestedCategories();
-            }
-            else if (choice3 == 12) { // log out
+            else if (choice3 == 10) { // log out
                 admin = -1;
                 break;
             }

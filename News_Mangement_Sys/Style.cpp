@@ -19,7 +19,7 @@ enum Color { // Background Colors in hexadecimal
 };
 
 void Style::styleText(string str) {
-    int spaces = (85 - str.length() / 2) / 1.5;
+    int spaces = (82 - str.length() / 2) / 1.5;
 
     for (int i = 0; i < spaces; i++) {
         cout << " ";

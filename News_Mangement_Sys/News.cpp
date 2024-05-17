@@ -12,6 +12,7 @@
 #include "News.h"
 #include "Date.h"
 #include "Utility.h"
+#include "Style.h"
 using namespace std;
 
 // main data structures to store all news (static definition)
@@ -130,6 +131,8 @@ again:
     bool catNewsFound = false;
     int counter = 1;
     if (is_found) {
+        system("cls");
+        Style::styleText(" User's Main Menu ");
         for (auto it : valid) {
             if (Utility::toLower(it.category) == Utility::toLower(News::categories[choice - 1])) {
                 catNewsFound = true;
@@ -464,7 +467,7 @@ again:
         News::addComment();
     else if (choice == 2)
     {
-      News::displayComments();
+        News::displayComments();
     }
     else if (choice == 3)
     {
@@ -566,6 +569,9 @@ again:
         cout << "You Have Entered Invalid Number, Please Enter Valid Number \n";
         goto again;
     }
+    system("cls");
+    Style::styleText(" User's Main Menu ");
+    News::valid[num - 1].displayPost();
     for (int i = 0; i < News::valid[num - 1].comments.size(); i++)
     {
         cout << "\n[" << i + 1 << "]";

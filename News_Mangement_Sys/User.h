@@ -68,6 +68,7 @@ public:
     static void PrintBookmarks();
 
     // Users' Interested (Followed) Categories 
+    static void InterestedCategoriesMenu();
     static void AddCategoryToInterested();
     static void RemoveCategoryFromInterested();
     static void displayInterestedCategories();

@@ -176,12 +176,18 @@ again:
     cin.clear();
     cin.ignore(256, '\n');
     if (choice == 1) {
+        system("cls");
+        Style::styleText(" User's Main Menu ");
         AddToBookmarks();
     }
     else if (choice == 2) {
+        system("cls");
+        Style::styleText(" User's Main Menu ");
         RemoveFromBookmarks();
     }
     else if (choice == 3) {
+        system("cls");
+        Style::styleText(" User's Main Menu ");
         PrintBookmarks();
     }
     else if (choice == 4) {
@@ -245,17 +251,53 @@ void User::PrintBookmarks() {
         cout << "[" << i++ << "]" << it2 << "\n";
     }
 }
+void User::InterestedCategoriesMenu()
+{
+    cout << "[1] Add Category To Interested \n\n";
+    cout << "[2] Remove Category From Interested \n\n";
+    cout << "[3] display Interested Categories \n\n";
+    cout << "[4] Return \n\n\n";
+    int choice;
+    cout << "Choice : ";
+again:
+    cin >> choice;
+    cin.fail();
+    cin.clear();
+    cin.ignore(256, '\n');
+    if (choice == 1) {
+        system("cls");
+        Style::styleText(" User's Main Menu ");
+        User::AddCategoryToInterested();
+    }
+    else if (choice == 2) {
+        system("cls");
+        Style::styleText(" User's Main Menu ");
+        User::RemoveCategoryFromInterested();
+    }
+    else if (choice == 3) {
+        system("cls");
+        Style::styleText(" User's Main Menu ");
+        User::displayInterestedCategories();
+    }
+    else if (choice == 4) {
+        return;
+    }
+    else {
+        cout << "Invalid Choice, Please Enter an Invalid One : ";
+        goto again;
+    }
+}
 void User::AddCategoryToInterested()
 {
 
     cout << "Choose a Category Of The Following to Add to Your Interested Categories : \n\n";
 
     for (int i = 0; i < (int)News::categories.size(); i++) {
-        cout << "[" << (i + 1) << "] " << News::categories[i] << "\n";
+        cout << "[" << (i + 1) << "] " << News::categories[i] << "\n\n";
     }
 
     int category;
-    cout << "\n\nChoice : ";
+    cout << "\nChoice : ";
 again:
     cin >> category;
     cin.fail();
@@ -287,7 +329,7 @@ void User::RemoveCategoryFromInterested()
         cout << "Choose a Category From yours to Remove From Your Interested Categories\n\n";
         int counter = 1;
         for (unordered_set<string>::iterator i = interestedCategories[currentUsername].begin(); i != interestedCategories[currentUsername].end(); i++) {
-            cout << "[" << counter << "] " << *i << "\n";
+            cout << "[" << counter << "] " << *i << "\n\n";
             counter++;
         }
         int category;
@@ -320,7 +362,7 @@ void User::displayInterestedCategories()
         cout << "Your interested Categores :\n\n";
         int counter = 1;
         for (auto& it2 : (interestedCategories[User::currentUsername])) {
-            cout << "[" << counter << "] " << it2 << "\n";
+            cout << "[" << counter << "] " << it2 << "\n\n";
             counter++;
         }
     }
@@ -641,10 +683,8 @@ void User::userMenu() {
     cout << "[6] Trending News\n\n";
     cout << "[7] Spam News \n\n";
     cout << "[8] Comment\n\n";
-    cout << "[9] Add Category to Interested\n\n";
-    cout << "[10] Remove Category From Interested\n\n";
-    cout << "[11] Display Interested Categories\n\n";
-    cout << "[12] Log Out\n\n";
+    cout << "[9] Interested Categories\n\n";
+    cout << "[10] Log Out\n\n";
 }
 
 
@@ -665,10 +705,16 @@ again:
     cin.ignore(256, '\n');
     if (choice == 4)
         return;
-    else if (choice == 1)
+    else if (choice == 1) {
+        system("cls");
+        Style::styleText(" User's Main Menu ");
         spamNewsFunc();
-    else if (choice == 2)
+    }
+    else if (choice == 2) {
+        system("cls");
+        Style::styleText(" User's Main Menu ");
         removeSpamNews();
+    }
     else if (choice == 3) {
         printSpam();
         system("pause");
