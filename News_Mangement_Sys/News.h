@@ -65,7 +65,7 @@ public:
     void updateNewsDate(Date new_date);
     void updateNewsCategory();
 
-    static void displayNewsByCategoryName(string);
+    static void displayNewsByCategoryName();
     void displayPost();
     static void displayCategories();
 

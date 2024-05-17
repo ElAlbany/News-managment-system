@@ -7,3 +7,4 @@ environment
 culture & arts
 science
 sport
+economy

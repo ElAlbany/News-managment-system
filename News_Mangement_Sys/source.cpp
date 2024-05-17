@@ -126,6 +126,7 @@ int main() {
                 if (choice3 > News::news.size() || choice3 <= 0)
                 {
                     cout << "You Have Entered Invalid Number\n";
+                    system("pause");
                     continue;
                 }
                 News::news[choice3 - 1].displayPost();
@@ -167,10 +168,7 @@ int main() {
             }
             else if (choice3 == 3) // search by category
             {
-                cout << "Enter The Category You Want to See Its Articles : ";
-                string category;
-                cin >> category;
-                News::displayNewsByCategoryName(category);
+                News::displayNewsByCategoryName();
             }
             else if (choice3 == 4) // rate news
             {

@@ -148,7 +148,13 @@ void User::getAverageRateByTitle() {
             if (num == -1)
                 return;
         } while (num<1 || num>News::news.size());
-        cout << "Rate : " << News::news[num - 1].getRate() << "\n";
+        cout << "Rate : ";
+        if (News::news[num - 1].getRate() == 0.0) {
+            cout << "Unrated\n";
+        }
+        else {
+            cout << News::news[num - 1].getRate() << "\n";
+        }
         system("pause");
     }
     else {
@@ -736,7 +742,7 @@ void User::removeSpamNews()
             User::spamNews[User::currentUsername].erase(it);
             for (int i = 0; i < News::news.size(); i++) {
                 if (News::news[i].getTitle().compare(title) == 0) {
-                    if(News::news[i].getRate() >= 2.0 || News::news[i].getRate() == 2.0)
+                    if(News::news[i].getRate() >= 2.0 || News::news[i].getRate() == 0.0)
                     News::valid.push_back(News::news[i]);
                 }
             }

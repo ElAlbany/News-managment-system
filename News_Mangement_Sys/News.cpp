@@ -101,14 +101,28 @@ again:
     system("pause");
 }
 
-void News::displayNewsByCategoryName(string categoryName) {
+void News::displayNewsByCategoryName() {
     if (valid.empty()) {
         cout << "Sorry There Aren't any Articles Right Now\n";
         return;
     }
+    for (int i = 0; i < (int)News::categories.size(); i++) {
+        cout << "[" << (i + 1) << "] " << News::categories[i] << "\n\n";
+    }
+    cout << "Enter The Number of The Category You Want to See Its Articles : ";
+    int choice;
+again:
+    cin >> choice;
+    cin.fail();
+    cin.clear();
+    cin.ignore(256, '\n');
+    if (choice <= 0 || choice > News::categories.size()) {
+        cout << "Invalid Number, Please Enter a Valid One : ";
+        goto again;
+    }
     bool is_found = false;
     for (auto it : categories) {
-        if (Utility::toLower(it) == Utility::toLower(categoryName)) {
+        if (Utility::toLower(it) == Utility::toLower(News::categories[choice-1])) {
             is_found = true;
             break;
         }
@@ -117,7 +131,7 @@ void News::displayNewsByCategoryName(string categoryName) {
     int counter = 1;
     if (is_found) {
         for (auto it : valid) {
-            if (Utility::toLower(it.category) == Utility::toLower(categoryName)) {
+            if (Utility::toLower(it.category) == Utility::toLower(News::categories[choice - 1])) {
                 catNewsFound = true;
                 break;
             }
@@ -126,9 +140,9 @@ void News::displayNewsByCategoryName(string categoryName) {
             cout << "\nSorry There Are No News For This Category Right Meow\n";
         }
         else {
-            cout << "\nHere Are All The " << categoryName << " News : \n\n";
+            cout << "\nHere Are All The " << News::categories[choice - 1] << " News : \n\n";
             for (auto it : valid) {
-                if (Utility::toLower(it.category) == Utility::toLower(categoryName)) {
+                if (Utility::toLower(it.category) == Utility::toLower(News::categories[choice - 1])) {
                     catNewsFound = true;
                     cout << "[" << counter++ << "] ";
                     it.displayPost();
@@ -272,7 +286,13 @@ void News::displayPost() {
     cout << "Description: " << this->description << endl;
     cout << "Date: " << this->date << endl;
     cout << "Category: " << this->category << endl;
-    cout << "Rate: " << this->rate << endl;
+    cout << "Rate: ";
+    if (this->rate == 0.0) {
+        cout << "Unrated\n";
+    }
+    else {
+        cout << this->rate << "\n";
+    }
     cout << "======================================================================================================================\n";
 }
 
