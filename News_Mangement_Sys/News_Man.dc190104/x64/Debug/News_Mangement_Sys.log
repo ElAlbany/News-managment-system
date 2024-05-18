@@ -1,7 +1,50 @@
-﻿  Utility.cpp
+﻿  Database.cpp
+  Date.cpp
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\Date.cpp(24,8): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  News.cpp
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\News.cpp(46,20): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\News.cpp(71,13): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\News.cpp(86,17): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\News.cpp(120,13): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\News.cpp(246,65): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\News.cpp(250,13): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\News.cpp(270,11): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\News.cpp(298,51): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\News.cpp(368,60): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\News.cpp(373,13): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\News.cpp(394,13): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\News.cpp(455,13): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\News.cpp(497,64): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\News.cpp(505,13): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\News.cpp(531,13): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\News.cpp(566,13): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\News.cpp(595,13): warning C4834: discarding return value of function with [[nodiscard]] attribute
+  User.cpp
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\User.cpp(65,19): warning C4129: '.': unrecognized character escape sequence
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\User.cpp(105,64): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\User.cpp(110,13): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\User.cpp(150,21): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\User.cpp(180,13): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\User.cpp(209,64): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\User.cpp(212,13): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\User.cpp(237,13): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\User.cpp(269,13): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\User.cpp(308,13): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\User.cpp(344,17): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\User.cpp(728,13): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\User.cpp(755,64): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\User.cpp(837,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Utility.cpp
 C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\Utility.cpp(16,8): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\Utility.cpp(20,10): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
 C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\Utility.cpp(56,8): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  source.cpp
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\source.cpp(49,17): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\source.cpp(86,21): warning C4834: discarding return value of function with [[nodiscard]] attribute
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\source.cpp(109,77): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\source.cpp(114,75): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\source.cpp(142,21): warning C4834: discarding return value of function with [[nodiscard]] attribute
+  Generating Code...
   News_Mangement_Sys.vcxproj -> C:\Users\alyas\source\repos\News-managment-system\News_Mangement_Sys\x64\Debug\News_Mangement_Sys.exe
   'pwsh.exe' is not recognized as an internal or external command,
   operable program or batch file.

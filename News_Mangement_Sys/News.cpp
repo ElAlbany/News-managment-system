@@ -268,10 +268,8 @@ void News::displayNewsDetails()
 vector<News> News::serachNews(string description_key) { // search by description and title
 
     int N = valid.size();
-    vector<string> keywords = Utility::getKeyWords(description_key); // get all keywords in the search text
-    for (auto& word : keywords) {
-        word = Utility::toLower(word);
-    }
+    description_key = Utility::toLower(description_key);
+    vector<string> keywords = Utility::SplitString(description_key); // get all keywords in the search text
 
     vector<pair<News, int>> searching_result;
     vector<bool>taken(N + 7, 0);
@@ -283,12 +281,14 @@ vector<News> News::serachNews(string description_key) { // search by description
         auto news_post = valid[i];
         string lowerDescription = Utility::toLower(news_post.getDescription());
         string lowerTitle = Utility::toLower(news_post.getTitle());
+        vector<string> Description = Utility::SplitString(lowerDescription);
+        vector<string> Title = Utility::SplitString(lowerTitle);
         string date = news_post.getDate().fullDate('/');
         Utility::getDateOrder(date,year,month,day);
         string reverseDate = Utility::toString(day) + '/' + Utility::toString(month) + '/' + Utility::toString(year);;
         for (auto word : keywords) {
-            if (lowerDescription.find(word) != string::npos || // search in title, description and date
-                lowerTitle.find(word) != string::npos ||
+            if (find(Description.begin(), Description.end(), word) != Description.end() || // search in title, description and date
+                find(Title.begin(), Title.end(), word) != Title.end() ||
                 date.find(word) != string::npos ||
                 date.compare(word) == 0 || 
                 reverseDate.compare(word) == 0 ||
