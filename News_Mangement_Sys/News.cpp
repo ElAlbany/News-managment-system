@@ -69,12 +69,13 @@ again:
     cin.fail();
     cin.clear();
     cin.ignore(256, '\n');
+    if (index == -1) {
+        system("pause");
+        return;
+    }
     if ((index <= 0 && index != -1) || index > News::valid.size()) {
         cout << "Please Enter a Vaild Article Number to Rate (or Rnter -1 to Skip) : ";
         goto again;
-    }
-    if (index == -1) {
-        return;
     }
     short userRating;
     do {
@@ -218,35 +219,17 @@ void News::displayAllNews(string sortedBy, int user, string details, int size) {
             sort(News::news.begin(), News::news.end(), News::sortNewsByRating);
         }
         if (details == "Details") {
-            if (News::valid.size() < size) {
-                for (int i = 0; i < News::news.size(); i++)
-                {
-                    cout << "[" << i + 1 << "] ";
-                    news[i].displayPost();
-                }
-            }
-            else {
-                for (int i = 0; i < size; i++)
-                {
-                    cout << "[" << i + 1 << "] ";
-                    news[i].displayPost();
-                }
+            for (int i = 0; i < News::news.size(); i++)
+            {
+                cout << "[" << i + 1 << "] ";
+                news[i].displayPost();
             }
         }
         else {
-            if (News::valid.size() < size) {
-                for (int i = 0; i < News::news.size(); i++)
-                {
-                    cout << "[" << i + 1 << "] " << news[i].title << "\n";
-                }
+            for (int i = 0; i < News::news.size(); i++)
+            {
+                cout << "[" << i + 1 << "] " << news[i].title << "\n";
             }
-            else {
-                for (int i = 0; i < size; i++)
-                {
-                    cout << "[" << i + 1 << "] " << news[i].title << "\n";
-                }
-            }
-            
         }
     }
 }

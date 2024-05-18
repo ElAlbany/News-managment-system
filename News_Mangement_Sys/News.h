@@ -45,7 +45,7 @@ public:
 
 
     vector<Comment> comments;
-    multimap<string, int> allRate; // username and his rate, rates can be edited so we need the username; so map is convenient for that
+    map<string, int> allRate; // username and his rate, rates can be edited so we need the username; so map is convenient for that
     static vector<News> news; // main data structure to store all news
     static vector<string> categories;
     static vector<News> valid; // used to store the news the current user can see ((unrated or rating of 2 an more) and not spam)
