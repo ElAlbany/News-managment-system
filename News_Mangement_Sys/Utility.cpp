@@ -99,7 +99,8 @@ void Utility::dateHandler(string& date)
 		}
 	}
 }
-
+
+
 void Utility::getDateOrder(string date, int& year, int& month, int& day)
 {
 	year = stoi(date.substr(0, 4));

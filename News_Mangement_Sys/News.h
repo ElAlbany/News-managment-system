@@ -50,8 +50,6 @@ public:
     static vector<News> news; // main data structure to store all news
     static vector<string> categories;
     static vector<News> valid; // used to store the news the current user can see ((unrated or rating of 2 an more) and not spam)
-
-
     // Constructors
     News(string title, string description, string category, float rate, Date date, int spamcount);
     News(string title, string description, string category, float rate);

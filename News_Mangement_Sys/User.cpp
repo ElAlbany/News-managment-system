@@ -61,7 +61,9 @@ void User::setEmail(string em) {
 
 bool User::is_email_valid(string& email) // regex to check if the email is vaild or not
 {
-    regex pattern("(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.(\\w+))+");
+   // regex pattern("(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.(\\w+))+");
+    regex pattern("([_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4}))");
+    // R"([_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4}))"
     return regex_match(email, pattern);
 }
 
@@ -445,28 +447,41 @@ int User::Register() {
     Style::styleText(" Sign up ");
     string username, password, email;
     cout << "\nEnter Your Username : ";
-    cin >> username;
-    cout << "Enter Your Password : ";
-    cin >> password;
-    cout << "Enter Your Email : ";
-    cin >> email;
-    while (true) {
+    do {
+        cin >> username;
         if (username.size() < 3) {
             cout << "\n\nUsername is Invalid, Please Enter a Valid Username : ";
-            cin >> username;
-        }
-        else if (!is_password_valid(password)) {
-            cout << "\n\nPassword is Invalid, Please Enter a Valid Password : ";
-            cin >> password;
-        }
-        else if (!is_email_valid(email)) {
-            cout << "\n\nEmail is Invalid, Please Enter a Valid Email : ";
-            cin >> email;
+            continue;
         }
         else {
             break;
         }
-    }
+    } while (true);
+    cout << "\nEnter Your Password : ";
+   
+    do {
+        cin >> password;
+        if (!is_password_valid(password)) {
+            cout << "\n\nPassword is Invalid, Please Enter a Valid Password : ";
+            continue;
+        }
+        else {
+            break;
+        }
+    } while (true);
+    cout << "\nEnter Your Email : ";
+    do {
+        cin >> email;
+        if (!is_email_valid(email)) {
+            cout << "\n\nEmail is Invalid, Please Enter a Valid Email : ";
+            continue;
+        }
+        else {
+            break;
+        }
+    } while (true);
+
+
     if (username == "admin")
         return -1;
 

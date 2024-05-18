@@ -124,16 +124,8 @@ again:
         cout << "Invalid Number, Please Enter a Valid One : ";
         goto again;
     }
-    bool is_found = false;
-    for (auto it : categories) {
-        if (Utility::toLower(it) == Utility::toLower(News::categories[choice-1])) {
-            is_found = true;
-            break;
-        }
-    }
     bool catNewsFound = false;
     int counter = 1;
-    if (is_found) {
         system("cls");
         Style::styleText(" User's Main Menu ");
         for (auto it : valid) {
@@ -143,7 +135,7 @@ again:
             }
         }
         if (!catNewsFound) {
-            cout << "\nSorry There Are No News For This Category Right Meow\n";
+            cout << "\nSorry There Are No News For This Category Right Now\n";
         }
         else {
             cout << "\nHere Are All The " << News::categories[choice - 1] << " News : \n\n";
@@ -155,12 +147,10 @@ again:
                 }
             }
         }
+        system("pause");
     }
-    else {
-        cout << "Sorry This Category Doesn't Exist\n";
-    }
-    system("pause");
-}
+  
+    
 
 void News::updateSpamCount(int choice)
 {
