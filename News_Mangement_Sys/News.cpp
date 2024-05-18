@@ -22,16 +22,18 @@ vector<News> News::valid;
 
 
 // chaining constructor
-News::News(string title, string description, string category, float rate, Date date) {
+// chaining constructor
+News::News(string title, string description, string category, float rate, Date date, int spamCount) {
     this->title = title;
     this->description = description;
     this->category = category;
     this->rate = rate;
     this->date = date;
+    this->spamCount = spamCount;
     News::news.push_back(*this);
 }
 
-News::News(string title, string description, string category, float rate) : News(title, description, category, rate, Date::getCurrentDate('/')) {}
+News::News(string title, string description, string category, float rate) : News(title, description, category, rate, Date::getCurrentDate('/'), 0) {}
 
 News::News(string title, string description, string category) : News(title, description, category, 0.f) {}
 
@@ -55,7 +57,7 @@ void News::calculateAverageRate() {
 void News::rateNews(string userName) {
 
     if (News::valid.empty()) {
-        cout << "Sorry There Aren't any News Right Now\n";
+        cout << "Sorry There Aren't any News Right Meow\n";
         return;
     }
     cout << "Here Are All The articles :\n\n";
@@ -105,7 +107,7 @@ again:
 
 void News::displayNewsByCategoryName() {
     if (valid.empty()) {
-        cout << "Sorry There Aren't any Articles Right Now\n";
+        cout << "Sorry There Aren't any Articles Right Meow\n";
         return;
     }
     for (int i = 0; i < (int)News::categories.size(); i++) {
@@ -160,6 +162,16 @@ again:
     system("pause");
 }
 
+void News::updateSpamCount(int choice)
+{
+    if (choice == -1) {
+        this->spamCount--;
+    }
+    else {
+        this->spamCount++;
+    }
+}
+
 
 string News::getTitle() const {
     return this->title;
@@ -181,10 +193,15 @@ Date News::getDate() const {
     return this->date;
 }
 
+int News::getSpamCount() const
+{
+    return this->spamCount;
+}
+
 void News::displayAllNews(string sortedBy, int user, string details, int size) {
     if (News::news.size() == 0)
     {
-        cout << "There Are No Articles Right Now \n";
+        cout << "There Are No Articles Right Meow \n";
         system("pause");
         return;
     }
@@ -330,13 +347,14 @@ void News::displayPost() {
     else {
         cout << this->rate << "\n";
     }
-    cout << "======================================================================================================================\n";
+    cout << "Spam Count : " << this->spamCount;
+    cout << "\n======================================================================================================================\n";
 }
 
 void News::displayCategories()
 {
     if (News::categories.size() == 0) {
-        cout << "\nThere are No Categories Right Now \n";
+        cout << "\nThere are No Categories Right Meow \n";
         system("pause");
         return;
     }
@@ -354,7 +372,7 @@ void News::updateMenu()
 {   
     if (News::news.size() == 0)
     {
-        cout << "There Are No Articles Right Now \n";
+        cout << "There Are No Articles Right Meow \n";
         return;
     }
     News::displayAllNews("Date",1,"Details",News::news.size());

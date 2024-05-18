@@ -97,7 +97,7 @@ void User::addCategoryAuto(string cate) {
 }
 void User::removeNews() {
     if (News::news.size() == 0) {
-        cout << "There Are No Articles Right Now \n";
+        cout << "There Are No Articles Right Meow \n";
         return;
     }
     News::displayAllNews("Date", 1, "NoDetails",News::news.size());
@@ -131,7 +131,7 @@ void User::postNews() {
     cin >> date;
 
     Utility::dateHandler(date);
-    News news1(title, description, Utility::toLower(category), 0.0, Date::fromString(date));
+    News news1(title, description, Utility::toLower(category), 0.0, Date::fromString(date), 0);
     addCategoryAuto(Utility::toLower(category));
     User::emailInterestedUsers(Utility::toLower(category));
 
@@ -161,7 +161,7 @@ void User::getAverageRateByTitle() {
         system("pause");
     }
     else {
-        cout << "\nThere Are No Articles Right Now \n";
+        cout << "\nThere Are No Articles Right Meow \n";
         system("pause");
         return;
     }
@@ -755,6 +755,11 @@ again:
         User::spamNews[User::currentUsername].insert(News::valid[choice4 - 1].getTitle());
         auto it = News::valid.begin();
         advance(it, choice4 - 1);
+        for (int i = 0; i < News::news.size(); i++) {
+            if (News::news[i].getTitle().compare(News::valid[choice4 - 1].getTitle()) == 0) {
+                News::news[i].updateSpamCount(1);
+            }
+        }
         User::bookmarks[User::currentUsername].erase(News::valid[choice4 - 1].getTitle());
         News::valid.erase(it);
         cout << "Article Added To Your Spam Successfuly\n";
@@ -768,6 +773,7 @@ bool User::printSpam()
     if (User::spamNews[User::currentUsername].size() <= 0)
     {
         cout << "You Haven't Added One to Spam Yet \n";
+        system("pause");
         return false;
     }
     cout << "Here Are All Added Spam :\n\n";
@@ -798,8 +804,9 @@ void User::removeSpamNews()
             User::spamNews[User::currentUsername].erase(it);
             for (int i = 0; i < News::news.size(); i++) {
                 if (News::news[i].getTitle().compare(title) == 0) {
+                    News::news[i].updateSpamCount(-1);
                     if(News::news[i].getRate() >= 2.0 || News::news[i].getRate() == 0.0)
-                    News::valid.push_back(News::news[i]);
+                        News::valid.push_back(News::news[i]);
                 }
             }
             cout << "Article Removed Successfully From Spam\n";

@@ -109,6 +109,7 @@ void Database::write()
         outFile << news.getDate() << "\n";  // assuming Date has a toString() method
         outFile << news.getCategory() << "\n";
         outFile << news.getRate() << "\n";
+        outFile << news.getSpamCount() << "\n";
 
         // Save ratings
         outFile << news.allRate.size() << "\n";
@@ -262,8 +263,10 @@ void Database::read()
         string category = line;
         getline(innFile, line);
         float rate = stof(line);
+        getline(innFile, line);
+        int spamCount = stoi(line);
 
-        News newsItem(title, description, category, rate, Date::fromString(dateStr)); // Assuming a constructor or method to set these
+        News newsItem(title, description, category, rate, Date::fromString(dateStr), spamCount); // Assuming a constructor or method to set these
 
         // Read rates
         size_t ratesCount;

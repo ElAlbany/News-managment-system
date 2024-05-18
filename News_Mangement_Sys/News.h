@@ -41,6 +41,7 @@ private:
     Date date;
     string category;
     float rate; // this is the actual rate which comes from the average of all users' rates
+    int spamCount;
 public:
 
 
@@ -52,7 +53,7 @@ public:
 
 
     // Constructors
-    News(string title, string description, string category, float rate, Date date);
+    News(string title, string description, string category, float rate, Date date, int spamcount);
     News(string title, string description, string category, float rate);
     News(string title, string description, string category);
     News(string title, string description);
@@ -64,6 +65,7 @@ public:
     void updateNewsDescription(string new_description);
     void updateNewsDate(Date new_date);
     void updateNewsCategory();
+    void updateSpamCount(int);
 
     static void displayNewsByCategoryName();
     void displayPost();
@@ -80,6 +82,7 @@ public:
     string getDescription() const;
     string getCategory() const;
     Date getDate() const;
+    int getSpamCount() const;
 
     // Display News sorted by rating
     static bool sortNewsByRating(News& news1, News& news2) {
