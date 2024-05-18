@@ -106,30 +106,17 @@ int main() {
             }
             else if (choice2 == 5) // display an article rate
             {
-                News::displayAllNews("Date", 1, "NoDetails");
+                News::displayAllNews("Date", 1, "NoDetails", News::news.size());
                 User::getAverageRateByTitle();
             }
             else if (choice2 == 6) // display all news
             {
-                News::displayAllNews("Date",1,"NoDetails");
+                News::displayAllNews("Date",1,"NoDetails", News::news.size());
                 system("pause");
             }
             else if (choice2 == 7) // display details
             {
-                News::displayAllNews("Date",1,"NoDetails");
-                cout << "\nEnter Number to See Its Details : ";
-                int choice3;
-                cin >> choice3;
-                cin.fail();
-                cin.clear();
-                cin.ignore(256, '\n');
-                if (choice3 > News::news.size() || choice3 <= 0)
-                {
-                    cout << "You Have Entered Invalid Number\n";
-                    system("pause");
-                    continue;
-                }
-                News::news[choice3 - 1].displayPost();
+                News::displayNewsDetails();
                 system("pause");
             }
             else if (choice2 == 8) // log out

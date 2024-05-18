@@ -48,7 +48,7 @@ public:
     multimap<string, int> allRate; // username and his rate, rates can be edited so we need the username; so map is convenient for that
     static vector<News> news; // main data structure to store all news
     static vector<string> categories;
-    static vector<News> valid; // used to store the news the current user can see ((unrated or above rating of 2) and not spam)
+    static vector<News> valid; // used to store the news the current user can see ((unrated or rating of 2 an more) and not spam)
 
 
     // Constructors
@@ -106,8 +106,9 @@ public:
         return false;
     }
 
-    // Used by both admin and user by passing [Sorted by, admin(1) | user(0), details or without]
-    static void displayAllNews(string,int,string);
+    // Used by both admin and user by passing [Sorted by, admin(1) | user(0), details or no details, # of news to be displayed]
+    static void displayAllNews(string,int,string,int = 10);
+    static void displayNewsDetails();
 
     // Comments' Functions
     static void commentMenu();

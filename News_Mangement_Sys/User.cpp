@@ -100,7 +100,7 @@ void User::removeNews() {
         cout << "There Are No Articles Right Now \n";
         return;
     }
-    News::displayAllNews("Date", 1, "NoDetails");
+    News::displayAllNews("Date", 1, "NoDetails",News::news.size());
     cout << "\nPlease Select One of The Shown Above to Remove or Enter -1 to Skip : ";
     int num;
 again:
@@ -204,7 +204,7 @@ again:
 }
 void User::AddToBookmarks() {
     int num;
-    News::displayAllNews("Date", 0, "Details");
+    News::displayAllNews("Date", 0, "Details", News::valid.size());
     cout << "Enter a Number : ";
     cin >> num;
     cin.fail();
@@ -737,7 +737,7 @@ again:
 }
 
 void User::spamNewsFunc() {
-    News::displayAllNews("Date", 0, "Details");
+    News::displayAllNews("Date", 0, "Details", News::valid.size());
     int choice4;
 
     cout << "Enter The Number Of Title Which You Want to Spam or -1 to Skip : ";

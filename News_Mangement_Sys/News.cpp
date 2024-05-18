@@ -180,7 +180,7 @@ Date News::getDate() const {
     return this->date;
 }
 
-void News::displayAllNews(string sortedBy, int user, string details) {
+void News::displayAllNews(string sortedBy, int user, string details, int size) {
     if (News::news.size() == 0)
     {
         cout << "There Are No Articles Right Now \n";
@@ -195,10 +195,19 @@ void News::displayAllNews(string sortedBy, int user, string details) {
         else {
             sort(News::valid.begin(), News::valid.end(), News::sortNewsByRating);
         }
-        for (int i = 0; i < News::valid.size(); i++)
-        {
-            cout << "[" << i + 1 << "] ";
-            News::valid[i].displayPost();
+        if (News::valid.size() < size) {
+            for (int i = 0; i < News::valid.size(); i++)
+            {
+                cout << "[" << i + 1 << "] ";
+                News::valid[i].displayPost();
+            }
+        }
+        else {
+            for (int i = 0; i < size; i++)
+            {
+                cout << "[" << i + 1 << "] ";
+                News::valid[i].displayPost();
+            }
         }
     }
     else { // admin
@@ -209,18 +218,60 @@ void News::displayAllNews(string sortedBy, int user, string details) {
             sort(News::news.begin(), News::news.end(), News::sortNewsByRating);
         }
         if (details == "Details") {
-            for (int i = 0; i < News::news.size(); i++)
-            {
-                cout << "[" << i + 1 << "] ";
-                news[i].displayPost();
+            if (News::valid.size() < size) {
+                for (int i = 0; i < News::news.size(); i++)
+                {
+                    cout << "[" << i + 1 << "] ";
+                    news[i].displayPost();
+                }
+            }
+            else {
+                for (int i = 0; i < size; i++)
+                {
+                    cout << "[" << i + 1 << "] ";
+                    news[i].displayPost();
+                }
             }
         }
         else {
-            for (int i = 0; i < News::news.size(); i++)
-            {
-                cout << "[" << i + 1 << "] " << news[i].title << "\n";
+            if (News::valid.size() < size) {
+                for (int i = 0; i < News::news.size(); i++)
+                {
+                    cout << "[" << i + 1 << "] " << news[i].title << "\n";
+                }
             }
+            else {
+                for (int i = 0; i < size; i++)
+                {
+                    cout << "[" << i + 1 << "] " << news[i].title << "\n";
+                }
+            }
+            
         }
+    }
+}
+
+void News::displayNewsDetails()
+{
+    News::displayAllNews("Date", 1, "NoDetails", News::news.size());
+    cout << "\nEnter Number to See Its Details : ";
+    int choice3;
+    cin >> choice3;
+    cin.fail();
+    cin.clear();
+    cin.ignore(256, '\n');
+    if (choice3 > News::news.size() || choice3 <= 0)
+    {
+        cout << "You Have Entered Invalid Number\n";
+        return;
+    }
+    system("cls");
+    Style::styleText(" User's Main Menu ");
+    News::news[choice3 - 1].displayPost();
+    for (int i = 0; i < News::news[choice3 - 1].comments.size(); i++)
+    {
+        cout << "\n[" << i + 1 << "]";
+        News::news[choice3 - 1].comments[i].display();
     }
 }
 
@@ -323,7 +374,7 @@ void News::updateMenu()
         cout << "There Are No Articles Right Now \n";
         return;
     }
-    News::displayAllNews("Date",1,"Details");
+    News::displayAllNews("Date",1,"Details",News::news.size());
     cout << "Enter Number To Edit in Article Information or -1 to Skip : ";
     int num;
 again:
@@ -452,7 +503,7 @@ string Comment::getBody() const {
 
 void News::commentMenu()
 {
-    News::displayAllNews("Date", 0, "Details");
+    News::displayAllNews("Date", 0, "Details", News::valid.size());
     cout << "\n[1] Add Comment\n\n";
     cout << "[2] Display Comments\n\n";
     cout << "[3] Return \n\n";
