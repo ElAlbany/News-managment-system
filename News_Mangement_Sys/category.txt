@@ -5,3 +5,6 @@ entertainment
 environment
 culture & arts
 science
+beauty
+mohamed
+romance

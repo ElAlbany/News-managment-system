@@ -22,7 +22,6 @@ vector<News> News::valid;
 
 
 // chaining constructor
-// chaining constructor
 News::News(string title, string description, string category, float rate, Date date, int spamCount) {
     this->title = title;
     this->description = description;
@@ -55,7 +54,7 @@ void News::calculateAverageRate() {
 }
 
 void News::rateNews(string userName) {
-
+    
     if (News::valid.empty()) {
         cout << "Sorry There Aren't any News Right Meow\n";
         return;
@@ -265,11 +264,11 @@ void News::displayNewsDetails()
     }
 }
 
-vector<News> News::serachNews(string description_key) { // search by description and title
+vector<News> News::serachNews(string key) { // search by description and title
 
     int N = valid.size();
-    description_key = Utility::toLower(description_key);
-    vector<string> keywords = Utility::SplitString(description_key); // get all keywords in the search text
+    key = Utility::toLower(key);
+    vector<string> keywords = Utility::SplitString(key); // get all keywords in the search text
 
     vector<pair<News, int>> searching_result;
     vector<bool>taken(N + 7, 0);

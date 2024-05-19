@@ -17,7 +17,7 @@ class User {
 
 public:
    
-    int LoginAtempts;
+    int LoginAttempts;
     static map<string, User> users;
     static string currentUsername, currentPassword;
     static unordered_map<string, unordered_set<string>> bookmarks;
@@ -77,10 +77,9 @@ public:
 
     // Others
     static void getAverageRateByTitle();
-    static User searchUserByUsername(string username);
     static void search();
     static void addCategory();
-    static void addCategoryAuto(string cate);
+    static void addCategoryAuto(string category);
     static int Register();
     static int LogIn();
 

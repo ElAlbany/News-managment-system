@@ -24,12 +24,12 @@ User::User(string username, string password, string email) {
     this->Username = username;
     this->Password = password;
     this->Email = email;
-    this->LoginAtempts = 2;
+    this->LoginAttempts = 2;
 }
 User::User() {
     this->Username = "";
     this->Password = "";
-    this->LoginAtempts = 2;
+    this->LoginAttempts = 2;
 }
 
 
@@ -497,14 +497,6 @@ int User::Register() {
     return 0;
 }
 
-User User::searchUserByUsername(string username) {
-    User usr;
-    if (User::users.find(username) != User::users.end()) {
-        return User::users[username];
-    }
-    return usr;
-}
-
 void User::search()
 {
     string key;
@@ -547,7 +539,7 @@ int User::LogIn() {
 
         if (User::users[username].Password == password) {
             LoggedIn = true;
-            User::users[username].LoginAtempts = 2;
+            User::users[username].LoginAttempts = 2;
             currentUsername = username;
             currentPassword = password;
             News::valid.clear();
@@ -570,8 +562,8 @@ int User::LogIn() {
             return 0;
         }
         else {
-            User::users[username].LoginAtempts--;
-            if (User::users[username].LoginAtempts < 0) {
+            User::users[username].LoginAttempts--;
+            if (User::users[username].LoginAttempts < 0) {
                 cout << "\nEnter [1] to Send a 6-digit Code to Your Email or -1 to Continue : ";
                 cin >> responce;
                 if (responce == 1)
@@ -666,7 +658,7 @@ int User::ForgetPassword(string username) {
             if (password == confirmPassword) {
                 User::users[username].Password = password;
                 cout << "\nPassword Changed Successfuly\n";
-                User::users[username].LoginAtempts = 2;
+                User::users[username].LoginAttempts = 2;
                 system("pause");
                 break;
             }

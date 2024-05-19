@@ -50,29 +50,19 @@ public:
     static vector<News> news; // main data structure to store all news
     static vector<string> categories;
     static vector<News> valid; // used to store the news the current user can see ((unrated or rating of 2 an more) and not spam)
+    
     // Constructors
     News(string title, string description, string category, float rate, Date date, int spamcount);
     News(string title, string description, string category, float rate);
     News(string title, string description, string category);
     News(string title, string description);
 
-    // Functions
-    static void rateNews(string userName);
-    static void updateMenu();
+    // Setters
     void updateNewsTitle(string new_title);
     void updateNewsDescription(string new_description);
     void updateNewsDate(Date new_date);
     void updateNewsCategory();
     void updateSpamCount(int);
-
-    static void displayNewsByCategoryName();
-    void displayPost();
-    static void displayCategories();
-
-    void calculateAverageRate();
-
-
-    static vector<News> serachNews(string title_key);
 
     // Getters
     float getRate() const;
@@ -81,6 +71,21 @@ public:
     string getCategory() const;
     Date getDate() const;
     int getSpamCount() const;
+
+    // Functions
+    static void rateNews(string userName);
+    static void updateMenu();
+
+    static void displayNewsByCategoryName();
+    void displayPost();
+    static void displayCategories();
+
+    void calculateAverageRate();
+
+
+    static vector<News> serachNews(string key);
+
+    
 
     // Display News sorted by rating
     static bool sortNewsByRating(News& news1, News& news2) {
@@ -108,7 +113,7 @@ public:
     }
 
     // Used by both admin and user by passing [Sorted by, admin(1) | user(0), details or no details, # of news to be displayed]
-    static void displayAllNews(string,int,string,int = 10);
+    static void displayAllNews(string sort,int type,string detailed,int size = 10);
     static void displayNewsDetails();
 
     // Comments' Functions
