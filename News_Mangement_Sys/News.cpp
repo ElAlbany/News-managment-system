@@ -399,7 +399,6 @@ again1:
     {
         cout << "Enter The New Title : ";
         string newTitle;
-        cin.ignore();
         getline(cin, newTitle);
         News::news[num - 1].updateNewsTitle(newTitle);
         cout << "Title Updated Successfully\n";
@@ -409,7 +408,6 @@ again1:
     {
         cout << "Enter The New Description : ";
         string newDescription;
-        cin.ignore();
         getline(cin, newDescription);
         News::news[num - 1].updateNewsDescription(newDescription);
         cout << "Description Updated Successfully\n";
@@ -574,7 +572,6 @@ again:
     }
     string comment;
     cout << "Enter Your Comment : ";
-    cin.ignore();
     getline(cin >> ws, comment);
     News::valid[choice - 1].comments.push_back(Comment(User::currentUsername, comment));
     for (int i = 0; i < News::news.size(); i++) {

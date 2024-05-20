@@ -780,7 +780,6 @@ bool User::printSpam()
     if (User::spamNews[User::currentUsername].size() <= 0)
     {
         cout << "You Haven't Added One to Spam Yet \n";
-        system("pause");
         return false;
     }
     cout << "Here Are All Added Spam :\n\n";
