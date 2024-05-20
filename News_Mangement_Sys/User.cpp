@@ -647,7 +647,7 @@ int User::ForgetPassword(string username) {
     file.open("ForgetPassword.ps1", ios::out);
     file << newContent;
     file.close();
-    cout << "Enter The 6-digit Code or Enter \"1\" to Exit\n";
+    cout << "Enter The 6-digit Code or Enter \"1\" to Exit : ";
     cin >> enteredCode;
     while (true) {
         if (enteredCode == randomCode) {

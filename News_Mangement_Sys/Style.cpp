@@ -19,26 +19,26 @@ enum Color { // Background Colors in hexadecimal
 };
 
 void Style::styleText(string str) {
-    int spaces = (170 - str.length() / 2) / 1.5;
+    int spaces = (82 - str.length() / 2) / 1.5;
 
     for (int i = 0; i < spaces; i++) {
         cout << " ";
     }
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), Color::CYANb_WHITEf);
     cout << string(str.length(), ' ') << "\n";
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), Color::defualt);
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), Color::WHITEb_BLACKf);
     for (int i = 0; i < spaces; i++) {
         cout << " ";
     }
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), Color::CYANb_WHITEf);
     cout << str << "\n";
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), Color::defualt);
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), Color::WHITEb_BLACKf);
     for (int i = 0; i < spaces; i++) {
         cout << " ";
     }
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), Color::CYANb_WHITEf);
     cout << string(str.length(), ' ') << "\n";
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), Color::defualt);
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), Color::WHITEb_BLACKf);
 }
 
 void Style::setupConsole() {
@@ -54,7 +54,7 @@ void Style::setupConsole() {
 
     SetWindowLong(consoleWindow, GWL_STYLE, style); // set the new style to the console window
 
-    //system("color f0");
+    system("color f0");
 
     Database::read();
 }
